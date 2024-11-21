@@ -55,7 +55,7 @@ const SocialIconTiktok = () => {
   );
 };
 
-const SocialIconInstragram = () => {
+const SocialIconInstagram = () => {
   return (
     <button class="group group flex h-10 w-10 items-center justify-center rounded-lg bg-white shadow-md shadow-gray-200 transition-all duration-300">
       <svg
@@ -103,4 +103,4 @@ const SocialIconInstragram = () => {
   );
 };
 
-export { SocialIconTiktok, SocialIconFaceBook, SocialIconInstragram };
+export { SocialIconTiktok, SocialIconFaceBook, SocialIconInstagram };
