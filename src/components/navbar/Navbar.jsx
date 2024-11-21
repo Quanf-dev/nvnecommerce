@@ -3,11 +3,7 @@ import SearchBar from "../searchBar/SearchBar";
 import { Badge } from "@material-tailwind/react";
 import { RiShoppingBasketFill } from "@remixicon/react";
 import { useEffect, useState } from "react";
-import {
-  SocialIconFaceBook,
-  SocialIconInstagram,
-  SocialIconTiktok,
-} from "../../assets/icons/socialIcon";
+
 import { Typography } from "@material-tailwind/react";
 import logo from "@assets/logo/logoFurniture.png";
 import { useSelector } from "react-redux";
@@ -70,11 +66,7 @@ const Navbar = () => {
             </Badge>
           </div>
           <div className="h-10 border-l-2 border-solid "></div>
-          <div class="flex min-w-40  flex-wrap items-center justify-center gap-4 bg-white py-8 shadow-gray-200 transition-all duration-300 ">
-            <SocialIconFaceBook />
-            <SocialIconTiktok />
-            <SocialIconInstagram />
-          </div>
+          <div class="flex min-w-40  flex-wrap items-center justify-center gap-4 bg-white py-8 shadow-gray-200 transition-all duration-300 "></div>
         </div>
       </div>
       {/* item Navbar  */}
