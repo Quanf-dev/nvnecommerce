@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
-import { Badge, Button, ButtonGroup } from "@material-tailwind/react";
+import { Badge } from "@material-tailwind/react";
 import { RiShoppingBasketFill } from "@remixicon/react";
 import { useEffect, useState } from "react";
 import {
@@ -9,11 +9,15 @@ import {
   SocialIconTiktok,
 } from "../../assets/icons/socialIcon";
 import { Typography } from "@material-tailwind/react";
+import logo from "@assets/logo/logoFurniture.png";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const cartItems = useSelector((state) => state.cart);
   // navList Data
   const [active, setActive] = useState(0);
   const [hover, setHover] = useState(false);
+  const [offsetActive, setOffsetActive] = useState(false);
 
   const navData = [
     { text: "Trang chủ", url: "/" },
@@ -25,16 +29,15 @@ const Navbar = () => {
     { text: "Gear - phụ kiện", url: "/" },
   ];
 
-  const [offset, setOffset] = useState(0);
-
   useEffect(() => {
-    const onScroll = () => setOffset(window.scrollY);
-    // clean up code
-    window.removeEventListener("scroll", onScroll);
+    const onScroll = () => {
+      const scrollPosition = window.scrollY;
+      scrollPosition >= 350 ? setOffsetActive(true) : setOffsetActive(false);
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  console.log(offset);
   return (
     <nav className="flex flex-col items-center w-full ">
       {/* main  */}
@@ -42,7 +45,7 @@ const Navbar = () => {
         {/* left  */}
         <div className="flex items-center h-32 py-3 w-72 lg:py-0">
           <Link to={"/"}>
-            <img src="public\images\logoFurniture.png" className="bg-cover " />
+            <img src={logo} className="bg-cover " />
           </Link>
           <Typography
             variant="h3"
@@ -59,7 +62,10 @@ const Navbar = () => {
         <div className="flex items-center justify-center flex-shrink-0 gap-6 ">
           <div className="flex items-center justify-center gap-3 text-white uppercase rounded-lg bg-primary min-h-10 min-w-36">
             <p className="text-[0.9rem] font-medium ">Giỏ hàng</p>
-            <Badge className="bg-[#f5ca70] min-w-1 min-h-1 ">
+            <Badge
+              content={cartItems.length}
+              className="bg-[#f5ca70] min-w-1 min-h-1 "
+            >
               <RiShoppingBasketFill size={23} />
             </Badge>
           </div>
@@ -74,7 +80,7 @@ const Navbar = () => {
       {/* item Navbar  */}
       <div
         className={`bg-gradient-to-b from-[#ce8c24] to-[#f39c12] ${
-          offset >= 350 ? "fixed top-0 " : "-top-10"
+          offsetActive ? "fixed top-0 " : "-top-10"
         } flex justify-center w-full bg-primary  transform duration-300 ease-linear z-10  `}
       >
         <ul

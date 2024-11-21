@@ -2,8 +2,13 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import ProductDetail from "../../components/admin/ProductDetail";
 import OrderDetail from "../../components/admin/OrderDetail";
 import UserDetail from "../../components/admin/UserDetail";
+import { useContext } from "react";
+import myContext from "../../context/myContext";
 
 const AdminDashboard = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const context = useContext(myContext);
+  const { getAllProduct } = context;
   return (
     <div>
       {/* Top */}
@@ -29,11 +34,28 @@ const AdminDashboard = () => {
             </div>
             {/* text  */}
             <div className="">
-              <h1 className="text-lg text-center text-pink-500 ">
-                <span className="font-bold ">Name :</span> Kamal Nayan Upadhyay
+              {/* Name  */}
+              <h1 className="text-lg text-center ">
+                <span className="font-bold ">Name : </span>
+                {user?.name}
               </h1>
-              <h1 className="text-lg text-center text-pink-500 ">
-                <span className="font-bold ">Email :</span> test@gmail.com
+
+              {/* Email  */}
+              <h1 className="text-lg text-center ">
+                <span className="font-bold ">Email : </span>
+                {user?.email}
+              </h1>
+
+              {/* Date  */}
+              <h1 className="text-lg text-center ">
+                <span className="font-bold ">Date : </span>
+                {user?.date}
+              </h1>
+
+              {/* Role  */}
+              <h1 className="text-lg text-center ">
+                <span className="font-bold ">Role : </span>
+                {user?.role}
               </h1>
             </div>
           </div>
@@ -69,7 +91,7 @@ const AdminDashboard = () => {
                     </svg>
                   </div>
                   <h2 className="text-3xl font-medium text-pink-400 title-font fonts1">
-                    10
+                    {getAllProduct.length}
                   </h2>
                   <p className="font-bold text-pink-500 ">Total Products</p>
                 </div>
@@ -131,7 +153,7 @@ const AdminDashboard = () => {
                   <h2 className="text-3xl font-medium text-pink-400 title-font fonts1">
                     10
                   </h2>
-                  <p className="font-bold text-pink-500 ">Total Order</p>
+                  <p className="font-bold text-pink-500 ">Total User</p>
                 </div>
               </Tab>
             </TabList>

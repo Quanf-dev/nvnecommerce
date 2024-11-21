@@ -1,4 +1,17 @@
+import { useEffect, useState } from "react";
+import getAllUserService from "../../services/getAllUserService";
+
 const UserDetail = () => {
+  const [getAllUser, setGetAllUser] = useState([]);
+  const getAllUserFunction = getAllUserService();
+  useEffect(() => {
+    try {
+      getAllUserFunction(setGetAllUser);
+    } catch (error) {
+      console.error("Failed to fetch orders", error);
+    }
+  }, []);
+  console.log(getAllUser);
   return (
     <div>
       <div>
@@ -18,39 +31,71 @@ const UserDetail = () => {
                 >
                   S.No.
                 </th>
+
                 <th
                   scope="col"
-                  className="h-12 px-6 font-bold border-l border-pink-100 text-md fontPara first:border-l-0 text-slate-700 bg-slate-100"
+                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
                 >
-                  Location Name
+                  Name
                 </th>
+
                 <th
                   scope="col"
-                  className="h-12 px-6 font-bold border-l border-pink-100 text-md fontPara first:border-l-0 text-slate-700 bg-slate-100"
+                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
                 >
-                  Action
+                  Email
                 </th>
+
                 <th
                   scope="col"
-                  className="h-12 px-6 font-bold border-l border-pink-100 text-md fontPara first:border-l-0 text-slate-700 bg-slate-100"
+                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
                 >
-                  Action
+                  Uid
+                </th>
+
+                <th
+                  scope="col"
+                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
+                >
+                  Role
+                </th>
+
+                <th
+                  scope="col"
+                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
+                >
+                  Date
                 </th>
               </tr>
-              <tr className="text-pink-300">
-                <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                  1.
-                </td>
-                <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                  {"name"}
-                </td>
-                <td className="h-12 px-6 text-green-500 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                  Edit
-                </td>
-                <td className="h-12 px-6 text-red-500 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                  Delete
-                </td>
-              </tr>
+              {getAllUser.map((value, index) => {
+                return (
+                  <tr key={index} className="text-pink-300">
+                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
+                      {index + 1}
+                    </td>
+
+                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
+                      {value.name}
+                    </td>
+
+                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
+                      {value.email}
+                    </td>
+
+                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
+                      {value.uid}
+                    </td>
+
+                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
+                      {value.role}
+                    </td>
+
+                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
+                      {value.date}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

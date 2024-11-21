@@ -1,22 +1,40 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import myContext from "../../context/myContext";
+import Loader from "../loader/Loader";
+import deleteProductService from "../../services/deleteProductService";
 
 const ProductDetail = () => {
+  const deleteProductFunction = deleteProductService();
+  const context = useContext(myContext);
+  const { loading, getAllProduct } = context;
+  const navigate = useNavigate();
+
+  const handleDelete = (e, id) => {
+    e.preventDefault();
+    deleteProductFunction(id);
+  };
+
   return (
     <div>
       <div className="flex items-center justify-between py-5">
         {/* text  */}
         <h1 className="text-xl font-bold text-pink-300 ">All Product</h1>
         {/* Add Product Button  */}
-        <Link
-          to={"/addproduct"}
-          className="px-5 py-2 border border-pink-100 rounded-lg bg-pink-50"
-        >
-          Add Product
+        <Link to={"/addproduct"}>
+          <button className="px-5 py-2 border border-pink-100 rounded-lg bg-pink-50">
+            Add Product
+          </button>
         </Link>
       </div>
 
+      {/* Loading  */}
+      <div className="relative flex justify-center top-20">
+        {loading && <Loader />}
+      </div>
+
       {/* table  */}
-      <div className="w-full overflow-x-auto">
+      <div className="w-full mb-5 overflow-x-auto">
         <table className="w-full text-left text-pink-400 border border-collapse border-pink-100 sm:border-separate">
           <tbody>
             <tr>
@@ -28,9 +46,34 @@ const ProductDetail = () => {
               </th>
               <th
                 scope="col"
+                className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
+              >
+                Image
+              </th>
+              <th
+                scope="col"
                 className="h-12 px-6 font-bold border-l border-pink-100 text-md fontPara first:border-l-0 text-slate-700 bg-slate-100"
               >
-                Location Name
+                Title
+              </th>
+              <th
+                scope="col"
+                className="h-12 px-6 font-bold border-l border-pink-100 text-md fontPara first:border-l-0 text-slate-700 bg-slate-100"
+              >
+                Price
+              </th>
+              <th
+                scope="col"
+                className="h-12 px-6 font-bold border-l border-pink-100 text-md fontPara first:border-l-0 text-slate-700 bg-slate-100"
+              >
+                Category
+              </th>
+              <th
+                scope="col"
+                className="h-12 px-6 font-bold border-l border-pink-100 text-md fontPara first:border-l-0 text-slate-700 bg-slate-100"
+              >
+                {" "}
+                Date
               </th>
               <th
                 scope="col"
@@ -45,20 +88,46 @@ const ProductDetail = () => {
                 Action
               </th>
             </tr>
-            <tr className="text-pink-300">
-              <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                1.
-              </td>
-              <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                {"name"}
-              </td>
-              <td className="h-12 px-6 text-green-500 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                Edit
-              </td>
-              <td className="h-12 px-6 text-red-500 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                Delete
-              </td>
-            </tr>
+            {getAllProduct.map((item, index) => {
+              const { id, title, price, category, date, productImageUrl } =
+                item;
+              return (
+                <tr key={index} className="text-pink-300">
+                  <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
+                    {index + 1}.
+                  </td>
+                  <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
+                    <div className="flex justify-center">
+                      <img className="w-20 " src={productImageUrl} alt="" />
+                    </div>
+                  </td>
+                  <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
+                    {title}
+                  </td>
+                  <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
+                    ₹{price}
+                  </td>
+                  <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
+                    {category}
+                  </td>
+                  <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
+                    {date}
+                  </td>
+                  <td
+                    onClick={() => navigate(`/updateproduct/${id}`)}
+                    className="h-12 px-6 text-green-500 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 "
+                  >
+                    Edit
+                  </td>
+                  <td
+                    onClick={(e) => handleDelete(e, id)}
+                    className="h-12 px-6 text-red-500 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 "
+                  >
+                    Delete
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

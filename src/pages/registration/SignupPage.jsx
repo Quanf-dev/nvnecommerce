@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import myContext from "../../context/myContext";
 import useUserSignup from "../../hooks/useUserSignup";
 import { auth, fireDB } from "../../firebase/FirebaseConfig";
 import { Loader } from "lucide-react";
+import { Toaster } from "react-hot-toast";
 
 const Signup = () => {
-  const { userSignupFunction } = useUserSignup(auth, fireDB);
+  const userSignupFunction = useUserSignup(auth, fireDB);
   const { loading } = useContext(myContext);
 
   const [userSignup, setUserSignup] = useState({
@@ -18,7 +19,7 @@ const Signup = () => {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    userSignupFunction(userSignup);
+    userSignupFunction(userSignup, setUserSignup);
   };
 
   return (
@@ -79,7 +80,7 @@ const Signup = () => {
         <div className="mb-5">
           <button
             type="button"
-            onClick={() => userSignupFunction(userSignup)}
+            onClick={handleSignup}
             className="w-full py-2 font-bold text-center text-white bg-pink-500 rounded-md hover:bg-pink-600 "
           >
             Signup

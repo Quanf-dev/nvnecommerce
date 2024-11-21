@@ -1,38 +1,76 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import NoPage from "./pages/noPage/NoPage";
-import ProductInfo from "./pages/productInfo/ProductInfo";
-import ScrollTop from "./components/scrollTop/ScrollTop";
+import ProductInfoPage from "./pages/productInfo/ProductInfoPage";
 import CartPage from "./pages/cart/CartPage";
-import AllProduct from "./pages/allProduct/AllProduct";
-import Signup from "./pages/registration/Signup";
-import Login from "./pages/registration/Login";
-import UserDashboard from "./pages/user/UserDashboard";
-import AdminDashboard from "./pages/admin/AdminDashboard";
+import AllProductPage from "./pages/allProduct/AllProductPage";
+import SignupPage from "./pages/registration/SignupPage";
+import LoginPage from "./pages/registration/LoginPage";
+import UserDashboardPage from "./pages/user/UserDashboardPage";
+import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import AddProductPage from "./pages/admin/AddProductPage";
 import UpdateProductPage from "./pages/admin/UpdateProductPage";
-import MyStateProvider from "./context/myState";
+import MyState from "./context/myState";
+import CategoryPage from "./pages/category/CategoryPage";
+import { Toaster } from "react-hot-toast";
+import { ProtectedRouteForUser } from "./protectedRoute/ProtectedRouteForUser";
+import { ProtectedRouteForAdmin } from "./protectedRoute/ProtectedRouteForAdmin";
+import ScrollTop from "./components/scrollTop/ScrollTop";
 
 const App = () => {
   return (
-    <MyStateProvider>
+    <MyState>
       <Router>
         <ScrollTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/*" element={<NoPage />} />
-          <Route path="/productinfo" element={<ProductInfo />} />
+          <Route path="/productinfo/:id" element={<ProductInfoPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/allproduct" element={<AllProduct />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/user-dashboard" element={<UserDashboard />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/addproduct" element={<AddProductPage />} />
-          <Route path="/updateproduct" element={<UpdateProductPage />} />
+          <Route path="/allproduct" element={<AllProductPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/category/:categoryname"
+            element={<CategoryPage />}
+          />{" "}
+          {/* category Page route  */}
+          <Route
+            path="/user-dashboard"
+            element={
+              <ProtectedRouteForUser>
+                <UserDashboardPage />
+              </ProtectedRouteForUser>
+            }
+          />
+          <Route
+            path="/admin-dashboard"
+            element={
+              <ProtectedRouteForAdmin>
+                <AdminDashboardPage />
+              </ProtectedRouteForAdmin>
+            }
+          />
+          <Route
+            path="/addproduct"
+            element={
+              <ProtectedRouteForAdmin>
+                <AddProductPage />
+              </ProtectedRouteForAdmin>
+            }
+          />
+          <Route
+            path="/updateproduct/:id"
+            element={
+              <ProtectedRouteForAdmin>
+                <UpdateProductPage />
+              </ProtectedRouteForAdmin>
+            }
+          />
         </Routes>
+        <Toaster />
       </Router>
-    </MyStateProvider>
+    </MyState>
   );
 };
 
