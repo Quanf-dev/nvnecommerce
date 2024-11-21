@@ -3,11 +3,6 @@ import SearchBar from "../searchBar/SearchBar";
 import { Badge } from "@material-tailwind/react";
 import { RiShoppingBasketFill } from "@remixicon/react";
 import { useEffect, useState } from "react";
-import {
-  SocialIconFaceBook,
-  SocialIconInstragram,
-  SocialIconTiktok,
-} from "../../assets/icons/socialIcon";
 import { Typography } from "@material-tailwind/react";
 import logo from "@assets/logo/logoFurniture.png";
 import { useSelector } from "react-redux";
