@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router";
 import myContext from "./../../context/myContext";
 import useCart from "../../hooks/useCart";
+import BestSellingProducts from "./BestSellingProducts";
 
 const HomePageProductCard = () => {
   const navigate = useNavigate();
@@ -9,6 +10,8 @@ const HomePageProductCard = () => {
   const { cartItems, deleteCart, addCart } = useCart();
   return (
     <div className="mt-10">
+      <BestSellingProducts />
+
       {/* Heading  */}
       <div className="">
         <h1 className="mb-5 text-2xl font-semibold text-center ">

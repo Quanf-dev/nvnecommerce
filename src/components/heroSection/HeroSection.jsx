@@ -1,121 +1,109 @@
-import { Carousel, IconButton } from "@material-tailwind/react";
 import HeroCard from "../heroCard/HeroCard";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { getCloudinaryImage } from "../../utils/cloudinaryHelper";
+import { AdvancedImage } from "@cloudinary/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import {
+  RiArrowDownLine,
+  RiArrowDropLeftLine,
+  RiArrowDropRightLine,
+} from "@remixicon/react";
+
+const banner1 = getCloudinaryImage("banner-top_bbo0of", 800);
+const banner2 = getCloudinaryImage("banner-ghe-cong-thai-hoc_o34cs7", 800);
+const banner3 = getCloudinaryImage("banner-noi-that_rbqxhu", 800);
 
 const HeroSection = () => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
   const [active, setActive] = useState(0);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [isNavigationEnabled, setIsNavigationEnabled] = useState(false);
+
   const Data = [
-    "Các Mẫu Ghế Chơi Game 2024",
+    "Các Mẫu Ghế Hot Nhất 2024",
     "Thiết Kế - Thi Công Nội Thất Văn Phòng",
     "Nội Thất Văn Phòng Giá Rẻ",
   ];
+
   return (
     <div className="flex justify-center w-full gap-8 mx-auto ">
-      <div className=" max-w-[810px] pb-32  ">
-        <Carousel
-          prevArrow={({ handlePrev, activeIndex }) => (
-            <IconButton
-              variant="text"
-              color="white"
-              size="lg"
-              onClick={() => {
-                handlePrev();
-                setActive(activeIndex === 0 ? 0 : activeIndex - 1);
-              }}
-              className="!absolute top-2/4 left-4 -translate-y-2/4"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-                />
-              </svg>
-            </IconButton>
-          )}
-          nextArrow={({ handleNext, activeIndex }) => (
-            <IconButton
-              variant="text"
-              color="white"
-              size="lg"
-              onClick={() => {
-                handleNext();
-                setActive(
-                  activeIndex === Data.length - 1 ? 2 : activeIndex + 1
-                );
-              }}
-              className="!absolute top-2/4 !right-4 -translate-y-2/4"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                />
-              </svg>
-            </IconButton>
-          )}
-          navigation={({ setActiveIndex, activeIndex, length }) => (
-            <div className="absolute z-50 flex gap-2 bottom-4 left-2/4 -translate-x-2/4">
-              {new Array(length).fill("").map((_, i) => (
-                <span
-                  key={i}
-                  className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
-                    activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
-                  }`}
-                  onClick={() => {
-                    setActiveIndex(i), setActive(i);
-                  }}
-                />
-              ))}
-            </div>
-          )}
-          className="aspect-[16/6] w-full"
+      <div className="max-w-[810px] relative">
+        <Swiper
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          spaceBetween={10}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="aspect-[16/6] "
         >
-          <img
-            src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
-            alt="image 1"
-            className="object-cover w-full h-full"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
-            alt="image 2"
-            className="object-cover w-full h-full"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
-            alt="image 3"
-            className="object-cover w-full h-full"
-          />
-        </Carousel>
-        <div className="w-full bg-[#F5F5F5] flex justify-center ">
-          <ul className="flex  text-center  max-w-[700px] ">
-            {Data.map((item, index) => (
-              <li
-                key={index}
-                className={`${
-                  active === index ? "border-t-4 border-primary" : ""
-                } `}
+          {[banner1, banner2, banner3].map((item, index) => {
+            return (
+              <SwiperSlide
+                onMouseEnter={() => setIsNavigationEnabled(true)}
+                onMouseLeave={() => setIsNavigationEnabled(false)}
               >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+                <AdvancedImage
+                  cldImg={item}
+                  className="object-cover w-full h-full"
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          loop={true}
+          spaceBetween={10}
+          slidesPerView={4}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className=" bg-[#eeeeee] text-center pl-32 "
+        >
+          {Data.map((item, index) => (
+            <SwiperSlide
+              onClick={() => setActive(index)}
+              className={`cursor-pointer ${
+                active === index ? "border-t-4 border-primary" : ""
+              } `}
+            >
+              {item}
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <button
+          onMouseEnter={() => setIsNavigationEnabled(true)}
+          onMouseLeave={() => setIsNavigationEnabled(false)}
+          className={`transform ease-linear duration-300   ${
+            isNavigationEnabled ? "opacity-1 left-2" : "opacity-0 left-6"
+          } absolute z-10 text-white transform border-4 rounded-full top-36 `}
+          ref={prevRef}
+          onClick={() => setActive(active === 0 ? Data.length - 1 : active - 1)}
+        >
+          {" "}
+          <RiArrowDropLeftLine size={30} />{" "}
+        </button>
+        <button
+          onMouseEnter={() => setIsNavigationEnabled(true)}
+          onMouseLeave={() => setIsNavigationEnabled(false)}
+          className={`transform ease-linear duration-300  ${
+            isNavigationEnabled ? "opacity-1 right-2" : "opacity-0 right-6"
+          } absolute z-10 text-white transform border-4 rounded-full top-36  `}
+          ref={nextRef}
+          onClick={() => setActive(active === Data.length - 1 ? 0 : active + 1)}
+        >
+          {" "}
+          <RiArrowDropRightLine size={30} />{" "}
+        </button>
       </div>
 
       <div className="">
