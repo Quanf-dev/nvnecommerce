@@ -10,9 +10,7 @@ const HomePageProductCard = () => {
   const { cartItems, deleteCart, addCart } = useCart();
   return (
     <div className="mt-10">
-      <BestSellingProducts />
-
-      {/* Heading  */}
+     
       <div className="">
         <h1 className="mb-5 text-2xl font-semibold text-center ">
           Bestselling Products

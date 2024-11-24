@@ -14,3 +14,6 @@ body {
 .hide-scroll-bar::-webkit-scrollbar {
   display: none;
 }
+.starRatingCustom span svg {
+  @apply w-[18px] h-[18px]
+}
