@@ -73,7 +73,7 @@ const HeroSection = () => {
             <SwiperSlide
               onClick={() => setActive(index)}
               className={`cursor-pointer ${
-                active === index ? "border-t-4 border-primary" : ""
+                active === index ? "border-t-4 border-primary text-black " : ""
               } `}
             >
               {item}

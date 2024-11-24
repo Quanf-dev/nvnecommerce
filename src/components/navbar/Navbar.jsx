@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
 import { Badge } from "@material-tailwind/react";
-import { RiShoppingBasketFill } from "@remixicon/react";
+import {
+  RiNotification4Line,
+  RiNotificationLine,
+  RiPhoneLine,
+  RiShoppingBagLine,
+  RiShoppingBasketFill,
+  RiUserLine,
+} from "@remixicon/react";
 import { useEffect, useState } from "react";
 
 import { Typography } from "@material-tailwind/react";
@@ -37,21 +44,22 @@ const Navbar = () => {
   return (
     <nav className="flex flex-col items-center w-full ">
       {/* main  */}
-      <div className="flex items-center justify-between w-screen max-w-[1260px]  py-3 px-6">
+      <div className="flex items-center justify-around w-screen max-w-[1440px] gap-5 py-3">
         {/* left  */}
-        <div className="flex items-center h-32 py-3 w-[440px] lg:py-0">
+        <div className="flex items-center h-32 py-3 w-[460px] lg:py-0 gap-3">
           <Link to={"/"}>
-            <img src={logo} className="bg-cover w-36  " />
+            <img src={logo} className="bg-cover w-36 " />
           </Link>
           <div className="flex flex-col">
-          <Typography
-            variant="h4"
-            className=" text-primary uppercase flex flex-col items-center leading-10 "
-          >
-            NHAN Furniture 
-          </Typography>
-          <p className="text-[1rem] text-[#a98435] ">Chuyên cung cấp sỉ lẻ bàn ghế văn phòng </p>
-          <p className="text-[0.9rem] text-[#a98435] text-center ">hotline: 0364289846</p>
+            <Typography
+              variant="h4"
+              className="flex flex-col items-center uppercase text-primary"
+            >
+              NHAN Furniture
+            </Typography>
+            <p className="text-[1rem] text-[#a98435] text-center">
+              Chuyên cung cấp sỉ lẻ bàn ghế văn phòng{" "}
+            </p>
           </div>
         </div>
         <div className="w-[350px]">
@@ -59,37 +67,65 @@ const Navbar = () => {
           <SearchBar />
         </div>
         {/* right   */}
-        <div className="flex items-center justify-center flex-shrink-0 gap-6 ">
-          <div className="flex items-center justify-center gap-3 text-white uppercase rounded-lg bg-primary min-h-10 min-w-36">
-            <p className="text-[0.9rem] font-medium ">Giỏ hàng</p>
-            <Badge
-              content={cartItems.length}
-              className="bg-[#f5ca70] min-w-1 min-h-1 "
-            >
-              <RiShoppingBasketFill size={23} />
+        <div className="flex gap-7">
+          <div className="flex items-center justify-center gap-4 ">
+            <div className="flex">
+              <RiUserLine size={23} />
+              <p className="text-gray-800">Đăng nhập</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <Badge
+                content={cartItems.length}
+                className="bg-primary min-w-1 min-h-1 "
+              >
+                <RiShoppingBagLine size={23} />
+              </Badge>
+              <p className="text-[0.9rem]">
+                0{" "}
+                <span className="underline text-[0.7rem] relative bottom-[2px]">
+                  đ
+                </span>
+              </p>
+            </div>
+          </div>
+          <div className="relative flex items-center h-10 border-l-2 border-solid top-[6px]  ">
+            {" "}
+            <Badge content={1} className="bg-red-600 min-w-1 min-h-1">
+              <RiNotification4Line size={21} className="ml-6" />
             </Badge>
           </div>
-          <div className="h-10 border-l-2 border-solid "></div>
-          <div class="flex min-w-40  flex-wrap items-center justify-center gap-4 bg-white py-8 shadow-gray-200 transition-all duration-300 "></div>
+
+          <div className="flex items-center gap-2">
+            <RiPhoneLine
+              size={40}
+              className="relative text-green-300 bottom-1"
+            />
+            <div className="flex flex-col">
+              <p className="font-semibold">Hotline</p>
+              <p className="text-[#1e73be] font-bold cursor-pointer text-[1.15rem] hover:text-black">
+                036 428 9846
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       {/* item Navbar  */}
       <div
         className={`bg-gradient-to-b from-[#ce8c24] to-[#f39c12] ${
           offsetActive ? "fixed top-0 " : "-top-10"
-        } flex justify-center w-full bg-primary  transform duration-300 ease-linear z-10  `}
+        } flex justify-center  w-full bg-primary  transform duration-300 ease-linear z-20  `}
       >
         <ul
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
-          className="flex space-x-5 font-semibold text-white  uppercase text-balance outline-4 w-[1260px]  py-2 px-5 "
+          className="flex space-x-5 font-semibold text-white  text-balance outline-4 w-[960px]  py-2 px-5 "
         >
           {" "}
           {navData.map((item, index) => (
             <li
               key={index}
               onClick={() => setActive(index)}
-              className={`flex transform duration-150 ease-linear ${
+              className={`flex transform duration-150 ease-linear uppercase  ${
                 hover === true ? "no-underline" : ""
               } ${
                 active === index
@@ -101,7 +137,34 @@ const Navbar = () => {
               <Link to={item.url}>{item.text}</Link>{" "}
             </li>
           ))}{" "}
+          {/* right   */}
         </ul>
+        <div
+          className={`${
+            offsetActive ? " " : "opacity-0"
+          } w-[250px] h-5 relative top-[2px]  `}
+        >
+          {/* Search Bar  */}
+          <SearchBar offsetActive={true} />
+        </div>
+        <div
+          className={`${
+            offsetActive ? " " : "opacity-0"
+          } flex items-center gap-3 text-white ml-10`}
+        >
+          <Badge
+            content={cartItems.length}
+            className="bg-primary min-w-1 min-h-1 "
+          >
+            <RiShoppingBagLine size={23} />
+          </Badge>
+          <p className="text-[0.9rem]">
+            0{" "}
+            <span className="underline text-[0.7rem] relative bottom-[2px] ">
+              đ
+            </span>
+          </p>
+        </div>
       </div>
     </nav>
   );

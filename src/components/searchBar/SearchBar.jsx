@@ -2,7 +2,7 @@ import { Input } from "@material-tailwind/react";
 import { useContext, useState } from "react";
 import myContext from "../../context/myContext";
 
-const SearchBar = () => {
+const SearchBar = ({ offsetActive }) => {
   const { getAllProduct } = useContext(myContext);
   const [search, setSearch] = useState("");
   const filterSearchData = getAllProduct
@@ -12,13 +12,23 @@ const SearchBar = () => {
   return (
     <>
       {/* search input  */}
-      <div className="relative flex gap-2 text-black l ">
+      <div className="relative flex gap-2 text-black ">
         <Input
           type="search"
           color="gray"
-          label="Tìm kiếm sản phẩm"
+          label={offsetActive ? "" : "Tìm kiếm sản phẩm"}
+          placeholder={offsetActive ? "Tìm kiếm sản phẩm" : ""}
+          labelProps={{
+            className: offsetActive
+              ? "before:content-none after:content-none"
+              : "",
+          }}
           onChange={(e) => setSearch(e.target.value)}
-          containerProps={{}}
+          className={` max-h-9 ${
+            offsetActive
+              ? "border-none bg-white rounded-xl focus:border-0 "
+              : ""
+          }`}
         />
       </div>
 

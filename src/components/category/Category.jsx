@@ -67,7 +67,7 @@ const Category = () => {
         Nội thất NVN Huế - Đà Nẵng | Tổng hợp những mẫu bàn ghế văn phòng tốt
         nhất
       </h1>
-      <HeadCategory text="Danh mục ghế" />
+      <HeadCategory text="Danh mục ghế" showMore="false" />
       <Swiper
         grabCursor={true}
         loop={true}

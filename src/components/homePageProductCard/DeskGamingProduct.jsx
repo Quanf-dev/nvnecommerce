@@ -1,20 +1,20 @@
 import React from "react";
-import HeadCategory from "./../headCategory/HeadCategory";
+import HeadCategory from "../headCategory/HeadCategory";
 import ProductCard from "../productCard/ProductCard";
 import ListSeoProduct from "../listSeoProduct/ListSeoProduct";
 
-const SwiveChair = () => {
-  const seoKneeling = [
-    "Ghế xoay cao cấp",
-    "Ghế xoay lưng tựa",
-    "Ghế xoay giá rẻ",
-    "Ghế xoay có đệm",
+const DeskGamingProduct = () => {
+  const seoDeskGaming = [
+    "Bàn gaming giá rẻ",
+    "Bàn gaming có ngăn kéo",
+    "Bàn gaming chân sắt ",
+    "Bàn chơi game",
   ];
   return (
-    <div className="mt-24">
-      <HeadCategory text="Ghế Xoay" />
-      <ListSeoProduct list={seoKneeling} />
-      <div className="grid gap-5 md:grid-cols-4 xl:grid-cols-5 mt-7">
+    <div className="mt-16">
+      <HeadCategory text="BÀN GAMING" />
+      <ListSeoProduct list={seoDeskGaming} />
+      <div className="grid grid-cols-5 gap-5 mt-4">
         <ProductCard className="border-[1px] border-gray-400" />
         <ProductCard className="border-[1px] border-gray-400" />
         <ProductCard className="border-[1px] border-gray-400" />
@@ -30,4 +30,4 @@ const SwiveChair = () => {
   );
 };
 
-export default SwiveChair;
+export default DeskGamingProduct;
