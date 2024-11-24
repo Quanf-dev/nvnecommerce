@@ -8,7 +8,7 @@ const ShockSellingProducts = () =>{
        
         <div className=" mt-16"> 
         <img src={title} alt="Khuyến mãi sốc"  className="relative left-1/2 -translate-x-1/2"/>  
-        <div className="flex flex-wrap gap-6 mt-7"> <ProductCard className="border-red-700 border-2"/> <ProductCard/><ProductCard/><ProductCard/><ProductCard/></div>
+        <div className="grid grid-cols-5 mt-7"> <ProductCard className="border-primary border-[1px] border-r-0 "/><ProductCard className="border-primary border-[1px] border-r-0 "/><ProductCard className="border-primary border-[1px] border-r-0 "/><ProductCard className="border-primary border-[1px] border-r-0 "/><ProductCard className="border-primary border-[1px] "/></div>
 
         </div>
     )

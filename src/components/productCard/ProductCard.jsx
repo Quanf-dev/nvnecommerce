@@ -9,11 +9,11 @@ const image = getCloudinaryImage("Ghe-Van-Phong-chu-a-450x450_rebdys",250)
 const ProductCard = ({className}) => {
   const [hoverImage,setHoverImage] = useState(false) ;
   return (
-    <Card className={`${className}  max-w-[218px] h-auto flex flex-col items-center gap-2 rounded-none pb-4 shadow-none `}>
-      <div onMouseEnter={() => setHoverImage(true)} onMouseLeave={() => setHoverImage(false)} className="relative overflow-hidden">
+    <Card className={`${className} min-w-[220px] h-auto flex flex-col items-center gap-2 rounded-none pb-4 shadow-none `}>
+      <div onMouseEnter={() => setHoverImage(true)} onMouseLeave={() => setHoverImage(false)} className="relative overflow-hidden w-full">
         <AdvancedImage
          cldImg={image}
-         className="hover:scale-105 transform duration-200 ease-linear"
+         className="hover:scale-105 transform duration-200 ease-linear object-cover w-full h-full"
         />
         <p className="rounded-[12px] absolute top-2 left-2 inline py-[6px] px-[10px] text-xs bg-primary text-white">-51%</p>
         <div className={`${hoverImage ? "bottom-2 opacity-1" : "-bottom-2 opacity-0"}  transform duration-200 ease-linear inline-flex px-4 py-2 absolute  text-black bg-white gap-4 left-1/2 -translate-x-1/2`}>

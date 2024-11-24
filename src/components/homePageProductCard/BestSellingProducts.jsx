@@ -9,7 +9,7 @@ const BestSellingProducts = () => {
        SẢN PHẨM BÁN CHẠY
      </h2>
      <img src={mblike} alt="GIá cực ưu đãi" className="absolute z-10 -right-[5px] -top-[6px]" />
-      <div className="flex flex-wrap gap-6 mt-7"> <ProductCard/> <ProductCard/><ProductCard/><ProductCard/><ProductCard/></div>
+      <div className="grid md:grid-cols-4 xl:grid-cols-5  gap-5 mt-7"> <ProductCard/> <ProductCard/><ProductCard/><ProductCard/><ProductCard/></div>
     </div>
   );
 };
