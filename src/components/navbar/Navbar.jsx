@@ -39,16 +39,20 @@ const Navbar = () => {
       {/* main  */}
       <div className="flex items-center justify-between w-screen max-w-[1260px]  py-3 px-6">
         {/* left  */}
-        <div className="flex items-center h-32 py-3 w-72 lg:py-0">
+        <div className="flex items-center h-32 py-3 w-[440px] lg:py-0">
           <Link to={"/"}>
-            <img src={logo} className="bg-cover " />
+            <img src={logo} className="bg-cover w-36  " />
           </Link>
+          <div className="flex flex-col">
           <Typography
-            variant="h3"
-            className="flex flex-col items-center text-primary "
+            variant="h4"
+            className=" text-primary uppercase flex flex-col items-center leading-10 "
           >
-            Furniture <span className="relative text-xl bottom-2">NVN</span>
+            NHAN Furniture 
           </Typography>
+          <p className="text-[1rem] text-[#a98435] ">Chuyên cung cấp sỉ lẻ bàn ghế văn phòng </p>
+          <p className="text-[0.9rem] text-[#a98435] text-center ">hotline: 0364289846</p>
+          </div>
         </div>
         <div className="w-[350px]">
           {/* Search Bar  */}
