@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Button, Dialog, DialogBody } from "@material-tailwind/react";
 import { useState } from "react";
-import addProductService from "../../services/addProductService";
 import { Timestamp } from "firebase/firestore";
 import addProductOrderService from "../../services/addProductOrderService";
 

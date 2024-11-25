@@ -15,5 +15,10 @@ body {
   display: none;
 }
 .starRatingCustom span svg {
-  @apply w-[18px] h-[18px]
+  @apply w-[18px] h-[18px];
+}
+.liner-container::before,
+.liner-container::after {
+  content: "";
+  @apply flex-1 block border-b border-primary;
 }

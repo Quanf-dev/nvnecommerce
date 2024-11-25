@@ -53,9 +53,9 @@ const ProductCard = ({ className }) => {
         Ghế Văn Phòng Giá Rẻ Chân Xoay Gx405
       </p>
       <Rating value={5} readonly className="starRatingCustom" />
-      <div className="flex gap-2 text-[0.85rem]">
+      <div className="flex gap-2 text-[0.85rem] items-center">
         <p className="line-through text-[#bbb]">650.000₫</p>
-        <span className="text-primary font-semibold text-[0.95rem] ">
+        <span className="text-primary font-semibold text-[1.1rem] ">
           520.000₫
         </span>
       </div>

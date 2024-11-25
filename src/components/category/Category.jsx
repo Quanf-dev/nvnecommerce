@@ -62,7 +62,7 @@ const Category = () => {
   const [isNavigationEnabled, setIsNavigationEnabled] = useState(false);
   const navigate = useNavigate();
   return (
-    <div className="relative mt-20">
+    <div className="relative mt-16">
       <h1 className="  w-full text-[1.3rem] font-medium text-center text-textBackground-dark">
         Nội thất NVN Huế - Đà Nẵng | Tổng hợp những mẫu bàn ghế văn phòng tốt
         nhất

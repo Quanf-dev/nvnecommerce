@@ -125,7 +125,7 @@ const Navbar = () => {
             <li
               key={index}
               onClick={() => setActive(index)}
-              className={`flex transform duration-150 ease-linear uppercase  ${
+              className={`flex transform duration-500 ease-linear uppercase  ${
                 hover === true ? "no-underline" : ""
               } ${
                 active === index

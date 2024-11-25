@@ -32,10 +32,9 @@ const HomePage = () => {
         <DeskProduct />
         <ChairGamingProduct />
         <DeskGamingProduct />
-        <HomePageProductCard />
-        <Track />
         <Testimonial />
       </LayoutHome>
+      <Track />
       <Footer />
     </div>
   );

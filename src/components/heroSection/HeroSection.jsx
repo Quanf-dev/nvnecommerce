@@ -105,12 +105,7 @@ const HeroSection = () => {
           <RiArrowDropRightLine size={30} />{" "}
         </button>
       </div>
-
-      <div className="">
-        <div className="w-full max-w-[380px] ">
-          <HeroCard />
-        </div>
-      </div>
+      <HeroCard />
     </div>
   );
 };
