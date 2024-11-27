@@ -22,3 +22,14 @@ body {
   content: "";
   @apply flex-1 block border-b border-primary;
 }
+
+.customSelect label::after,
+.customSelect label::before {
+  @apply border-0;
+}
+.customSelect label {
+  @apply text-black;
+}
+.customBreadcrumbs li {
+  @apply hover:text-primary;
+}

@@ -2,17 +2,12 @@ import React, { useRef, useState } from "react";
 import HeadCategory from "../headCategory/HeadCategory";
 import ProductCard from "../productCard/ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  RiArrowDropLeftLine,
-  RiArrowDropRightLine,
-  RiArrowLeftSLine,
-  RiArrowRightSLine,
-} from "@remixicon/react";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "@remixicon/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Navigation, Thumbs } from "swiper/modules";
 import ListSeoProduct from "../listSeoProduct/ListSeoProduct";
 
 const DeskProduct = () => {
@@ -97,8 +92,8 @@ const DeskProduct = () => {
         <button
           onMouseEnter={() => setIsNavigationEnabled(true)}
           onMouseLeave={() => setIsNavigationEnabled(false)}
-          className={`transform ease-linear duration-300 h-2/3 -left-2 drop-shadow-sm bg-white top-0 w-9  ${
-            isNavigationEnabled ? "opacity-70 left-2" : "opacity-0 "
+          className={`cursor-pointer transform ease-linear duration-300 h-2/3 -left-2 drop-shadow-sm bg-white top-0 w-9  ${
+            isNavigationEnabled ? "opacity-70 left-0" : "opacity-0 "
           } absolute z-10 text-black px-1  transform hover:text-primary hover:bg-brown-50 hover:opacity-1 `}
           ref={prevRef}
         >
@@ -108,8 +103,8 @@ const DeskProduct = () => {
         <button
           onMouseEnter={() => setIsNavigationEnabled(true)}
           onMouseLeave={() => setIsNavigationEnabled(false)}
-          className={`transform ease-linear duration-300 h-2/3 -right-2 drop-shadow-sm bg-white top-0  w-9  ${
-            isNavigationEnabled ? "opacity-70 right-2" : "opacity-0 "
+          className={`cursor-pointer transform ease-linear duration-300 h-2/3 -right-2 drop-shadow-sm bg-white top-0  w-9  ${
+            isNavigationEnabled ? "opacity-70 right-0" : "opacity-0 "
           } absolute z-10 text-black px-1  transform hover:text-primary hover:bg-brown-50 hover:opacity-1  `}
           ref={nextRef}
         >

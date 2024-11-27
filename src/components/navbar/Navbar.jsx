@@ -3,44 +3,60 @@ import SearchBar from "../searchBar/SearchBar";
 import { Badge } from "@material-tailwind/react";
 import {
   RiNotification4Line,
-  RiNotificationLine,
   RiPhoneLine,
   RiShoppingBagLine,
-  RiShoppingBasketFill,
   RiUserLine,
 } from "@remixicon/react";
-import { useEffect, useState } from "react";
 
 import { Typography } from "@material-tailwind/react";
 import logo from "@assets/logo/logoFurniture.png";
 import { useSelector } from "react-redux";
+import NavItem from "./NavItem";
 
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart);
   // navList Data
-  const [active, setActive] = useState(0);
-  const [hover, setHover] = useState(false);
-  const [offsetActive, setOffsetActive] = useState(false);
 
-  const navData = [
-    { text: "Trang chủ", url: "/" },
-    { text: "Bàn", url: "/allproduct" },
-    { text: "Bàn order", url: "/signup" },
-    { text: "Ghế", url: "/" },
-    { text: "Combo Bàn ghế", url: "/" },
-    { text: "Decor phòng", url: "/" },
-    { text: "Gear - phụ kiện", url: "/" },
-  ];
+  const CollapseDesk = {
+    ban: [
+      "Bàn giám đốc",
+      "Bàn nhân viên",
+      "Bàn chân sắt",
+      "Bàn máy tính",
+      "Bàn họp",
+    ],
+  };
+  const dataChair = {
+    theoChucVu: ["Ghế Giám Đốc", "Ghế Trưởng Phòng", "Ghế Nhân Viên"],
+    theoPhanLoai: [
+      "Ghế Công Thái Học",
+      "Ghế Phòng Họp",
+      "Ghế Ngồi Máy Tính",
+      "Ghế Băng Chờ",
+    ],
+    theoTinhNang: ["Ghế Chân Quỳ", "Ghế Xoay", "Ghế Lưới", "Ghế Da Văn Phòng"],
+  };
+  const dataGaming = {
+    gheGaming: [
+      "Ghế Gaming Extreme Zero",
+      "Ghế Gaming Lamborghini",
+      "Ghế Gaming Thể Thao",
+      "Ghế Gaming F1 Racing",
+      "Ghế Gaming Sport Virens",
+      "Ghế Gaming E-Sport",
+    ],
+    banGaming: ["Bàn Gaming Z-Desk"],
+  };
+  const dataOtherFurniture = {
+    banGheKhac: [
+      "Bàn Học Sinh",
+      "Ghế Học Sinh",
+      "Bàn Ghế Bar – Cafe",
+      "Kệ Tivi",
+      "Tủ Hộc",
+    ],
+  };
 
-  useEffect(() => {
-    const onScroll = () => {
-      const scrollPosition = window.scrollY;
-      scrollPosition >= 350 ? setOffsetActive(true) : setOffsetActive(false);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
   return (
     <nav className="flex flex-col items-center w-full ">
       {/* main  */}
@@ -76,13 +92,13 @@ const Navbar = () => {
             <div className="flex items-center gap-3">
               <Badge
                 content={cartItems.length}
-                className="bg-primary min-w-1 min-h-1 "
+                className="bg-primary min-w-3 min-h-3 "
               >
                 <RiShoppingBagLine size={23} />
               </Badge>
-              <p className="text-[0.9rem]">
+              <p className="text-[0.9rem] relative  ">
                 0{" "}
-                <span className="underline text-[0.7rem] relative bottom-[2px]">
+                <span className="underline text-[0.7rem] relative bottom-[3px] right-[1px]">
                   đ
                 </span>
               </p>
@@ -90,7 +106,7 @@ const Navbar = () => {
           </div>
           <div className="relative flex items-center h-10 border-l-2 border-solid top-[6px]  ">
             {" "}
-            <Badge content={1} className="bg-red-600 min-w-1 min-h-1">
+            <Badge content={1} className="bg-red-600 min-w-3 min-h-3">
               <RiNotification4Line size={21} className="ml-6" />
             </Badge>
           </div>
@@ -110,62 +126,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* item Navbar  */}
-      <div
-        className={`bg-gradient-to-b from-[#ce8c24] to-[#f39c12] ${
-          offsetActive ? "fixed top-0 " : "-top-10"
-        } flex justify-center  w-full bg-primary  transform duration-300 ease-linear z-20  `}
-      >
-        <ul
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className="flex space-x-5 font-semibold text-white  text-balance outline-4 w-[960px]  py-2 px-5 "
-        >
-          {" "}
-          {navData.map((item, index) => (
-            <li
-              key={index}
-              onClick={() => setActive(index)}
-              className={`flex transform duration-500 ease-linear uppercase  ${
-                hover === true ? "no-underline" : ""
-              } ${
-                active === index
-                  ? "underline underline-offset-4 decoration-[3px] text-custom-dark-gray"
-                  : "hover:text-custom-dark-gray hover:underline hover:underline-offset-4 decoration-[3px]    "
-              }`}
-            >
-              {" "}
-              <Link to={item.url}>{item.text}</Link>{" "}
-            </li>
-          ))}{" "}
-          {/* right   */}
-        </ul>
-        <div
-          className={`${
-            offsetActive ? " " : "opacity-0"
-          } w-[250px] h-5 relative top-[2px]  `}
-        >
-          {/* Search Bar  */}
-          <SearchBar offsetActive={true} />
-        </div>
-        <div
-          className={`${
-            offsetActive ? " " : "opacity-0"
-          } flex items-center gap-3 text-white ml-10`}
-        >
-          <Badge
-            content={cartItems.length}
-            className="bg-primary min-w-1 min-h-1 "
-          >
-            <RiShoppingBagLine size={23} />
-          </Badge>
-          <p className="text-[0.9rem]">
-            0{" "}
-            <span className="underline text-[0.7rem] relative bottom-[2px] ">
-              đ
-            </span>
-          </p>
-        </div>
-      </div>
+      <NavItem />
     </nav>
   );
 };

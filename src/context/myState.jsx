@@ -8,6 +8,9 @@ function MyState({ children }) {
   const [loading, setLoading] = useState(false);
   const [getAllProduct, setGetAllProduct] = useState([]);
 
+  const [nameCategory, setNameCategory] = useState(
+    localStorage.getItem("category") || ""
+  );
   useEffect(() => {
     // Hàm fetchData để lấy dữ liệu sản phẩm
     const fetchData = async () => {
@@ -22,7 +25,15 @@ function MyState({ children }) {
 
   return (
     // Sử dụng MyContext.Provider để cung cấp giá trị cho context
-    <MyContext.Provider value={{ loading, setLoading, getAllProduct }}>
+    <MyContext.Provider
+      value={{
+        loading,
+        setLoading,
+        getAllProduct,
+        nameCategory,
+        setNameCategory,
+      }}
+    >
       {children} {/* Hiển thị các thành phần con */}
     </MyContext.Provider>
   );

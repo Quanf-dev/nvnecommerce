@@ -49,7 +49,7 @@ const ProductCard = ({ className }) => {
           </Tooltip>
         </div>
       </div>
-      <p className="text-[0.9rem]  px-3 text-center">
+      <p className="text-[0.9rem] px-3 text-center">
         Ghế Văn Phòng Giá Rẻ Chân Xoay Gx405
       </p>
       <Rating value={5} readonly className="starRatingCustom" />
