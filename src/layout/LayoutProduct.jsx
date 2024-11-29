@@ -13,6 +13,7 @@ import NavItem from "../components/navbar/NavItem";
 import CategoryFilter from "../components/categoryFilter/CategoryFilter";
 import LayoutHome from "./LayoutHome";
 import { Link } from "react-router-dom";
+import Breadcrumb from "../components/breadcrumb/Breadcrumb";
 
 const LayoutProduct = ({ children }) => {
   const navigate = useNavigate();
@@ -37,15 +38,10 @@ const LayoutProduct = ({ children }) => {
             <CategoryFilter />
           </div>
           {/* Right */}
-          <div className="flex-1 ml-10">
+          <div className="relative flex-1 ml-10 bottom-2">
             <div className="flex items-center justify-between">
               <div>
-                <Breadcrumbs className="p-0 bg-white customBreadcrumbs">
-                  <Link to={"/"} className="opacity-60">
-                    Trang chủ
-                  </Link>
-                  <p>{nameCategory}</p>
-                </Breadcrumbs>
+                <Breadcrumb />
               </div>
               <div className="w-56 customSelect ">
                 <Select
@@ -68,7 +64,7 @@ const LayoutProduct = ({ children }) => {
                 </Select>
               </div>
             </div>
-            <div className="mt-10">{children}</div>
+            <div className="mt-4">{children}</div>
             {/* <div className="container px-5 py-5 mx-auto lg:px-0">
                 <div className="flex flex-wrap -m-4">
                   {getAllProduct.map((item, index) => {

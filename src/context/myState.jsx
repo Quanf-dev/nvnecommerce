@@ -11,6 +11,9 @@ function MyState({ children }) {
   const [nameCategory, setNameCategory] = useState(
     localStorage.getItem("category") || ""
   );
+  const [nameProduct, SetNameProduct] = useState(
+    localStorage.getItem("category") || ""
+  );
   useEffect(() => {
     // Hàm fetchData để lấy dữ liệu sản phẩm
     const fetchData = async () => {

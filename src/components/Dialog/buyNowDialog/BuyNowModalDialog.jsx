@@ -2,7 +2,7 @@
 import { Button, Dialog, DialogBody } from "@material-tailwind/react";
 import { useState } from "react";
 import { Timestamp } from "firebase/firestore";
-import addProductOrderService from "../../services/addProductOrderService";
+import addProductOrderService from "../../../services/addProductOrderService";
 
 const BuyNowModalDialog = () => {
   const [open, setOpen] = useState(false);

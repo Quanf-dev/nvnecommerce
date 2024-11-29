@@ -19,7 +19,7 @@ const ProductCard = ({ className }) => {
       >
         <AdvancedImage
           cldImg={image}
-          className="object-cover w-full h-full duration-200 ease-linear transform hover:scale-105"
+          className="object-cover w-full h-full duration-300 ease-linear transform hover:scale-105"
         />
         <p className="rounded-[12px] absolute top-2 left-2 inline py-[6px] px-[10px] text-xs bg-primary text-white">
           -51%

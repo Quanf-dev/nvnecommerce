@@ -32,7 +32,7 @@ const CategoryFilter = () => {
   const { nameCategory } = useContext(myContext);
 
   return (
-    <div className="max-w-[250px] ">
+    <div className="max-w-[250px]  ">
       <Typography variant="h5" className="text-[#333] space-x-2 uppercase">
         Danh mục sản phẩm
       </Typography>
@@ -45,7 +45,7 @@ const CategoryFilter = () => {
               item.name.toLocaleLowerCase().trim()
                 ? "text-primary"
                 : ""
-            } duration-200 ease-linear transform text-[0.9rem] flex justify-between cursor-pointer  group hover:text-primary`}
+            } duration-200 ease-linear transform text-[0.9rem] flex justify-between cursor-pointer  group hover:text-primary `}
           >
             {item.name}{" "}
             <span className="duration-200 ease-linear transform inline px-2  border-2 text-[0.75rem] group-hover:bg-primary group-hover:text-white rounded-full">

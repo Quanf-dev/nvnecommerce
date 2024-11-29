@@ -2,8 +2,7 @@ import Layout from "../../layout/Layout";
 import { Trash } from "lucide-react";
 import { useEffect } from "react";
 import useCart from "../../hooks/useCart";
-import BuyNowModalDialog from "../../components/buyNowDialog/BuyNowModalDialog";
-import { Navigate } from "react-router-dom";
+import BuyNowModalDialog from "../../components/Dialog/buyNowDialog/BuyNowModalDialog";
 
 const CartPage = () => {
   const { cartItems, incrementCart, decrementCart, deleteCart } = useCart();

@@ -113,7 +113,7 @@ const Category = () => {
             >
               <div
                 onClick={() => {
-                  navigate(`/category/${item.id}`), setNameCategory(item.name);
+                  navigate(`/${item.id}`), setNameCategory(item.name);
                 }}
                 className="w-16 h-16 max-w-xs mb-1 transition-all cursor-pointer lg:w-24 lg:h-24"
               >

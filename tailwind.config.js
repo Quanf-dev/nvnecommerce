@@ -17,9 +17,9 @@ export default withMT({
           dark: "#333", // Màu nâu đậm
         },
         textDesc: {
-          light:"#333",
-          DEFAULT: "#777" 
-        }
+          light: "#333",
+          DEFAULT: "#777",
+        },
       },
       flexGrow: {
         2: "2",

@@ -33,6 +33,7 @@ const HomePage = () => {
         <ChairGamingProduct />
         <DeskGamingProduct />
         <Testimonial />
+        <HomePageProductCard />
       </LayoutHome>
       <Track />
       <Footer />

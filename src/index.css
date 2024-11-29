@@ -33,3 +33,7 @@ body {
 .customBreadcrumbs li {
   @apply hover:text-primary;
 }
+
+.full-width {
+  width: 100vw !important;
+}
