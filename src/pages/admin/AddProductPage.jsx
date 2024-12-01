@@ -114,6 +114,8 @@ const AddProductPage = () => {
     images: {
       color_1: [], // Hình ảnh màu 1
       color_2: [], // Hình ảnh màu 2
+      color_3: [], // Hình ảnh màu 2
+      color_4: [], // Hình ảnh màu 2
     },
     product_category: "", // Loại sản phẩm
     product_information: {

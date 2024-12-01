@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import AddProductImages from "./AddProductImages";
 import AddProductDetails from "./AddProductDetails";
 import AddProductDesc from "./AddProductDesc";
+import LayoutHome from "./../../../layout/LayoutHome";
+import useProduct from "../../../hooks/useProduct";
 
 const AddProductPage2 = () => {
+  const [Product, setProduct] = useProduct();
+
   return (
-    <div className="container px-4 mx-auto mt-4">
-      <div className="flex flex-wrap -mx-4">
-        <AddProductImages />
-        <AddProductDetails />
-        <AddProductDesc />
+    <LayoutHome>
+      <div className="px-4 mx-auto mt-4">
+        <div className="flex flex-wrap -mx-4">
+          <AddProductDetails Product={Product} setProduct={setProduct} />
+          <AddProductDesc Product={Product} setProduct={setProduct} />
+        </div>
       </div>
-    </div>
+    </LayoutHome>
   );
 };
 

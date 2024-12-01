@@ -25,7 +25,7 @@ const AddProductImages = () => {
   ]);
 
   return (
-    <div className="w-full px-4 mb-8 md:w-1/2">
+    <div className="w-full px-4 mb-8 ">
       <div className="grid grid-cols-2 thumbnails">
         {/* Render the 4 thumbnails */}
         {thumbnails.map((thumbnail, index) => (
