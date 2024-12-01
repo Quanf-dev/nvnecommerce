@@ -17,6 +17,7 @@ import { ProtectedRouteForUser } from "./protectedRoute/ProtectedRouteForUser";
 import { ProtectedRouteForAdmin } from "./protectedRoute/ProtectedRouteForAdmin";
 import ScrollTop from "./components/scrollTop/ScrollTop";
 import ProductPage from "./pages/productInfo/ProductPage";
+import AddProductPage2 from "./pages/admin/addProductPage/AddProductPage2";
 
 const App = () => {
   return (
@@ -53,7 +54,7 @@ const App = () => {
             path="/addproduct"
             element={
               <ProtectedRouteForAdmin>
-                <AddProductPage />
+                <AddProductPage2 />
               </ProtectedRouteForAdmin>
             }
           />

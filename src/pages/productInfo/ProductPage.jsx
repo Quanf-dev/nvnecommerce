@@ -34,8 +34,6 @@ const ProductPage = () => {
     setMainImage(newSrc);
   };
 
-  const [openImageFullScreen, setOpenImageFullScreen] = useState(false);
-
   return (
     <Layout>
       <div className="container px-4 mx-auto mt-4">

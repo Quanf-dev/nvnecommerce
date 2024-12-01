@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import { Collapse, Typography } from "@material-tailwind/react";
 import { RiArrowDownSLine, RiArrowRightSLine } from "@remixicon/react";
-import ProductDetailCollapse from "../../components/productDetailCollapse/ProductDetailCollapse";
+import ProductDetailCollapse from "../../../components/productDetailCollapse/ProductDetailCollapse";
 
-const ProductDesc = () => {
-  const [open, setOpen] = useState("");
+const AddProductDesc = () => {
+  const [open, setOpen] = useState("CollapseDescribe");
 
   return (
     <div className="w-full mt-10">
       <div className="py-6 border-t-2 border-[#0000001B]">
         <CollapseDescribe open={open} setOpen={setOpen} />
-      </div>
-      <div className="py-6 border-y-2 border-textBackground-light">
-        <CollapseQRCODE open={open} setOpen={setOpen} />
-      </div>
-      <div className="py-6 border-b-2 border-textBackground-light">
-        <CollapseDelivery open={open} setOpen={setOpen} />
       </div>
     </div>
   );
@@ -142,4 +136,4 @@ const CollapseDelivery = ({ open, setOpen }) => {
   );
 };
 
-export default ProductDesc;
+export default AddProductDesc;

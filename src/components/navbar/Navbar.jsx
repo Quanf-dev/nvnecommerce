@@ -126,8 +126,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* item Navbar  */}
-      <NavItem />
-    </nav>
+      <NavItem />    </nav>
   );
 };
 

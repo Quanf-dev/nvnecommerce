@@ -1,16 +1,14 @@
 import { Rating } from "@material-tailwind/react";
 import React from "react";
-import AmountSelector from "./../../components/amountSelector/AmountSelector";
 import {
   RiChat3Line,
   RiFacebookFill,
   RiLinkedinFill,
-  RiMessage3Line,
   RiTelegram2Fill,
   RiTwitterFill,
 } from "@remixicon/react";
 
-const ProductDetails = () => {
+const AddProductDetails = () => {
   const features = [
     "Đèn chùm pha lê",
     "Đèn pha lê phòng ngủ",
@@ -66,7 +64,6 @@ const ProductDetails = () => {
       </div>
 
       <div className="flex items-center h-10 mb-6 space-x-4">
-        <AmountSelector />
         <button className="flex items-center h-full gap-2 px-6 text-white rounded-md bg-primary">
           Thêm vào giỏ hàng{" "}
         </button>
@@ -101,18 +98,9 @@ const ProductDetails = () => {
             {features.join(", ")}
           </span>{" "}
         </p>
-        <p className="flex font-bold ">
-          Share:{" "}
-          <span className="flex gap-2 ml-2 font-normal leading-6 text-textDesc">
-            <RiFacebookFill size={18} className="cursor-pointer" />
-            <RiTelegram2Fill size={18} className="cursor-pointer" />
-            <RiTwitterFill size={18} className="cursor-pointer" />
-            <RiLinkedinFill size={18} className="cursor-pointer" />
-          </span>{" "}
-        </p>
       </div>
     </div>
   );
 };
 
-export default ProductDetails;
+export default AddProductDetails;
