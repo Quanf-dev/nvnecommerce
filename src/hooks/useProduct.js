@@ -8,10 +8,10 @@ const useProduct = () => {
     new_price: 0.0, // Giá sản phẩm
     rating: 1,
     images: {
-      color_1: [], // Hình ảnh màu 1
-      color_2: [], // Hình ảnh màu 2
-      color_3: [], // Hình ảnh màu 3
-      color_4: [], // Hình ảnh màu 4
+      color_black: [], // Hình ảnh màu 1
+      color_gray: [], // Hình ảnh màu 2
+      color_pink: [], // Hình ảnh màu 3
+      color_white: [], // Hình ảnh màu 4
     },
     product_category: "", // Loại sản phẩm
     product_information: {

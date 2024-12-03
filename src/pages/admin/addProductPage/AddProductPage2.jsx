@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import AddProductDetails from "./AddProductDetails";
-import AddProductDesc from "./AddProductDesc";
 import LayoutHome from "./../../../layout/LayoutHome";
 import useProduct from "../../../hooks/useProduct";
+import AddProductDetails from "../../../components/admin/addProductDetails/AddProductDetails";
+import AddProductDesc from "../../../components/admin/addProductDesc/AddProductDesc";
 
 const AddProductPage2 = () => {
   const [Product, setProduct] = useProduct();

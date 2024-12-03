@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import MyContext from "./myContext";
 import getAllProductService from "../services/getAllProductService";
-import getAllOrderService from "./../services/getAllOrderService";
 
 function MyState({ children }) {
   // Sử dụng useState để khai báo các state loading và getAllProduct và getAllOrder

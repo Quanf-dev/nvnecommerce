@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input, Typography, Textarea } from "@material-tailwind/react";
-import { AdvancedImage } from "@cloudinary/react";
-import AddProductImages from "./AddProductImages";
+import AddProductImages from "../addProductImages/AddProductImages";
 
 const AddProductDesc = ({ Product, setProduct }) => {
   const [addFeature, setAddFeature] = useState([]);
