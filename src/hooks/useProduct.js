@@ -2,7 +2,7 @@ import { Timestamp } from "firebase/firestore";
 import React, { useState } from "react";
 
 const useProduct = () => {
-  const [Product, setProduct] = useState({
+  const [product, setProduct] = useState({
     name: "", // Tên sản phẩm
     old_price: 0.0, // Giá sản phẩm
     new_price: 0.0, // Giá sản phẩm
@@ -23,10 +23,8 @@ const useProduct = () => {
       height: "", // Cao
       additional_info: [], // Thông tin bổ sung
     },
-    colors: [], // Màu sắc sản phẩm
     product_code: "", // Mã sản phẩm
-    category: "", // Danh mục sản phẩm
-    keywords: [], // Các từ khóa liên quan đến sản phẩm
+    keywords: "", // Các từ khóa liên quan đến sản phẩm
     time_added: Timestamp.now(), // Thời gian thêm sản phẩm (Firebase Timestamp)
     date_added: new Date().toLocaleString("en-US", {
       month: "short",
@@ -34,12 +32,13 @@ const useProduct = () => {
       year: "numeric",
     }), // Ngày thêm sản phẩm
     description: {
+      tittle: "",
       features_desc: [], // Đặc điểm, tính năng sản phẩm
-      images: [], // Mảng hình ảnh của sản phẩm (URLs)
+      images_desc: [], // Mảng hình ảnh của sản phẩm (URLs)
     },
   });
 
-  return [Product, setProduct];
+  return [product, setProduct];
 };
 
 export default useProduct;

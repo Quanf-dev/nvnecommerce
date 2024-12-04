@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Hàm tải lên hình ảnh hoặc video lên Cloudinary
-const uploadMediaToCloudinary = async (file, mediaType) => {
+const uploadImageToCloudinary = async (file, mediaType) => {
   const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", import.meta.env.VITE_CLOUDINARY_NAME); // Thay thế bằng Upload preset của bạn
@@ -22,4 +22,4 @@ const uploadMediaToCloudinary = async (file, mediaType) => {
   }
 };
 
-export default uploadMediaToCloudinary;
+export default uploadImageToCloudinary;

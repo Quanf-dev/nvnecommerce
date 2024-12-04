@@ -1,41 +1,60 @@
-import React, { useEffect, useState } from "react";
-import uploadMediaToCloudinary from "../../../utils/uploadImageToCloudinary";
+import React, { useContext, useEffect, useState } from "react";
 import { getCloudinaryImage } from "../../../utils/cloudinaryHelper";
 import { AdvancedImage } from "@cloudinary/react";
-import useProduct from "../../../hooks/useProduct";
+import myContext from "../../../context/myContext";
+import deleteImageFromCloudinary from "../../../utils/deleteImageFromCloudinary";
+import uploadImageToCloudinary from "../../../utils/uploadImageToCloudinary";
 
 const UploadMultipleImagesComponent = ({ color }) => {
-  const [Product, setProduct] = useProduct();
+  const { product, setProduct } = useContext(myContext);
 
   // Khởi tạo imageData từ localStorage hoặc mảng với 4 giá trị null
-  const initialImageData = JSON.parse(localStorage.getItem(color));
-  const [imageData, setImageData] = useState(
-    Array.isArray(initialImageData) ? initialImageData : Array(4).fill(null)
-  );
+  const initialImageData = color
+    ? JSON.parse(localStorage.getItem(color)) || Array(4).fill(null)
+    : JSON.parse(localStorage.getItem("images_desc")) || Array(4).fill(null);
+
+  const [imageData, setImageData] = useState(initialImageData);
 
   // Lưu trữ hình ảnh vào Product và localStorage khi imageData thay đổi
   useEffect(() => {
-    setProduct((prevProduct) => ({
-      ...prevProduct,
-      images: {
-        ...prevProduct.images,
-        [color]: imageData,
-      },
-    }));
-
-    // Lưu trữ dữ liệu vào localStorage
-    localStorage.setItem(color, JSON.stringify(imageData));
+    if (color) {
+      setProduct((prevProduct) => ({
+        ...prevProduct,
+        images: {
+          ...prevProduct.images,
+          [color]: imageData,
+        },
+      }));
+      localStorage.setItem(color, JSON.stringify(imageData));
+    } else {
+      setProduct((prevProduct) => ({
+        ...prevProduct,
+        description: {
+          ...prevProduct.description,
+          images_desc: imageData,
+        },
+      }));
+      localStorage.setItem("images_desc", JSON.stringify(imageData));
+    }
   }, [imageData, color, setProduct]);
-  console.log(Product.images);
 
   // Hàm xử lý tải lên các file đã chọn
   const handleFileChangeAndUpload = async (e, index) => {
     const file = e.target.files[0]; // Lấy file đã chọn
     try {
-      const { public_id } = await uploadMediaToCloudinary(file, "image");
+      const { public_id } = await uploadImageToCloudinary(file, "image");
+
       setImageData((prevData) => {
         const newData = [...prevData];
-        newData[index] = public_id; // Cập nhật public_id cho chỉ số tương ứng
+        if (newData[index]) {
+          deleteImageFromCloudinary(newData[index]).then(() => {
+            newData[index] = public_id;
+            setImageData(newData);
+          });
+        } else {
+          newData[index] = public_id; // Cập nhật public_id cho chỉ số tương ứng
+          setImageData(newData);
+        }
         return newData;
       });
     } catch (error) {

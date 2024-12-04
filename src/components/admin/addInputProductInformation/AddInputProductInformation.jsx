@@ -1,9 +1,12 @@
 //hàm thêm sản phẩm chi tiết
 
 import { Button, Input } from "@material-tailwind/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import myContext from "../../../context/myContext";
 
-const AddInputProductInformation = ({ setProduct, Product }) => {
+const AddInputProductInformation = () => {
+  const { product, setProduct } = useContext(myContext);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProduct((prevProduct) => ({
@@ -42,7 +45,7 @@ const AddInputProductInformation = ({ setProduct, Product }) => {
           <Input
             label="Bảo hành"
             name="warranty"
-            value={Product.product_information.warranty}
+            value={product.product_information.warranty}
             onChange={handleInputChange}
             className="border-b-2 border-dotted text-[0.9rem] pb-1"
           />
@@ -51,7 +54,7 @@ const AddInputProductInformation = ({ setProduct, Product }) => {
           <Input
             label="Vật liệu"
             name="material"
-            value={Product.product_information.material}
+            value={product.product_information.material}
             onChange={handleInputChange}
             className="border-b-2 border-dotted text-[0.9rem] pb-1"
           />
@@ -60,7 +63,7 @@ const AddInputProductInformation = ({ setProduct, Product }) => {
           <Input
             label="Chiều cao mặt ngồi"
             name="seat_height"
-            value={Product.product_information.seat_height}
+            value={product.product_information.seat_height}
             onChange={handleInputChange}
             className="border-b-2 border-dotted text-[0.9rem] pb-1"
           />
@@ -69,7 +72,7 @@ const AddInputProductInformation = ({ setProduct, Product }) => {
           <Input
             label="Ngang"
             name="width"
-            value={Product.product_information.width}
+            value={product.product_information.width}
             onChange={handleInputChange}
             className="border-b-2 border-dotted text-[0.9rem] pb-1"
           />
@@ -78,7 +81,7 @@ const AddInputProductInformation = ({ setProduct, Product }) => {
           <Input
             label="Sâu"
             name="depth"
-            value={Product.product_information.depth}
+            value={product.product_information.depth}
             onChange={handleInputChange}
             className="border-b-2 border-dotted text-[0.9rem] pb-1"
           />
@@ -87,7 +90,7 @@ const AddInputProductInformation = ({ setProduct, Product }) => {
           <Input
             label="Cao"
             name="height"
-            value={Product.product_information.height}
+            value={product.product_information.height}
             onChange={handleInputChange}
             className="border-b-2 border-dotted text-[0.9rem] pb-1"
           />
@@ -97,7 +100,7 @@ const AddInputProductInformation = ({ setProduct, Product }) => {
             type="text"
             label="Thương hiệu"
             name="brand"
-            value={Product.product_information.brand}
+            value={product.product_information.brand}
             onChange={handleInputChange}
           />
         </li>

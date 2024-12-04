@@ -1,8 +1,12 @@
 //hàm thêm loại sản phẩm
 
 import { Option, Select } from "@material-tailwind/react";
+import { useContext } from "react";
+import myContext from "../../../context/myContext";
 
-const AddCategoryOption = ({ Product, setProduct }) => {
+const AddCategoryOption = () => {
+  const { product, setProduct } = useContext(myContext);
+
   const categoryList = [
     {
       name: "Ghế Giám Đốc",
@@ -76,7 +80,7 @@ const AddCategoryOption = ({ Product, setProduct }) => {
         label="Lựa chọn loại sản phẩm "
         onChange={(value) => {
           setProduct({
-            ...Product,
+            ...product,
             product_category: value,
           });
         }}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MyContext from "./myContext";
 import getAllProductService from "../services/getAllProductService";
+import useProduct from "../hooks/useProduct";
 
 function MyState({ children }) {
   // Sử dụng useState để khai báo các state loading và getAllProduct và getAllOrder
@@ -8,9 +9,6 @@ function MyState({ children }) {
   const [getAllProduct, setGetAllProduct] = useState([]);
 
   const [nameCategory, setNameCategory] = useState(
-    localStorage.getItem("category") || ""
-  );
-  const [nameProduct, SetNameProduct] = useState(
     localStorage.getItem("category") || ""
   );
   useEffect(() => {
@@ -25,6 +23,8 @@ function MyState({ children }) {
     fetchData();
   }, []); // Mảng phụ thuộc rỗng [] nghĩa là useEffect chỉ chạy một lần khi component mount
 
+  const [product, setProduct] = useProduct();
+
   return (
     // Sử dụng MyContext.Provider để cung cấp giá trị cho context
     <MyContext.Provider
@@ -34,6 +34,8 @@ function MyState({ children }) {
         getAllProduct,
         nameCategory,
         setNameCategory,
+        product,
+        setProduct,
       }}
     >
       {children} {/* Hiển thị các thành phần con */}

@@ -5,7 +5,7 @@ import UploadMultipleImagesComponent from "../addProductImages/AddProductImages"
 
 // hàm thêm màu và chuyển tab hình theo màu
 
-const TabsColor = ({ Product, setProduct }) => {
+const TabsColor = () => {
   const [ProductColor, setProductColor] = useState([]);
   [];
   const handleAddColor = (color) => {
@@ -52,40 +52,34 @@ const TabsColor = ({ Product, setProduct }) => {
         ></Tab>{" "}
       </TabList>{" "}
       <TabPanel className="text-center">
-        {" "}
-        <h3>4 Hình của màu đen</h3>{" "}
-        <UploadMultipleImagesComponent
-          Product={Product}
-          setProduct={setProduct}
-          color={"color_black"}
-        />{" "}
+        {/*  Kcolor đã tồn tại trong mảng => show component */}
+        {ProductColor.includes("Black") && (
+          <>
+            <h3>4 Hình của màu đen</h3>{" "}
+            <UploadMultipleImagesComponent color={"color_black"} />
+          </>
+        )}
       </TabPanel>{" "}
       <TabPanel className="text-center">
         {" "}
         <h3>4 Hình của màu xám</h3>{" "}
-        <UploadMultipleImagesComponent
-          Product={Product}
-          setProduct={setProduct}
-          color={"color_gray"}
-        />{" "}
+        {ProductColor.includes("Gray") && (
+          <UploadMultipleImagesComponent color={"color_gray"} />
+        )}
       </TabPanel>{" "}
       <TabPanel className="text-center">
         {" "}
         <h3>4 Hình của màu hồng</h3>{" "}
-        <UploadMultipleImagesComponent
-          Product={Product}
-          setProduct={setProduct}
-          color={"color_pink"}
-        />{" "}
+        {ProductColor.includes("Pink") && (
+          <UploadMultipleImagesComponent color={"color_pink"} />
+        )}
       </TabPanel>{" "}
       <TabPanel className="text-center">
         {" "}
         <h3>4 Hình của màu trắng</h3>{" "}
-        <UploadMultipleImagesComponent
-          Product={Product}
-          setProduct={setProduct}
-          color={"color_white"}
-        />{" "}
+        {ProductColor.includes("White") && (
+          <UploadMultipleImagesComponent color={"color_white"} />
+        )}
       </TabPanel>
     </Tabs>
   );

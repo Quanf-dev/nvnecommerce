@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Input, Typography, Textarea } from "@material-tailwind/react";
 import AddProductImages from "../addProductImages/AddProductImages";
+import myContext from "../../../context/myContext";
+import UploadMultipleImagesComponent from "../addProductImages/AddProductImages";
 
-const AddProductDesc = ({ Product, setProduct }) => {
-  const [addFeature, setAddFeature] = useState([]);
+const AddProductDesc = () => {
+  const { product, setProduct } = useContext(myContext);
+  const [addFeature, setAddFeature] = useState(
+    product.description.features_desc || []
+  );
 
   const handleAddFeature = (index, value) => {
-    const newAddFeature = [...AddFeature];
+    const newAddFeature = [...addFeature];
     newAddFeature[index] = value;
-    setAdditionalInfos(newAddFeature);
+    setAddFeature(newAddFeature);
     setProduct((prevProduct) => ({
       ...prevProduct,
       description: {
@@ -17,6 +22,7 @@ const AddProductDesc = ({ Product, setProduct }) => {
       },
     }));
   };
+
   const addInputField = () => {
     setAddFeature([...addFeature, ""]);
   };
@@ -24,39 +30,46 @@ const AddProductDesc = ({ Product, setProduct }) => {
   return (
     <div className="w-full mt-10">
       <div className="py-6 border-t-2 border-[#0000001B]">
-        <>
-          <div className="flex flex-col gap-4 mt-4 max-w-[1000px]">
-            <Typography className="font-bold">
-              Giới thiệu {Product.name}
-            </Typography>
-            <Textarea
-              label="Giới thiệu chi tiết sản phẩm"
-              classname="mb-5 text-textDesc"
-            ></Textarea>
-            <AddProductImages />
-            <ul className="flex flex-col gap-2 mt-2">
-              {" "}
-              {addFeature.map((info, index) => (
-                <li key={index} className="flex gap-2 ">
-                  {" "}
-                  <Input
-                    type="text"
-                    value={info}
-                    onChange={(e) => handleAddFeature(index, e.target.value)}
-                    label={`Đặc điểm ${index + 1}`}
-                  />{" "}
-                </li>
-              ))}{" "}
-            </ul>{" "}
-            <Button
-              onClick={addInputField}
-              className="mt-2 text-black bg-white shadow-none hover:shadow-none"
-            >
-              {" "}
-              Thêm Đặc điểm mục đích ra đời của sản phẩm{" "}
-            </Button>{" "}
-          </div>
-        </>
+        <div className="flex flex-col gap-4 mt-4 max-w-[1000px]">
+          <Typography className="font-bold">
+            Giới thiệu {product.name}
+          </Typography>
+          <Textarea
+            name="tittle"
+            value={product.description.title}
+            onChange={(e) =>
+              setProduct((prevProduct) => ({
+                ...prevProduct,
+                description: {
+                  ...prevProduct.description,
+                  title: e.target.value,
+                },
+              }))
+            }
+            label="Giới thiệu chi tiết sản phẩm"
+            className="mb-5 text-textDesc"
+          />
+          <UploadMultipleImagesComponent />
+          <ul className="flex flex-col gap-2 mt-2">
+            {addFeature.map((info, index) => (
+              <li key={index} className="flex gap-2">
+                <Input
+                  name="features_desc"
+                  type="text"
+                  value={info}
+                  onChange={(e) => handleAddFeature(index, e.target.value)}
+                  label={`Đặc điểm ${index + 1}`}
+                />
+              </li>
+            ))}
+          </ul>
+          <Button
+            onClick={addInputField}
+            className="mt-2 text-black bg-white shadow-none hover:shadow-none"
+          >
+            Thêm Đặc điểm mục đích ra đời của sản phẩm
+          </Button>
+        </div>
       </div>
     </div>
   );
