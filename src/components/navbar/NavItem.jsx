@@ -34,7 +34,7 @@ const NavItem = ({ offsetActiveProduct }) => {
   }, []);
   return (
     <div
-      className={`bg-gradient-to-b from-[#ce8c24] to-[#f39c12] ${
+      className={`bg-gradient-to-b from-primary to-[#f39c12] ${
         offsetActive || offsetActiveProduct ? "fixed top-0 " : "-top-10"
       } flex justify-center  w-full bg-primary  transform duration-300 ease-linear z-20  `}
     >

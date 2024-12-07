@@ -12,6 +12,7 @@ const useProduct = () => {
       color_gray: [], // Hình ảnh màu 2
       color_pink: [], // Hình ảnh màu 3
       color_white: [], // Hình ảnh màu 4
+      images_desc: [], // hình ảnh chi tiết của sản phẩm ở mô tả (URLs)
     },
     product_category: "", // Loại sản phẩm
     product_information: {
@@ -32,9 +33,8 @@ const useProduct = () => {
       year: "numeric",
     }), // Ngày thêm sản phẩm
     description: {
-      tittle: "",
+      title: "",
       features_desc: [], // Đặc điểm, tính năng sản phẩm
-      images_desc: [], // Mảng hình ảnh của sản phẩm (URLs)
     },
   });
 

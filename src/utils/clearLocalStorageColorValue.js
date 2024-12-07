@@ -5,6 +5,7 @@ const clearLocalStorageColorValue = () => {
     "color_pink",
     "color_white",
     "undefined",
+    "images_desc",
   ].forEach((key) => {
     localStorage.removeItem(key);
   });

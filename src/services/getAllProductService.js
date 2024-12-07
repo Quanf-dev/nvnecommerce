@@ -9,18 +9,18 @@ const getAllProductService = () => {
     setLoading(true); // Đặt trạng thái loading thành true trước khi bắt đầu lấy dữ liệu
     try {
       // Tạo truy vấn để lấy dữ liệu từ collection "products" và sắp xếp theo "time"
-      const getUserQuery = query(
+      const getProductsQuery = query(
         collection(fireDB, "products"),
-        orderBy("time")
+        orderBy("time_added")
       );
 
       // Đăng ký listener để lắng nghe thay đổi trong thời gian thực
-      const unsubscribe = onSnapshot(getUserQuery, (querySnapshot) => {
+      const unsubscribe = onSnapshot(getProductsQuery, (querySnapshot) => {
         let productArray = [];
         // Duyệt qua mỗi tài liệu trong snapshot và thêm vào mảng productArray
-        querySnapshot.forEach((doc) =>
-          productArray.push({ ...doc.data(), id: doc.id })
-        );
+        querySnapshot.forEach((doc) => {
+          productArray.push({ ...doc.data(), id: doc.id });
+        });
         // Cập nhật state setGetAllProduct với dữ liệu mới
         setGetAllProduct(productArray);
         setLoading(false); // Đặt trạng thái loading thành false sau khi hoàn thành

@@ -12,18 +12,14 @@ const AddProductPage2 = () => {
 
   return (
     <LayoutHome>
-      <div className="px-4 mx-auto mt-4">
-        <div className="flex flex-wrap -mx-4">
-          <AddProductDetails />
-          <AddProductDesc />
-        </div>
-        <Button
-          className="w-full bg-primary hover:shadow-primary"
-          onClick={() => addProductFunction(product)}
-        >
-          Thêm Sản Phẩm
-        </Button>
-      </div>
+      <AddProductDetails />
+      <AddProductDesc />
+      <Button
+        className="w-full bg-primary hover:shadow-primary"
+        onClick={() => addProductFunction(product)}
+      >
+        Thêm Sản Phẩm
+      </Button>
     </LayoutHome>
   );
 };

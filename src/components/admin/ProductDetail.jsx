@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import myContext from "../../context/myContext";
 import Loader from "../loader/Loader";
 import deleteProductService from "../../services/deleteProductService";
+import { AdvancedImage } from "@cloudinary/react";
+import { getCloudinaryImage } from "../../utils/cloudinaryHelper";
 
 const ProductDetail = () => {
   const deleteProductFunction = deleteProductService();
@@ -14,7 +16,7 @@ const ProductDetail = () => {
     e.preventDefault();
     deleteProductFunction(id);
   };
-
+  console.log(getAllProduct);
   return (
     <div>
       <div className="flex items-center justify-between py-5">
@@ -89,8 +91,7 @@ const ProductDetail = () => {
               </th>
             </tr>
             {getAllProduct.map((item, index) => {
-              const { id, title, price, category, date, productImageUrl } =
-                item;
+              const { id, name, old_price, category, date, images } = item;
               return (
                 <tr key={index} className="text-pink-300">
                   <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
@@ -98,14 +99,18 @@ const ProductDetail = () => {
                   </td>
                   <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
                     <div className="flex justify-center">
-                      <img className="w-20 " src={productImageUrl} alt="" />
+                      <AdvancedImage
+                        className="w-20 "
+                        cldImg={getCloudinaryImage(images?.color_black[0])}
+                        alt=""
+                      />
                     </div>
                   </td>
                   <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                    {title}
+                    {name}
                   </td>
                   <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                    ₹{price}
+                    ₹{old_price}
                   </td>
                   <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
                     {category}

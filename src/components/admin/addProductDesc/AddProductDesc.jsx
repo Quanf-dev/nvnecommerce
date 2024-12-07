@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Button, Input, Typography, Textarea } from "@material-tailwind/react";
-import AddProductImages from "../addProductImages/AddProductImages";
 import myContext from "../../../context/myContext";
-import UploadMultipleImagesComponent from "../addProductImages/AddProductImages";
+import UploadMultipleImagesComponent from "../addProductImages/UploadMultipleImagesComponent";
 
 const AddProductDesc = () => {
   const { product, setProduct } = useContext(myContext);
@@ -49,7 +48,7 @@ const AddProductDesc = () => {
             label="Giới thiệu chi tiết sản phẩm"
             className="mb-5 text-textDesc"
           />
-          <UploadMultipleImagesComponent />
+          <UploadMultipleImagesComponent images={"images_desc"} />
           <ul className="flex flex-col gap-2 mt-2">
             {addFeature.map((info, index) => (
               <li key={index} className="flex gap-2">

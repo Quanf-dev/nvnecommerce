@@ -36,7 +36,6 @@ const AddInputProductInformation = () => {
   const addInputField = () => {
     setAdditionalInfos([...additionalInfos, ""]);
   };
-  console.log(additionalInfos);
 
   return (
     <div>

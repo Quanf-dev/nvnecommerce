@@ -1,7 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useState } from "react";
-import AddProductImages from "../addProductImages/AddProductImages";
-import UploadMultipleImagesComponent from "../addProductImages/AddProductImages";
+import AddProductImages from "../addProductImages/UploadMultipleImagesComponent";
+import UploadMultipleImagesComponent from "../addProductImages/UploadMultipleImagesComponent";
 
 // hàm thêm màu và chuyển tab hình theo màu
 
@@ -56,30 +56,24 @@ const TabsColor = () => {
         {ProductColor.includes("Black") && (
           <>
             <h3>4 Hình của màu đen</h3>{" "}
-            <UploadMultipleImagesComponent color={"color_black"} />
+            <UploadMultipleImagesComponent images={"color_black"} />
           </>
         )}
       </TabPanel>{" "}
       <TabPanel className="text-center">
         {" "}
         <h3>4 Hình của màu xám</h3>{" "}
-        {ProductColor.includes("Gray") && (
-          <UploadMultipleImagesComponent color={"color_gray"} />
-        )}
+        <UploadMultipleImagesComponent images={"color_gray"} />
       </TabPanel>{" "}
       <TabPanel className="text-center">
         {" "}
         <h3>4 Hình của màu hồng</h3>{" "}
-        {ProductColor.includes("Pink") && (
-          <UploadMultipleImagesComponent color={"color_pink"} />
-        )}
+        <UploadMultipleImagesComponent images={"color_pink"} />
       </TabPanel>{" "}
       <TabPanel className="text-center">
         {" "}
         <h3>4 Hình của màu trắng</h3>{" "}
-        {ProductColor.includes("White") && (
-          <UploadMultipleImagesComponent color={"color_white"} />
-        )}
+        <UploadMultipleImagesComponent images={"color_white"} />
       </TabPanel>
     </Tabs>
   );

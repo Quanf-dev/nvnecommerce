@@ -7,9 +7,9 @@ export default withMT({
       fontFamily: { sans: ["Roboto", "sans-serif"] },
       colors: {
         primary: {
-          light: "#d7ccc8", // Màu nâu nhạt
-          DEFAULT: "#ce8c24", // Màu nâu chính
-          dark: "#4e342e", // Màu nâu đậm
+          light: "#d7ccc8", // Màu vàng nhạt
+          DEFAULT: "#ce8c24", // Màu vàng chính
+          dark: "#4e342e", // Màu vàng đậm
         },
         textBackground: {
           light: "#eeeeee",

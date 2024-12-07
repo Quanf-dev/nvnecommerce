@@ -47,16 +47,14 @@ const isProductValid = (product) => {
     product.category === "" ||
     product.description.title === "" ||
     Object.values(product.images).every(
-      (imagesArray) => imagesArray.length > 0
+      (imagesArray) => imagesArray.length === 0
     ) ||
     product.product_information.warranty === "" ||
     product.product_information.material === "" ||
     product.product_information.seat_height === "" ||
     product.product_information.width === "" ||
     product.product_information.depth === "" ||
-    product.product_information.height === "" ||
-    product.date_added === "" ||
-    product.time_added === null
+    product.product_information.height === ""
   );
 };
 
