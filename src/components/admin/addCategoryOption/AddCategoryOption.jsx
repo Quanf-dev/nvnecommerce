@@ -73,6 +73,7 @@ const AddCategoryOption = () => {
       quantity: 0, // Số lượng có thể thay đổi nếu có thông tin cụ thể
     },
   ];
+  console.log(product);
 
   return (
     <div className="my-4">
@@ -88,7 +89,7 @@ const AddCategoryOption = () => {
         {categoryList.map((value, index) => {
           const { name } = value;
           return (
-            <Option className="first-letter:uppercase" key={index}>
+            <Option className="first-letter:uppercase" key={index} value={name}>
               {name}
             </Option>
           );
