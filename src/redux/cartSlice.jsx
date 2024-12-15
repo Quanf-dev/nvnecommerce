@@ -1,14 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = JSON.parse(localStorage.getItem("cart")) ?? [];
-console.log(initialState);
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     addToCart(state, action) {
-      action.payload.time = null; // tránh lỗi non-serializable của thuộc tính timestamp
       state.push({ ...action.payload });
     },
     deleteFromCart(state, action) {

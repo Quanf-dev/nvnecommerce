@@ -8,15 +8,13 @@ import { getCloudinaryImage } from "../../utils/cloudinaryHelper";
 
 const ProductDetail = () => {
   const deleteProductFunction = deleteProductService();
-  const context = useContext(myContext);
-  const { loading, getAllProduct } = context;
+  const { loading, getAllProduct } = useContext(myContext);
   const navigate = useNavigate();
 
   const handleDelete = (e, id) => {
     e.preventDefault();
     deleteProductFunction(id);
   };
-  console.log(getAllProduct);
   return (
     <div>
       <div className="flex items-center justify-between py-5">

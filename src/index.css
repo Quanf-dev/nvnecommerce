@@ -6,6 +6,7 @@
 
 body {
   @apply font-sans;
+  overflow-x: hidden;
 }
 .hide-scroll-bar {
   -ms-overflow-style: none;

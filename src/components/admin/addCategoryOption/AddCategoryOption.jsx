@@ -61,6 +61,10 @@ const AddCategoryOption = () => {
       quantity: 81,
     },
     {
+      name: "Bàn Gaming",
+      quantity: 81,
+    },
+    {
       name: "Ghế Học Sinh",
       quantity: 36,
     },

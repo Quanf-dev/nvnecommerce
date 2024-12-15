@@ -3,6 +3,8 @@ import { Trash } from "lucide-react";
 import { useEffect } from "react";
 import useCart from "../../hooks/useCart";
 import BuyNowModalDialog from "../../components/Dialog/buyNowDialog/BuyNowModalDialog";
+import { AdvancedImage } from "@cloudinary/react";
+import { getCloudinaryImage } from "../../utils/cloudinaryHelper";
 
 const CartPage = () => {
   const { cartItems, incrementCart, decrementCart, deleteCart } = useCart();
@@ -37,23 +39,20 @@ const CartPage = () => {
                 {cartItems.length > 0 ? (
                   <>
                     {cartItems.map((item, index) => {
-                      const {
-                        id,
-                        title,
-                        price,
-                        productImageUrl,
-                        quantity,
-                        category,
-                      } = item;
+                      const { id, name, new_price, images, product_category } =
+                        item;
                       return (
                         <div key={index} className="">
                           <li className="flex py-6 sm:py-6 ">
                             <div className="flex-shrink-0">
-                              <img
-                                src={productImageUrl}
+                              {/* <AdvancedImage
+                                cldImg={getCloudinaryImage(
+                                  item.images.images_desc[1],
+                                  200
+                                )}
                                 alt="img"
                                 className="object-contain object-center w-24 h-24 rounded-md sm:h-38 sm:w-38"
-                              />
+                              /> */}
                             </div>
 
                             <div className="flex flex-col justify-between flex-1 ml-4 sm:ml-6">
@@ -62,18 +61,18 @@ const CartPage = () => {
                                   <div className="flex justify-between">
                                     <h3 className="text-sm">
                                       <div className="font-semibold text-black">
-                                        {title}
+                                        {name}
                                       </div>
                                     </h3>
                                   </div>
                                   <div className="flex mt-1 text-sm">
                                     <p className="text-sm text-gray-500">
-                                      {category}
+                                      {product_category}
                                     </p>
                                   </div>
                                   <div className="flex items-end mt-1">
                                     <p className="text-sm font-medium text-gray-900">
-                                      ₹{price}
+                                      ₹{new_price}
                                     </p>
                                   </div>
                                 </div>
@@ -89,11 +88,11 @@ const CartPage = () => {
                               >
                                 -
                               </button>
-                              <input
+                              {/* <input
                                 type="text"
                                 className="mx-1 text-center border rounded-md h-7 w-9"
                                 value={quantity}
-                              />
+                              /> */}
                               <button
                                 onClick={() => incrementCart(id)}
                                 type="button"

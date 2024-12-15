@@ -5,6 +5,7 @@ import banner from "../../assets/Banner-tu-van-chon-ghe-van-phong.jpg";
 import HeadCategory from "../headCategory/HeadCategory";
 import ProductCard from "../productCard/ProductCard";
 import ListSeoProduct from "../listSeoProduct/ListSeoProduct";
+import filterProduct from "../../utils/filterProduct";
 
 const MeshChairProduct = () => {
   const seoMeshChair = [
@@ -12,6 +13,8 @@ const MeshChairProduct = () => {
     "Ghế lưới cho văn phòng hiện đại",
     "Ghế lưới giá rẻ",
   ];
+  const filterMeshChair = filterProduct({ category: "ghế lưới" });
+
   return (
     <div className=" bg-textBackground-light">
       <LayoutHome>
@@ -62,14 +65,16 @@ const MeshChairProduct = () => {
             <HeadCategory text="GHẾ LƯỚI NỔI BẬT" />
             <ListSeoProduct list={seoMeshChair} />
             <div className="grid grid-cols-4 gap-4 mt-4">
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              {filterMeshChair.map((item, index) => (
+                <ProductCard
+                  key={index}
+                  name={item.name}
+                  new_price={item.new_price}
+                  old_price={item.old_price}
+                  rating={item.rating}
+                  image_id={item.images.images_desc[1]}
+                />
+              ))}
             </div>
           </div>
         </div>
