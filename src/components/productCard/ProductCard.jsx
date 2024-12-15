@@ -9,10 +9,17 @@ import {
 } from "@remixicon/react";
 import useCart from "../../hooks/useCart";
 
-const ProductCard = (
-  { className, name, new_price, old_price, rating, image_id },
-  item
-) => {
+const ProductCard = ({
+  className,
+  name,
+  new_price,
+  old_price,
+  rating,
+  image_id,
+  id,
+  item,
+}) => {
+  console.log(item?.id);
   const [hoverImage, setHoverImage] = useState(false);
   const { cartItems, deleteCart, addCart } = useCart();
   return (
@@ -25,8 +32,8 @@ const ProductCard = (
         className="relative w-full overflow-hidden"
       >
         <AdvancedImage
-          cldImg={getCloudinaryImage(image_id, 250)}
-          className="object-cover w-full h-full duration-300 ease-linear transform hover:scale-105"
+          cldImg={getCloudinaryImage(image_id, 350)}
+          className="object-cover w-full duration-300 ease-linear transform aspect-square hover:scale-105"
         />
         <p className="rounded-[12px] absolute top-2 left-2 inline py-[6px] px-[10px] text-xs bg-primary text-white">
           -51%
@@ -36,7 +43,7 @@ const ProductCard = (
             hoverImage ? "bottom-2 opacity-1" : "-bottom-2 opacity-0"
           }  transform duration-200 ease-linear inline-flex px-4 py-2 absolute  text-black bg-white gap-4 left-1/2 -translate-x-1/2`}
         >
-          {cartItems.some((p) => p.id === item.id) ? (
+          {cartItems.some((p) => p.id === id) ? (
             <Tooltip content="Xóa khỏi giỏ hàng">
               <Button
                 onClick={() => deleteCart(item)}

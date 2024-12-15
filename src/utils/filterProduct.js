@@ -3,8 +3,11 @@ import myContext from "../context/myContext";
 
 const filterProduct = ({ category }) => {
   const { getAllProduct } = useContext(myContext);
+  const categories = Array.isArray(category) ? category : [category];
   return getAllProduct.filter((obj) =>
-    obj.product_category.toLowerCase().includes(category.toLowerCase())
+    categories.some((cat) =>
+      obj.product_category.toLowerCase().includes(cat.toLowerCase())
+    )
   );
 };
 

@@ -7,6 +7,10 @@ import LayoutProduct from "./../../layout/LayoutProduct";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 
 const ProductPage = () => {
+  const getSingleProductFunction = getSingleProductService();
+  useEffect(() => {
+    getSingleProductFunction(setProduct, id);
+  }, []);
   const [mainImage, setMainImage] = useState(
     "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
   );

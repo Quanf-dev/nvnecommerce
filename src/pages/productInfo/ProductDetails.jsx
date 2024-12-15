@@ -10,7 +10,7 @@ import {
   RiTwitterFill,
 } from "@remixicon/react";
 
-const ProductDetails = () => {
+const ProductDetails = ({ new_price, old_price, rating, warranty }) => {
   const features = [
     "Đèn chùm pha lê",
     "Đèn pha lê phòng ngủ",
@@ -26,25 +26,25 @@ const ProductDetails = () => {
       <h2 className="mb-2 text-3xl font-bold">Premium Wireless Headphones</h2>
       <div className="flex gap-2 mb-4">
         <span className="flex items-center text-xl text-gray-500 line-through ">
-          2,750,000&nbsp;
+          {old_price}&nbsp;
           <span className="text-[1rem] ">₫</span>
         </span>
         <span className="mr-2 text-xl font-bold text-primary">
-          4,788,000{" "}
+          {new_price}{" "}
           <span className="relative bottom-1  right-1 text-[1rem]"> ₫</span>
         </span>
       </div>
       <div className="flex items-center mb-4">
-        <Rating value={4} readonly />
+        <Rating value={rating} readonly />
       </div>
       <ul className="flex flex-col gap-1">
         <li className="flex justify-between border-b-2 border-dotted text-[0.9rem] pb-1">
           <p className="font-bold">Bảo hành</p>
-          <p className="text-textDesc">1 năm</p>
+          <p className="text-textDesc">{warranty}</p>
         </li>
         <li className="flex justify-between border-b-2 border-dotted text-[0.95rem] pb-1">
           <p className="font-bold">Vật liệu</p>
-          <p className="text-textDesc">Đồng thau, Pha lê</p>
+          <p className="text-textDesc">{warranty}</p>
         </li>
         <li className="flex justify-between border-b-2 border-dotted text-[0.95rem] pb-1">
           <p className="font-bold">Bảo hành</p>

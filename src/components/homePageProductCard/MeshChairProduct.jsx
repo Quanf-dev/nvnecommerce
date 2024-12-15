@@ -68,6 +68,8 @@ const MeshChairProduct = () => {
               {filterMeshChair.map((item, index) => (
                 <ProductCard
                   key={index}
+                  id={item.id}
+                  item={item}
                   name={item.name}
                   new_price={item.new_price}
                   old_price={item.old_price}

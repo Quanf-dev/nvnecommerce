@@ -11,7 +11,9 @@ const SwiveChair = () => {
     "Ghế xoay giá rẻ",
     "Ghế xoay có đệm",
   ];
-  const filterSwiveChair = filterProduct({ category: "ghế xoay" });
+  const filterSwiveChair = filterProduct({
+    category: ["ghế xoay", "ghế công thái học"],
+  });
 
   return (
     <div className="mt-24">
@@ -21,11 +23,13 @@ const SwiveChair = () => {
         {filterSwiveChair.map((item, index) => (
           <ProductCard
             key={index}
+            id={item.id}
+            item={item}
             name={item.name}
             new_price={item.new_price}
             old_price={item.old_price}
             rating={item.rating}
-            image_id={item.images.images_desc[1]}
+            image_id={item.images.images_desc[0]}
           />
         ))}
       </div>

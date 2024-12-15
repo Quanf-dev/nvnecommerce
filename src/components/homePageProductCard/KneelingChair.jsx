@@ -12,6 +12,7 @@ const KneelingChair = () => {
     "Ghế chân quỳ giá rẻ",
     "Ghế chân quỳ chất lượng",
   ];
+
   const filterKneelingChair = filterProduct({ category: "ghế chân quỳ" });
   return (
     <div className="mt-24">
@@ -21,6 +22,7 @@ const KneelingChair = () => {
         {filterKneelingChair.map((item, index) => (
           <ProductCard
             key={index}
+            id={item.id}
             item={item}
             name={item.name}
             new_price={item.new_price}

@@ -8,7 +8,7 @@ import { getCloudinaryImage } from "../../utils/cloudinaryHelper";
 
 const CartPage = () => {
   const { cartItems, incrementCart, decrementCart, deleteCart } = useCart();
-
+  console.log("Aa", cartItems);
   const cartItemTotal = cartItems
     .map((item) => item.quantity)
     .reduce((prevValue, currValue) => prevValue + currValue, 0);
@@ -45,14 +45,14 @@ const CartPage = () => {
                         <div key={index} className="">
                           <li className="flex py-6 sm:py-6 ">
                             <div className="flex-shrink-0">
-                              {/* <AdvancedImage
+                              <AdvancedImage
                                 cldImg={getCloudinaryImage(
                                   item.images.images_desc[1],
                                   200
                                 )}
                                 alt="img"
                                 className="object-contain object-center w-24 h-24 rounded-md sm:h-38 sm:w-38"
-                              /> */}
+                              />
                             </div>
 
                             <div className="flex flex-col justify-between flex-1 ml-4 sm:ml-6">
@@ -72,7 +72,7 @@ const CartPage = () => {
                                   </div>
                                   <div className="flex items-end mt-1">
                                     <p className="text-sm font-medium text-gray-900">
-                                      ₹{new_price}
+                                      đ{new_price}
                                     </p>
                                   </div>
                                 </div>
@@ -109,7 +109,7 @@ const CartPage = () => {
                               >
                                 <Trash size={12} className="text-red-500" />
                                 <span className="text-xs font-medium text-red-500">
-                                  Remove
+                                  xóa khỏi giỏ hàng
                                 </span>
                               </button>
                             </div>
@@ -119,7 +119,7 @@ const CartPage = () => {
                     })}
                   </>
                 ) : (
-                  <h1>Not Found</h1>
+                  <h1>Không có sản phẩm giỏ hàng</h1>
                 )}
               </ul>
             </section>
