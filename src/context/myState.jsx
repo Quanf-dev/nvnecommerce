@@ -21,9 +21,17 @@ function MyState({ children }) {
     };
     // Gọi hàm fetchData khi component mount
     fetchData();
-  }, []); // Mảng phụ thuộc rỗng [] nghĩa là useEffect chỉ chạy một lần khi component mount
+  }, []);
 
   const [product, setProduct] = useProduct();
+
+  // Trạng thái cho ảnh thu nhỏ
+  const [thumbnails, setThumbnails] = useState([
+    { src: "", alt: "Thumbnail 1" },
+    { src: "", alt: "Thumbnail 2" },
+    { src: "", alt: "Thumbnail 3" },
+    { src: "", alt: "Thumbnail 4" },
+  ]);
 
   return (
     // Sử dụng MyContext.Provider để cung cấp giá trị cho context
@@ -36,6 +44,8 @@ function MyState({ children }) {
         setNameCategory,
         product,
         setProduct,
+        thumbnails,
+        setThumbnails,
       }}
     >
       {children} {/* Hiển thị các thành phần con */}

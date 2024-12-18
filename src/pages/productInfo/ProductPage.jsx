@@ -1,56 +1,64 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductImages from "./ProductImages";
 import ProductDetails from "./ProductDetails";
 import Layout from "../../layout/Layout";
 import ProductDesc from "./ProductDesc";
-import LayoutProduct from "./../../layout/LayoutProduct";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
+import { useParams } from "react-router-dom";
+import myContext from "../../context/myContext";
+import getSingleProductService from "../../services/getSingleProductService";
+import Loader from "../../components/loader/Loader";
 
 const ProductPage = () => {
-  const getSingleProductFunction = getSingleProductService();
-  useEffect(() => {
-    getSingleProductFunction(setProduct, id);
-  }, []);
-  const [mainImage, setMainImage] = useState(
-    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080"
+  const { loading, product, setProduct } = useContext(myContext); // Lấy trạng thái loading từ context
+  const { id } = useParams(); // Lấy id từ URL params
+  const getSingleProductFunction = getSingleProductService(); // Khởi tạo dịch vụ lấy sản phẩm
+
+  // Trạng thái cho các màu có trong sản phẩm
+  const [arrayColor, setArrayColor] = useState(() =>
+    Object.fromEntries(
+      Object.entries(product.images || {}) // Bắt đầu từ product.images
+        .filter(([key, value]) => Array.isArray(value) && value.length === 4) // Lọc nếu là mảng chứa 4 hình
+        .map(([key, value]) => [
+          key,
+          { images: value, active: false }, // Thêm trường active mặc định
+        ])
+    )
   );
 
-  const thumbnails = [
-    {
-      src: "https://images.unsplash.com/photo-1505751171710-1f6d0ace5a85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8aGVhZHBob25lfGVufDB8MHx8fDE3MjEzMDM2OTB8MA&ixlib=rb-4.0.3&q=80&w=1080",
-      alt: "Thumbnail 1",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1484704849700-f032a568e944?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw0fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080",
-      alt: "Thumbnail 2",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1496957961599-e35b69ef5d7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080",
-      alt: "Thumbnail 3",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1528148343865-51218c4a13e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmV8ZW58MHwwfHx8MTcyMTMwMzY5MHww&ixlib=rb-4.0.3&q=80&w=1080",
-      alt: "Thumbnail 4",
-    },
-  ];
+  // Cập nhật arrayColor khi dữ liệu sản phẩm thay đổi
+  useEffect(() => {
+    const updatedArrayColor = Object.fromEntries(
+      Object.entries(product.images || {})
+        .filter(([key, value]) => Array.isArray(value) && value.length === 4)
+        .map(([key, value]) => [key, { images: value, active: false }])
+    );
+    setArrayColor(updatedArrayColor);
+  }, [product.images]);
 
-  const changeImage = (newSrc) => {
-    setMainImage(newSrc);
-  };
+  // Lấy thông tin sản phẩm khi ID thay đổi
+  useEffect(() => {
+    getSingleProductFunction(setProduct, id);
+  }, [id]);
 
   return (
     <Layout>
       <div className="container px-4 mx-auto mt-4">
         <Breadcrumb />
-        <div className="flex flex-wrap -mx-4">
-          <ProductImages
-            mainImage={mainImage}
-            thumbnails={thumbnails}
-            changeImage={changeImage}
-          />
-          <ProductDetails />
-          <ProductDesc />
-        </div>
+        {loading ? (
+          <div className="flex items-center justify-center h-screen py-10">
+            <Loader /> {/* Hiển thị loader khi đang tải */}
+          </div>
+        ) : (
+          <div className="flex flex-wrap -mx-4">
+            <ProductImages />
+            <ProductDetails
+              setArrayColor={setArrayColor}
+              arrayColor={arrayColor}
+            />
+            <ProductDesc />{" "}
+          </div>
+        )}
       </div>
     </Layout>
   );

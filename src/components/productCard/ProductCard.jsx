@@ -8,6 +8,7 @@ import {
   RiShoppingCartLine,
 } from "@remixicon/react";
 import useCart from "../../hooks/useCart";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({
   className,
@@ -19,7 +20,8 @@ const ProductCard = ({
   id,
   item,
 }) => {
-  console.log(item?.id);
+  const navigate = useNavigate();
+
   const [hoverImage, setHoverImage] = useState(false);
   const { cartItems, deleteCart, addCart } = useCart();
   return (
@@ -73,7 +75,10 @@ const ProductCard = ({
               className="px-0 py-0 text-inherit hover:bg-white active:bg-white"
             >
               {" "}
-              <RiSearch2Line size={20} />
+              <RiSearch2Line
+                onClick={() => navigate(`productinfo/${id}`)}
+                size={20}
+              />
             </Button>
           </Tooltip>
         </div>

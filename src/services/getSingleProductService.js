@@ -14,17 +14,13 @@ const getSingleProductService = () => {
       const productTemp = await getDoc(doc(fireDB, "products", id));
       // Nhận dữ liệu sản phẩm
       const product = productTemp.data();
+      console.log(product);
+
       // Cập nhật state setProduct với thông tin sản phẩm nhận được
-      setProduct({
-        title: product?.title,
-        price: product?.price,
-        productImageUrl: product?.productImageUrl,
-        category: product?.category,
-        description: product?.description,
-        quantity: product?.quantity,
-        time: product?.time,
-        date: product?.date,
-      });
+      setProduct((prevState) => ({
+        ...prevState, // Giữ lại các giá trị cũ
+        ...product, // Cập nhật với dữ liệu mới
+      }));
       setLoading(false); // Đặt trạng thái loading thành false sau khi hoàn thành
     } catch (error) {
       console.log(error); // In lỗi ra console nếu có
