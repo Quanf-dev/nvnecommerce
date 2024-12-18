@@ -11,9 +11,7 @@ import Loader from "../../components/loader/Loader";
 
 const ProductPage = () => {
   const { loading, product, setProduct } = useContext(myContext); // Lấy trạng thái loading từ context
-  const { id } = useParams(); // Lấy id từ URL params
   const getSingleProductFunction = getSingleProductService(); // Khởi tạo dịch vụ lấy sản phẩm
-
   // Trạng thái cho các màu có trong sản phẩm
   const [arrayColor, setArrayColor] = useState(() =>
     Object.fromEntries(
@@ -38,8 +36,8 @@ const ProductPage = () => {
 
   // Lấy thông tin sản phẩm khi ID thay đổi
   useEffect(() => {
-    getSingleProductFunction(setProduct, id);
-  }, [id]);
+    getSingleProductFunction(setProduct, product.id);
+  }, [product.id]);
 
   return (
     <Layout>

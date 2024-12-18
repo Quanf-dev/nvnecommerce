@@ -7,7 +7,6 @@ import SignupPage from "./pages/registration/SignupPage";
 import LoginPage from "./pages/registration/LoginPage";
 import UserDashboardPage from "./pages/user/UserDashboardPage";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
-import AddProductPage from "./pages/admin/AddProductPage";
 import UpdateProductPage from "./pages/admin/UpdateProductPage";
 import MyState from "./context/myState";
 import CategoryPage from "./pages/category/CategoryPage";
@@ -26,7 +25,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/*" element={<NoPage />} />
-          <Route path="/productinfo/:id" element={<ProductPage />} />
+          <Route path="/:id" element={<ProductPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/allproduct" element={<AllProductPage />} />
           <Route path="/signup" element={<SignupPage />} />
