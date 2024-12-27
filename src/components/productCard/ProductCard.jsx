@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { getCloudinaryImage } from "../../utils/cloudinaryHelper";
 import { AdvancedImage } from "@cloudinary/react";
 import { Button, Card, Rating, Tooltip } from "@material-tailwind/react";
@@ -10,7 +10,6 @@ import {
 import useCart from "../../hooks/useCart";
 import { useNavigate } from "react-router-dom";
 import { convertToSlugHelper } from "../../utils/convertToSlugHelper";
-import myContext from "../../context/myContext";
 
 const ProductCard = ({
   className,
@@ -23,7 +22,6 @@ const ProductCard = ({
   item,
 }) => {
   const navigate = useNavigate();
-  const { setProduct } = useContext(myContext);
 
   const [hoverImage, setHoverImage] = useState(false);
   const { cartItems, deleteCart, addCart } = useCart();
@@ -79,13 +77,9 @@ const ProductCard = ({
             >
               {" "}
               <RiSearch2Line
-                onClick={() => {
-                  navigate(`/${convertToSlugHelper(name)}`);
-                  setProduct((prevProduct) => ({
-                    ...prevProduct,
-                    id: id,
-                  }));
-                }}
+                onClick={() =>
+                  navigate(`/${convertToSlugHelper(name)}-i.${id}`)
+                }
                 size={20}
               />
             </Button>

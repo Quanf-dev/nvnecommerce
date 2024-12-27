@@ -60,7 +60,7 @@ const Navbar = () => {
   return (
     <nav className="flex flex-col items-center w-full ">
       {/* main  */}
-      <div className="flex items-center justify-around w-screen max-w-[1440px] gap-5 py-3">
+      <div className="flex items-center justify-around w-screen max-w-[1260px] gap-5 py-3">
         {/* left  */}
         <div className="flex items-center h-32 py-3 w-[460px] lg:py-0 gap-3">
           <Link to={"/"}>
@@ -71,7 +71,7 @@ const Navbar = () => {
               variant="h4"
               className="flex flex-col items-center uppercase text-primary"
             >
-              NHAN Furniture
+              NVN Furniture
             </Typography>
             <p className="text-[1rem] text-[#a98435] text-center">
               Chuyên cung cấp sỉ lẻ bàn ghế văn phòng{" "}
@@ -126,7 +126,8 @@ const Navbar = () => {
         </div>
       </div>
       {/* item Navbar  */}
-      <NavItem />    </nav>
+      <NavItem />{" "}
+    </nav>
   );
 };
 

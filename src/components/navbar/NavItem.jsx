@@ -41,25 +41,17 @@ const NavItem = ({ offsetActiveProduct }) => {
       <ul
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        className="flex space-x-5 font-semibold text-white  text-balance outline-4 w-[1060px]  py-2 px-5 "
+        className="flex px-5 py-2 space-x-5 font-semibold text-white text-balance outline-4 "
       >
-        {" "}
         {navData.map((item, index) => (
           <li
             key={index}
             onClick={() => setActive(index)}
-            className={`flex transform duration-500 ease-linear uppercase  ${
-              hover === true ? "no-underline" : ""
-            } ${
-              active === index
-                ? "underline underline-offset-4 decoration-[3px] text-custom-dark-gray"
-                : "hover:text-custom-dark-gray hover:underline hover:underline-offset-4 decoration-[3px]    "
-            }`}
+            className="transform duration-500 ease-linear uppercase relative w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
-            {" "}
             <Link to={item.url}>{item.text}</Link>{" "}
           </li>
-        ))}{" "}
+        ))}
         {/* right   */}
       </ul>
       <div
