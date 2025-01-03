@@ -24,6 +24,7 @@ const ProductPage = () => {
   );
 
   useEffect(() => {
+    console.log("cccc", url);
     if (url && typeof url === "string" && url.trim() !== "") {
       const index = url.indexOf("-i.");
       if (index !== -1) {

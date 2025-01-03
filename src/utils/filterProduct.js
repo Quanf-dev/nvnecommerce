@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import myContext from "../context/myContext";
 
 const filterProduct = ({ category }) => {
