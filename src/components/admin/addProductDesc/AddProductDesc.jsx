@@ -48,7 +48,7 @@ const AddProductDesc = () => {
             label="Giới thiệu chi tiết sản phẩm"
             className="mb-5 text-textDesc"
           />
-          <UploadMultipleImagesComponent images={"images_desc"} />
+          <UploadMultipleImagesComponent imageKey={"images_desc"} />
           <ul className="flex flex-col gap-2 mt-2">
             {addFeature.map((info, index) => (
               <li key={index} className="flex gap-2">

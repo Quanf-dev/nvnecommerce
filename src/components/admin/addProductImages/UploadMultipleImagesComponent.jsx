@@ -5,12 +5,26 @@ import myContext from "../../../context/myContext";
 import deleteImageFromCloudinary from "../../../utils/deleteImageFromCloudinary";
 import uploadImageToCloudinary from "../../../utils/uploadImageToCloudinary";
 
-const UploadMultipleImagesComponent = ({ images }) => {
+const UploadMultipleImagesComponent = ({ imageKey }) => {
   const { product, setProduct } = useContext(myContext);
 
   // Khởi tạo imageData từ localStorage hoặc mảng với 4 giá trị null
-  const initialImageData =
-    JSON.parse(localStorage.getItem(images)) || Array(4).fill(null);
+  const getInitialImageData = () => {
+    const imagesFromStorage = JSON.parse(localStorage.getItem(imageKey));
+    if (
+      product.images &&
+      Array.isArray(product.images[imageKey]) &&
+      product.images[imageKey].length > 0
+    ) {
+      return product.images[imageKey];
+    }
+    if (imagesFromStorage) {
+      return imagesFromStorage;
+    }
+    return Array(4).fill(null);
+  };
+
+  const initialImageData = getInitialImageData();
 
   const [imageData, setImageData] = useState(initialImageData);
 
@@ -21,14 +35,12 @@ const UploadMultipleImagesComponent = ({ images }) => {
       ...prevProduct,
       images: {
         ...prevProduct.images,
-        [images]: imageData,
+        [imageKey]: imageData,
       },
     }));
-    {
-      images !== "images_desc" &&
-        localStorage.setItem(images, JSON.stringify(imageData));
-    }
+    localStorage.setItem(imageKey, JSON.stringify(imageData));
   }, [imageData]);
+
   // Hàm xử lý tải lên các file đã chọn
   const handleFileChangeAndUpload = async (e, index) => {
     const file = e.target.files[0]; // Lấy file đã chọn
@@ -52,7 +64,7 @@ const UploadMultipleImagesComponent = ({ images }) => {
       console.error("Lỗi khi tải lên:", error);
     }
   };
-
+  console.log(product.images[imageKey]);
   return (
     <div className="w-full px-4 mb-8">
       <form>
