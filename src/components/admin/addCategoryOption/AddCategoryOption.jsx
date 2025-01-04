@@ -77,12 +77,12 @@ const AddCategoryOption = () => {
       quantity: 0, // Số lượng có thể thay đổi nếu có thông tin cụ thể
     },
   ];
-  console.log(product);
 
   return (
     <div className="my-4">
       <Select
         label="Lựa chọn loại sản phẩm "
+        value={product.product_category ?? ""}
         onChange={(value) => {
           setProduct({
             ...product,

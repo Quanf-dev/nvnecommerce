@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import LayoutHome from "./../../../layout/LayoutHome";
-import AddProductDetails from "../../../components/admin/addProductDetails/AddProductDetails";
-import AddProductDesc from "../../../components/admin/addProductDesc/AddProductDesc";
+import LayoutHome from "../../layout/LayoutHome";
+import AddProductDetails from "../../components/admin/addProductDetails/AddProductDetails";
+import AddProductDesc from "../../components/admin/addProductDesc/AddProductDesc";
 import { Button } from "@material-tailwind/react";
-import addProductService from "../../../services/addProductService";
-import myContext from "../../../context/myContext";
+import addProductService from "../../services/addProductService";
+import myContext from "../../context/myContext";
 
-const AddProductPage2 = () => {
+const AddProductPage = () => {
   const addProductFunction = addProductService();
   const { product, setProduct } = useContext(myContext);
 
@@ -24,4 +24,4 @@ const AddProductPage2 = () => {
   );
 };
 
-export default AddProductPage2;
+export default AddProductPage;

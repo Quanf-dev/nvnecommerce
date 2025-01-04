@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import myContext from "../../context/myContext";
 
-const ProductDetails = ({ arrayColor, setArrayColor, setThumbnails }) => {
+const ProductDetails = ({ arrayColor, setArrayColor }) => {
   const { product, setProduct } = useContext(myContext);
   const {
     name,

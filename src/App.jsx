@@ -7,7 +7,6 @@ import SignupPage from "./pages/registration/SignupPage";
 import LoginPage from "./pages/registration/LoginPage";
 import UserDashboardPage from "./pages/user/UserDashboardPage";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
-import UpdateProductPage from "./pages/admin/UpdateProductPage";
 import MyState from "./context/myState";
 import CategoryPage from "./pages/category/CategoryPage";
 import { Toaster } from "react-hot-toast";
@@ -15,7 +14,8 @@ import { ProtectedRouteForUser } from "./protectedRoute/ProtectedRouteForUser";
 import { ProtectedRouteForAdmin } from "./protectedRoute/ProtectedRouteForAdmin";
 import ScrollTop from "./components/scrollTop/ScrollTop";
 import ProductPage from "./pages/productInfo/ProductPage";
-import AddProductPage2 from "./pages/admin/addProductPage/AddProductPage2";
+import AddProductPage from "./pages/admin/AddProductPage";
+import UpdateProductPage from "./pages/admin/UpdateProductPage";
 
 const App = () => {
   return (
@@ -52,7 +52,7 @@ const App = () => {
             path="/addproduct"
             element={
               <ProtectedRouteForAdmin>
-                <AddProductPage2 />
+                <AddProductPage />
               </ProtectedRouteForAdmin>
             }
           />
