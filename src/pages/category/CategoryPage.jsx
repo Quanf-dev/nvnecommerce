@@ -1,98 +1,53 @@
+import React, { useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router";
-import Layout from "../../layout/Layout";
-import { useContext } from "react";
-import myContext from "../../context/myContext";
-import Loader from "../../components/loader/Loader";
-import toast from "react-hot-toast";
-import useCart from "../../hooks/useCart";
 import LayoutProduct from "../../layout/LayoutProduct";
+import Loader from "../../components/loader/Loader";
+import myContext from "../../context/myContext";
+import ProductCard from "../../components/productCard/ProductCard";
+import { convertToSlugHelper } from "../../utils/convertToSlugHelper";
+import useCart from "../../hooks/useCart";
 
 const CategoryPage = () => {
   const { categoryname } = useParams();
   const { getAllProduct, loading } = useContext(myContext);
   const navigate = useNavigate();
   const filterProduct = getAllProduct.filter((obj) =>
-    obj.category.toLowerCase().includes(categoryname.toLowerCase())
+    convertToSlugHelper(obj.product_category?.toLowerCase()).includes(
+      categoryname.toLowerCase()
+    )
   );
   const { cartItems, addCart, deleteCart } = useCart();
   return (
     <LayoutProduct>
       {loading ? (
-        <>
-          <div className="flex justify-center">
-            <Loader />
-          </div>
-        </>
+        <div className="flex justify-center">
+          <Loader />
+        </div>
       ) : (
-        <>
-          <section className="text-gray-600 body-font">
-            <div className="container px-5 py-5 mx-auto ">
-              <div className="flex flex-wrap justify-center -m-4">
-                {filterProduct.length > 0 ? (
-                  <>
-                    {filterProduct.map((item, index) => {
-                      const { id, title, price, productImageUrl } = item;
-                      return (
-                        <div key={index} className="w-full p-4 md:w-1/4">
-                          <div className="h-full overflow-hidden border border-gray-300 shadow-md cursor-pointer rounded-xl">
-                            <img
-                              onClick={() => navigate(`/productinfo/${id}`)}
-                              className="w-full lg:h-80 h-96"
-                              src={productImageUrl}
-                              alt="blog"
-                            />
-                            <div className="p-6">
-                              <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400 title-font">
-                                E-bharat
-                              </h2>
-                              <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">
-                                {title.substring(0, 25)}
-                              </h1>
-                              <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">
-                                ₹{price}
-                              </h1>
-
-                              <div className="flex justify-center ">
-                                {cartItems.some((p) => p.id === item.id) ? (
-                                  <button
-                                    onClick={() => deleteCart(item)}
-                                    className=" bg-red-700 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold"
-                                  >
-                                    Delete From Cart
-                                  </button>
-                                ) : (
-                                  <button
-                                    onClick={() => addCart(item)}
-                                    className=" bg-pink-500 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold"
-                                  >
-                                    Add To Cart
-                                  </button>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </>
-                ) : (
-                  <div>
-                    <div className="flex justify-center">
-                      <img
-                        className="mb-2 "
-                        src="https://cdn-icons-png.flaticon.com/128/2748/2748614.png"
-                        alt=""
-                      />
-                    </div>
-                    <h1 className="text-xl text-black ">
-                      No {categoryname} product found
-                    </h1>
-                  </div>
-                )}
-              </div>
+        <section className="text-gray-600 body-font">
+          <div className="container px-5 py-5 mx-auto">
+            <div className="grid grid-cols-4 gap-10">
+              {filterProduct.length > 0 ? (
+                filterProduct.map((item, index) => (
+                  <ProductCard
+                    key={index}
+                    id={item.id}
+                    item={item}
+                    name={item.name}
+                    new_price={item.new_price}
+                    old_price={item.old_price}
+                    rating={item.rating}
+                    image_id={item.images.images_desc[1]}
+                  />
+                ))
+              ) : (
+                <div className="col-span-4 text-center">
+                  <h1 className="text-xl text-black">Hết hàng</h1>
+                </div>
+              )}
             </div>
-          </section>
-        </>
+          </div>
+        </section>
       )}
     </LayoutProduct>
   );

@@ -1,105 +1,91 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import getAllUserService from "../../services/getAllUserService";
+import Pagination from "../pagination/Pagination";
 
 const UserDetail = () => {
   const [getAllUser, setGetAllUser] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
   const getAllUserFunction = getAllUserService();
+
   useEffect(() => {
     try {
       getAllUserFunction(setGetAllUser);
     } catch (error) {
-      console.error("Failed to fetch orders", error);
+      console.error("Failed to fetch users", error);
     }
   }, []);
-  console.log(getAllUser);
+
+  const handlePageChange = (pageIndex) => {
+    setCurrentPage(pageIndex);
+  };
+
+  const offset = (currentPage - 1) * itemsPerPage;
+  const currentPageData = getAllUser.slice(offset, offset + itemsPerPage);
+
   return (
-    <div>
-      <div>
-        <div className="flex items-center justify-between py-5">
-          {/* text  */}
-          <h1 className="text-xl font-bold text-pink-300 ">All User</h1>
-        </div>
-
-        {/* table  */}
-        <div className="w-full overflow-x-auto">
-          <table className="w-full text-left text-pink-400 border border-collapse border-pink-100 sm:border-separate">
-            <tbody>
-              <tr>
-                <th
-                  scope="col"
-                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
-                >
-                  S.No.
-                </th>
-
-                <th
-                  scope="col"
-                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
-                >
-                  Name
-                </th>
-
-                <th
-                  scope="col"
-                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
-                >
-                  Email
-                </th>
-
-                <th
-                  scope="col"
-                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
-                >
-                  Uid
-                </th>
-
-                <th
-                  scope="col"
-                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
-                >
-                  Role
-                </th>
-
-                <th
-                  scope="col"
-                  className="h-12 px-6 font-bold border-l border-pink-100 text-md first:border-l-0 text-slate-700 bg-slate-100 fontPara"
-                >
-                  Date
-                </th>
-              </tr>
-              {getAllUser.map((value, index) => {
-                return (
-                  <tr key={index} className="text-pink-300">
-                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                      {index + 1}
-                    </td>
-
-                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 text-md first:border-l-0 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                      {value.name}
-                    </td>
-
-                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                      {value.email}
-                    </td>
-
-                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                      {value.uid}
-                    </td>
-
-                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                      {value.role}
-                    </td>
-
-                    <td className="h-12 px-6 transition duration-300 border-t border-l border-pink-100 cursor-pointer text-md first:border-l-0 stroke-slate-500 text-slate-500 ">
-                      {value.date}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+    <div className="flex flex-col items-center w-full min-h-screen px-10 py-2 bg-white rounded-lg shadow-md">
+      <div className="flex items-center justify-between w-full pl-3 mt-1 mb-4">
+        <div>
+          <h3 className="text-lg font-semibold text-slate-800">
+            Tất cả người dùng ({getAllUser.length})
+          </h3>
+          <p className="text-slate-500">Xem và quản lý tất cả người dùng</p>
         </div>
       </div>
+
+      {/* Table */}
+      <div className="relative flex flex-col w-full min-h-44">
+        <table className="w-full text-left table-auto min-w-max">
+          <thead>
+            <tr className="border-b border-slate-300 bg-slate-50">
+              <th className="p-4 text-sm font-normal leading-none text-slate-500">
+                S.No.
+              </th>
+              <th className="p-4 text-sm font-normal leading-none text-slate-500">
+                Name
+              </th>
+              <th className="p-4 text-sm font-normal leading-none text-slate-500">
+                Email
+              </th>
+              <th className="p-4 text-sm font-normal leading-none text-slate-500">
+                Role
+              </th>
+              <th className="p-4 text-sm font-normal leading-none text-slate-500">
+                Date
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentPageData.reverse().map((user, index) => (
+              <tr key={user.uid} className="hover:bg-slate-50">
+                <td className="p-4 py-5 border-b border-slate-200">
+                  {index + 1}
+                </td>
+                <td className="p-4 py-5 border-b border-slate-200">
+                  {user.name}
+                </td>
+                <td className="p-4 py-5 border-b border-slate-200">
+                  {user.email}
+                </td>
+                <td className="p-4 py-5 border-b border-slate-200">
+                  {user.role}
+                </td>
+                <td className="p-4 py-5 border-b border-slate-200">
+                  {user.date}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Pagination */}
+      <Pagination
+        active={currentPage}
+        setActive={handlePageChange}
+        totalPages={Math.ceil(getAllUser.length / itemsPerPage)}
+      />
     </div>
   );
 };

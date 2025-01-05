@@ -16,6 +16,9 @@ import ScrollTop from "./components/scrollTop/ScrollTop";
 import ProductPage from "./pages/productInfo/ProductPage";
 import AddProductPage from "./pages/admin/AddProductPage";
 import UpdateProductPage from "./pages/admin/UpdateProductPage";
+import ProductDetail from "./components/admin/ProductDetail";
+import OrderDetail from "./components/admin/OrderDetail";
+import UserDetail from "./components/admin/UserDetail";
 
 const App = () => {
   return (
@@ -25,7 +28,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/*" element={<NoPage />} />
-          <Route path="/:url" element={<ProductPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/allproduct" element={<AllProductPage />} />
           <Route path="/signup" element={<SignupPage />} />
@@ -44,10 +46,16 @@ const App = () => {
             path="/admin-dashboard"
             element={
               <ProtectedRouteForAdmin>
-                <AdminDashboardPage />
+                {" "}
+                <AdminDashboardPage />{" "}
               </ProtectedRouteForAdmin>
             }
-          />
+          >
+            {" "}
+            <Route path="manage-products" element={<ProductDetail />} />{" "}
+            <Route path="manage-users" element={<UserDetail />} />{" "}
+            <Route path="manage-orders" element={<OrderDetail />} />{" "}
+          </Route>
           <Route
             path="/addproduct"
             element={
