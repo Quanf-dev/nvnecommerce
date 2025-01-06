@@ -7,7 +7,6 @@ import {
   RiShoppingBagLine,
   RiUserLine,
 } from "@remixicon/react";
-
 import { Typography } from "@material-tailwind/react";
 import logo from "@assets/logo/logoFurniture.png";
 import { useSelector } from "react-redux";
@@ -15,118 +14,64 @@ import NavItem from "./NavItem";
 
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart);
-  // navList Data
-
-  const CollapseDesk = {
-    ban: [
-      "Bàn giám đốc",
-      "Bàn nhân viên",
-      "Bàn chân sắt",
-      "Bàn máy tính",
-      "Bàn họp",
-    ],
-  };
-  const dataChair = {
-    theoChucVu: ["Ghế Giám Đốc", "Ghế Trưởng Phòng", "Ghế Nhân Viên"],
-    theoPhanLoai: [
-      "Ghế Công Thái Học",
-      "Ghế Phòng Họp",
-      "Ghế Ngồi Máy Tính",
-      "Ghế Băng Chờ",
-    ],
-    theoTinhNang: ["Ghế Chân Quỳ", "Ghế Xoay", "Ghế Lưới", "Ghế Da Văn Phòng"],
-  };
-  const dataGaming = {
-    gheGaming: [
-      "Ghế Gaming Extreme Zero",
-      "Ghế Gaming Lamborghini",
-      "Ghế Gaming Thể Thao",
-      "Ghế Gaming F1 Racing",
-      "Ghế Gaming Sport Virens",
-      "Ghế Gaming E-Sport",
-    ],
-    banGaming: ["Bàn Gaming Z-Desk"],
-  };
-  const dataOtherFurniture = {
-    banGheKhac: [
-      "Bàn Học Sinh",
-      "Ghế Học Sinh",
-      "Bàn Ghế Bar – Cafe",
-      "Kệ Tivi",
-      "Tủ Hộc",
-    ],
-  };
 
   return (
-    <nav className="flex flex-col items-center w-full ">
+    <nav className="flex flex-col items-center w-full bg-white ">
       {/* main  */}
-      <div className="flex items-center justify-around w-screen max-w-[1260px] gap-5 py-3">
+      <div className="flex items-center justify-between w-full max-w-[1260px] gap-5 py-3">
         {/* left  */}
-        <div className="flex items-center h-32 py-3 w-[460px] lg:py-0 gap-3">
-          <Link to={"/"}>
-            <img src={logo} className="bg-cover w-36 " />
-          </Link>
+        <div className="flex flex-col items-start justify-start gap-3">
           <div className="flex flex-col">
             <Typography
-              variant="h4"
-              className="flex flex-col items-center uppercase text-primary"
+              variant="h3"
+              className="flex items-center font-semibold text-black uppercase "
             >
-              NVN Furniture
+              NOITHAT
+              <span className="px-2 py-1 mr-1 font-bold text-white rounded-md bg-primary">
+                NVN
+              </span>
+              .COM
             </Typography>
-            <p className="text-[1rem] text-[#a98435] text-center">
-              Chuyên cung cấp sỉ lẻ bàn ghế văn phòng{" "}
-            </p>
           </div>
         </div>
-        <div className="w-[350px]">
-          {/* Search Bar  */}
-          <SearchBar />
-        </div>
+
+        <SearchBar />
+
         {/* right   */}
-        <div className="flex gap-7">
-          <div className="flex items-center justify-center gap-4 ">
-            <div className="flex">
+        <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
               <RiUserLine size={23} />
-              <p className="text-gray-800">Đăng nhập</p>
+              <p className="text-sm font-medium text-gray-800">Đăng nhập</p>
             </div>
             <div className="flex items-center gap-3">
               <Badge
                 content={cartItems.length}
-                className="bg-primary min-w-3 min-h-3 "
+                className="flex items-center justify-center bg-primary min-w-4 min-h-4"
               >
                 <RiShoppingBagLine size={23} />
               </Badge>
-              <p className="text-[0.9rem] relative  ">
+              <p className="relative text-sm text-gray-700">
                 0{" "}
-                <span className="underline text-[0.7rem] relative bottom-[3px] right-[1px]">
+                <span className="underline text-xs relative bottom-[3px] right-[1px]">
                   đ
                 </span>
               </p>
             </div>
           </div>
-          <div className="relative flex items-center h-10 border-l-2 border-solid top-[6px]  ">
-            {" "}
-            <Badge content={1} className="bg-red-600 min-w-3 min-h-3">
-              <RiNotification4Line size={21} className="ml-6" />
+          <div className="relative flex items-center justify-center h-10 pl-6 border-l-2 border-solid">
+            <Badge
+              content={1}
+              className="flex items-center justify-center bg-red-600 min-w-4 min-h-4"
+            >
+              <RiNotification4Line size={21} />
             </Badge>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <RiPhoneLine
-              size={40}
-              className="relative text-green-300 bottom-1"
-            />
-            <div className="flex flex-col">
-              <p className="font-semibold">Hotline</p>
-              <p className="text-[#1e73be] font-bold cursor-pointer text-[1.15rem] hover:text-black">
-                036 428 9846
-              </p>
-            </div>
           </div>
         </div>
       </div>
+
       {/* item Navbar  */}
-      <NavItem />{" "}
+      <NavItem />
     </nav>
   );
 };

@@ -14,10 +14,12 @@ import Navbar from "../../components/navbar/Navbar";
 import DeskProduct from "../../components/homePageProductCard/DeskProduct";
 import ChairGamingProduct from "../../components/homePageProductCard/ChairGamingProduct";
 import DeskGamingProduct from "../../components/homePageProductCard/DeskGamingProduct";
+import Announcement from "../../components/announcement/Announcement ";
 
 const HomePage = () => {
   return (
     <div>
+      <Announcement />
       <Navbar />
       <LayoutHome>
         <HeroSection />

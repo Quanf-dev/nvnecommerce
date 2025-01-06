@@ -1,37 +1,51 @@
 import React from "react";
-import ZaloIcon from "../../assets/icons/ZaloIcon";
-import { RiFacebookFill, RiMapPin2Fill, RiPhoneFill } from "@remixicon/react";
+import {
+  RiFacebookFill,
+  RiInstagramFill,
+  RiLinkedinBoxFill,
+  RiMapPin2Fill,
+  RiTwitterFill,
+  RiYoutubeFill,
+} from "@remixicon/react";
 
 const Announcement = () => {
-  const infoData = [
+  const iconSocial = [
     {
-      text: "036 428 9846",
-      icon: RiPhoneFill,
-    },
-    {
-      text: "fb.com/noithatnvn",
       icon: RiFacebookFill,
     },
     {
-      text: "41 Gò Dư, Liên Chiểu, Đà Nẵng",
       icon: RiMapPin2Fill,
+    },
+    {
+      icon: RiInstagramFill,
+    },
+    {
+      icon: RiTwitterFill,
+    },
+    {
+      icon: RiYoutubeFill,
+    },
+    {
+      icon: RiLinkedinBoxFill,
     },
   ];
   return (
-    <div className="flex justify-center py-2 text-white bg-[#BC943C]">
-      <div className="max-w-[1400px] flex ">
-        <p className="flex-shrink-0 text-sm font-bold text-center uppercase ">
-          nvn furniture - THƯƠNG HIỆU NỘI THẤT VĂN PHÒNG CAO CẤP HÀNG ĐẦU MIỀN
+    <div className="h-7 text-white bg-[#092143] text-xs font-semibold">
+      <div className="max-w-[1260px] flex w-full mx-auto justify-between h-full items-center ">
+        <p className="flex-shrink-0 text-center uppercase ">
+          NOITHATNVN - THƯƠNG HIỆU NỘI THẤT VĂN PHÒNG CAO CẤP HÀNG ĐẦU MIỀN
           TRUNG
         </p>
-        <div className="w-40 flex-shrink-1"></div>
-        <div className="flex flex-shrink-0 text-xl list-none ">
-          {infoData.map((item, index) => {
+        <div className="flex items-center flex-shrink-0 h-full gap-2 list-none ">
+          <p>HOTLINE: 036 428 9846</p>
+          <p className="border-gray-300 h-full border-x-[1px] cursor-pointer flex items-center">
+            <span className="mx-2">Zalo</span>
+          </p>
+          {iconSocial.map((item, index) => {
             const IconComponent = item.icon;
             return (
-              <li key={index} className="flex gap-2 ml-6">
+              <li key={index} className="cursor-pointer">
                 <IconComponent size={20} />
-                <p className="text-sm text-[#d3d3d3] font-bold">{item.text}</p>
               </li>
             );
           })}

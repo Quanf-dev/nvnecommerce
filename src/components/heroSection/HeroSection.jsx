@@ -14,10 +14,11 @@ import {
   RiArrowDropLeftLine,
   RiArrowDropRightLine,
 } from "@remixicon/react";
+import HeroMenu from "../heroMenu/HeroMenu";
 
-const banner1 = getCloudinaryImage("banner-top_bbo0of", 800);
-const banner2 = getCloudinaryImage("banner-ghe-cong-thai-hoc_o34cs7", 800);
-const banner3 = getCloudinaryImage("banner-noi-that_rbqxhu", 800);
+const banner1 = getCloudinaryImage("ghe-van-phong-450x450_uakifi", 800);
+const banner2 = getCloudinaryImage("ghe-van-phong-450x450_uakifi", 800);
+const banner3 = getCloudinaryImage("ghe-van-phong-450x450_uakifi", 800);
 
 const HeroSection = () => {
   const prevRef = useRef(null);
@@ -33,8 +34,9 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="flex justify-center w-full gap-8 mx-auto ">
-      <div className="max-w-[810px] relative">
+    <div className="flex justify-center w-full ">
+      <HeroMenu />
+      <div className="max-w-[1003px] relative pl-10">
         <Swiper
           navigation={{
             prevEl: prevRef.current,
@@ -43,7 +45,7 @@ const HeroSection = () => {
           spaceBetween={10}
           thumbs={{ swiper: thumbsSwiper }}
           modules={[FreeMode, Navigation, Thumbs]}
-          className="aspect-[16/6] "
+          className="aspect-[16/7] "
         >
           {[banner1, banner2, banner3].map((item, index) => {
             return (
@@ -59,32 +61,32 @@ const HeroSection = () => {
             );
           })}
         </Swiper>
-        <Swiper
+        {/* <Swiper
           onSwiper={setThumbsSwiper}
           loop={true}
           spaceBetween={10}
-          slidesPerView={4}
+          slidesPerView={3}
           freeMode={true}
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs]}
-          className=" bg-[#eeeeee] text-center pl-32 "
+          className=" bg-[#eeeeee] text-center px-32 "
         >
           {Data.map((item, index) => (
             <SwiperSlide
               onClick={() => setActive(index)}
-              className={`cursor-pointer ${
+              className={`cursor-pointer h-14 ${
                 active === index ? "border-t-4 border-primary text-black " : ""
               } `}
             >
               {item}
             </SwiperSlide>
           ))}
-        </Swiper>
+        </Swiper> */}
         <button
           onMouseEnter={() => setIsNavigationEnabled(true)}
           onMouseLeave={() => setIsNavigationEnabled(false)}
           className={`transform ease-linear duration-300   ${
-            isNavigationEnabled ? "opacity-1 left-2" : "opacity-0 left-6"
+            isNavigationEnabled ? "opacity-1 left-10" : "opacity-0 left-6"
           } absolute z-10 text-white transform border-4 rounded-full top-36 `}
           ref={prevRef}
           onClick={() => setActive(active === 0 ? Data.length - 1 : active - 1)}
@@ -105,7 +107,6 @@ const HeroSection = () => {
           <RiArrowDropRightLine size={30} />{" "}
         </button>
       </div>
-      <HeroCard />
     </div>
   );
 };
