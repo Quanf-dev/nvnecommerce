@@ -7,39 +7,53 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-import {
-  RiArrowLeftLine,
-  RiArrowLeftSLine,
-  RiArrowRightSLine,
-} from "@remixicon/react";
+import { RiArrowRightSLine } from "@remixicon/react";
 
 const navData = [
   {
     id: 1,
-    text: "Bàn văn phòng",
-    url: "/signup",
-    subMenu: ["Bàn giám đốc", "Bàn nhân viên", "Bàn máy tính"],
-  },
-  {
-    id: 2,
     text: "Ghế văn phòng",
     url: "/",
     subMenu: ["Ghế Giám Đốc", "Ghế Nhân Viên", "Ghế Xoay"],
   },
   {
+    id: 2,
+    text: "Ghế gaming",
+    url: "/",
+    subMenu: ["Ghế Giám Đốc", "Ghế Nhân Viên", "Ghế Xoay"],
+  },
+  {
     id: 3,
-    text: "Bàn ghế Gaming",
+    text: "Ghế công thái học",
+    url: "/",
+    subMenu: ["Ghế Giám Đốc", "Ghế Nhân Viên", "Ghế Xoay"],
+  },
+  {
+    id: 4,
+    text: "Bàn văn phòng",
+    url: "/signup",
+    subMenu: ["Bàn giám đốc", "Bàn nhân viên", "Bàn máy tính"],
+  },
+  {
+    id: 5,
+    text: "Bàn Gaming",
     url: "/",
     subMenu: ["Bàn Gaming Z-Desk", "Ghế Gaming Extreme Zero"],
   },
   {
-    id: 4,
-    text: "Bàn ghế khác",
+    id: 6,
+    text: "Tủ văn phòng",
     url: "/",
     subMenu: ["Bàn Học Sinh", "Ghế Học Sinh", "Kệ Tivi"],
   },
   {
-    id: 5,
+    id: 7,
+    text: "Sofa bàn trà",
+    url: "/",
+    subMenu: ["Bàn Học Sinh", "Ghế Học Sinh", "Kệ Tivi"],
+  },
+  {
+    id: 8,
     text: "Gear - phụ kiện",
     url: "/",
     subMenu: ["Tai nghe", "Chuột", "Bàn phím"],
@@ -54,7 +68,7 @@ export default function HeroMenu() {
   };
 
   return (
-    <div className="flex flex-col flex-1 border-[1px] relative">
+    <div className="flex flex-col flex-1 border-x-[1px] relative h-[392px]">
       {navData.map(({ id, text, subMenu }) => (
         <div
           key={id}
@@ -65,7 +79,7 @@ export default function HeroMenu() {
             <MenuHandler>
               <div
                 variant="text"
-                className="flex items-center justify-between w-full p-3 text-base font-semibold border-b-[1px] focus:border-none "
+                className="flex items-center justify-between w-full p-3 text-base font-medium border-b-[1px] focus:border-none "
               >
                 {text}
                 <RiArrowRightSLine />
@@ -73,11 +87,11 @@ export default function HeroMenu() {
             </MenuHandler>
             <MenuList className="grid-cols-1 gap-3 overflow-visible lg:grid ">
               {subMenu.map((item) => (
-                <MenuItem key={item}>
+                <MenuItem key={item} className="p-0 ">
                   <Typography
                     variant="small"
                     color="gray"
-                    className="font-normal "
+                    className="w-full h-full p-2 font-normal hover:text-primary "
                   >
                     {item}
                   </Typography>
