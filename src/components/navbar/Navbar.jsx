@@ -1,5 +1,12 @@
 import SearchBar from "../searchBar/SearchBar";
-import { Badge } from "@material-tailwind/react";
+import {
+  Badge,
+  Button,
+  Menu,
+  MenuHandler,
+  MenuItem,
+  MenuList,
+} from "@material-tailwind/react";
 import {
   RiNotification4Line,
   RiShoppingBagLine,
@@ -8,6 +15,7 @@ import {
 import { Typography } from "@material-tailwind/react";
 import { useSelector } from "react-redux";
 import NavItem from "./NavItem";
+import MenuSignin from "../menuSignin/MenuSignin";
 
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart);
@@ -32,16 +40,28 @@ const Navbar = () => {
         {/* right   */}
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <RiUserLine size={23} />
-              <p className="text-sm font-medium text-gray-800">Đăng nhập</p>
-            </div>
+            <Menu allowHover>
+              <MenuHandler>
+                <div className="flex items-center gap-2 cursor-pointer">
+                  <RiUserLine size={23} />
+                  <p className="text-sm font-medium text-gray-800 hover:text-gray-800">
+                    Đăng nhập
+                  </p>
+                </div>
+              </MenuHandler>
+              <MenuList>
+                <MenuSignin />
+              </MenuList>
+            </Menu>
             <div className="flex items-center gap-3">
               <Badge
                 content={cartItems.length}
                 className="flex items-center justify-center bg-primary min-w-4 min-h-4"
               >
-                <RiShoppingBagLine size={23} />
+                <RiShoppingBagLine
+                  size={23}
+                  className="cursor-pointer hover:text-gray-800"
+                />
               </Badge>
               <p className="relative text-sm text-gray-700">
                 0{" "}
