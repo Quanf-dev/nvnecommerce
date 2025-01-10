@@ -44,7 +44,10 @@ const Announcement = () => {
           {iconSocial.map((item, index) => {
             const IconComponent = item.icon;
             return (
-              <li key={index} className="cursor-pointer">
+              <li
+                key={index}
+                className="duration-300 transform cursor-pointer hover:text-gray-500"
+              >
                 <IconComponent size={20} />
               </li>
             );

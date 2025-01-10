@@ -15,12 +15,20 @@ import DeskProduct from "../../components/homePageProductCard/DeskProduct";
 import ChairGamingProduct from "../../components/homePageProductCard/ChairGamingProduct";
 import DeskGamingProduct from "../../components/homePageProductCard/DeskGamingProduct";
 import Announcement from "../../components/announcement/Announcement ";
+import { Drawer } from "@material-tailwind/react";
+import HeroMenuMobileView from "../../components/heroMenu/HeroMenuMobileView";
+import { useContext } from "react";
+import myContext from "../../context/myContext";
 
 const HomePage = () => {
+  const { openMobileMenu, setOpenMobileMenu } = useContext(myContext);
   return (
-    <div>
+    <>
       <Announcement />
       <Navbar />
+      <Drawer open={openMobileMenu} onClose={() => setOpenMobileMenu(false)}>
+        <HeroMenuMobileView />
+      </Drawer>
       <LayoutHome>
         <HeroSection />
         <Category />
@@ -39,7 +47,7 @@ const HomePage = () => {
       </LayoutHome>
       <Track />
       <Footer />
-    </div>
+    </>
   );
 };
 

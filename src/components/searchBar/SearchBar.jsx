@@ -38,9 +38,7 @@ const SearchBar = ({ offsetActive }) => {
             : "",
         }}
         onChange={(e) => setSearch(e.target.value)}
-        className={`${
-          offsetActive ? "border-none bg-white rounded-xl focus:border-0" : ""
-        } w-full`}
+        className={`${offsetActive ? "border-none bg-white  " : ""} w-full`}
       />
       {/* Search Button */}
       <button

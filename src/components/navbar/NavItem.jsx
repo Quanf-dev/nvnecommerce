@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "../searchBar/SearchBar";
 import {
   RiArrowDownSLine,
   RiMenuLine,
@@ -16,11 +15,22 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import MenuSignin from "../menuSignin/MenuSignin";
+import myContext from "../../context/myContext";
 
 const NavItem = ({ offsetActiveProduct }) => {
   const cartItems = useSelector((state) => state.cart);
   const [offsetActive, setOffsetActive] = useState(false);
-
+  const { setOpenMobileMenu } = useContext(myContext);
+  const productCategory = [
+    "Ghế văn phòng",
+    "Ghế gaming",
+    "Ghế công thái học",
+    "Bàn văn phòng",
+    "Bàn Gaming",
+    "Tủ văn phòng",
+    "Sofa bàn trà",
+    "Gear - phụ kiện",
+  ];
   useEffect(() => {
     const onScroll = () => {
       const scrollPosition = window.scrollY;
@@ -68,7 +78,17 @@ const NavItem = ({ offsetActiveProduct }) => {
             </MenuHandler>
             <MenuList className="p-0">
               <div className="p-4 bg-white rounded-md shadow-lg">
-                <MenuSignin />
+                <div className="grid grid-cols-3 gap-4 px-2 py-6 text-gray">
+                  {productCategory.map((item, index) => (
+                    <Typography
+                      variant="small"
+                      color="gray"
+                      className="w-full h-full font-normal cursor-pointer hover:text-primary"
+                    >
+                      {item}
+                    </Typography>
+                  ))}
+                </div>
               </div>
             </MenuList>
           </Menu>
@@ -115,7 +135,11 @@ const NavItem = ({ offsetActiveProduct }) => {
               </p>
             </>
           ) : (
-            <RiMenuLine size={23} />
+            <RiMenuLine
+              size={23}
+              onClick={() => setOpenMobileMenu(true)}
+              className="cursor-pointer"
+            />
           )}
         </div>
       </div>

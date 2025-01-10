@@ -32,11 +32,14 @@ function MyState({ children }) {
     { src: "", alt: "Thumbnail 3" },
     { src: "", alt: "Thumbnail 4" },
   ]);
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
   return (
     // Sử dụng MyContext.Provider để cung cấp giá trị cho context
     <MyContext.Provider
       value={{
+        openMobileMenu,
+        setOpenMobileMenu,
         loading,
         setLoading,
         getAllProduct,

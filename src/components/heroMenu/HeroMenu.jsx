@@ -87,7 +87,7 @@ export default function HeroMenu() {
             </MenuHandler>
             <MenuList className="grid-cols-1 gap-3 overflow-visible lg:grid ">
               {subMenu.map((item) => (
-                <MenuItem key={item} className="p-0 ">
+                <MenuItem key={item} className="p-0 focus:bg-white ">
                   <Typography
                     variant="small"
                     color="gray"

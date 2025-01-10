@@ -21,9 +21,9 @@ const Navbar = () => {
   const cartItems = useSelector((state) => state.cart);
 
   return (
-    <nav className="flex flex-col items-center w-full">
+    <nav className="flex flex-col items-center w-full ">
       {/* main  */}
-      <div className="flex items-center justify-between w-full max-w-[1260px] gap-5 py-3">
+      <div className="flex items-center justify-between w-full max-w-[1260px] gap-5 py-6">
         {/* left  */}
         <div className="flex flex-col">
           <Typography className="flex items-center text-[1.675rem] font-semibold text-black uppercase ">
