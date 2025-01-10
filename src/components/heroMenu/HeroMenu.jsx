@@ -79,7 +79,7 @@ export default function HeroMenu() {
             <MenuHandler>
               <div
                 variant="text"
-                className="flex items-center justify-between w-full p-3 text-base font-medium border-b-[1px] focus:border-none "
+                className=" cursor-pointer hover:bg-gray-100 flex items-center justify-between w-full p-3 text-base font-medium border-b-[1px] focus:border-none "
               >
                 {text}
                 <RiArrowRightSLine />
@@ -87,7 +87,7 @@ export default function HeroMenu() {
             </MenuHandler>
             <MenuList className="grid-cols-1 gap-3 overflow-visible lg:grid ">
               {subMenu.map((item) => (
-                <MenuItem key={item} className="p-0 focus:bg-white ">
+                <MenuItem key={item} className="p-0 focus:bg-white">
                   <Typography
                     variant="small"
                     color="gray"

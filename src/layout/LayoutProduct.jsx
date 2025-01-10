@@ -2,18 +2,15 @@ import { useNavigate } from "react-router";
 import { useContext, useEffect } from "react";
 import myContext from "../context/myContext";
 import useCart from "../hooks/useCart";
-import {
-  Breadcrumbs,
-  Option,
-  Select,
-  Typography,
-} from "@material-tailwind/react";
+import { Option, Select } from "@material-tailwind/react";
 import ProductHeader from "../components/productHeader/ProductHeader";
-import NavItem from "../components/navbar/NavItem";
 import CategoryFilter from "../components/categoryFilter/CategoryFilter";
 import LayoutHome from "./LayoutHome";
-import { Link } from "react-router-dom";
 import Breadcrumb from "../components/breadcrumb/Breadcrumb";
+import Navbar from "../components/navbar/Navbar";
+import Announcement from "../components/announcement/Announcement ";
+import Footer from "../components/footer/Footer";
+import Track from "../components/track/Track";
 
 const LayoutProduct = ({ children }) => {
   const navigate = useNavigate();
@@ -26,13 +23,13 @@ const LayoutProduct = ({ children }) => {
   }, [cartItems]);
   return (
     <>
-      <NavItem offsetActiveProduct={true} />
+      <Announcement />
+      <Navbar />
       {/* Heading  */}
       <ProductHeader />
-
       {/* main  */}
       <LayoutHome>
-        <section className="flex text-gray-600 body-font ">
+        <section className="flex py-10 text-gray-600 body-font ">
           {/* left */}
           <div>
             <CategoryFilter />
@@ -116,6 +113,8 @@ const LayoutProduct = ({ children }) => {
           </div>
         </section>
       </LayoutHome>
+      <Track />
+      <Footer />
     </>
   );
 };

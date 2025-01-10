@@ -16,9 +16,11 @@ import { Typography } from "@material-tailwind/react";
 import { useSelector } from "react-redux";
 import NavItem from "./NavItem";
 import MenuSignin from "../menuSignin/MenuSignin";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart);
+  const navigate = useNavigate();
 
   return (
     <nav className="flex flex-col items-center w-full ">
@@ -28,7 +30,7 @@ const Navbar = () => {
         <div className="flex flex-col">
           <Typography className="flex items-center text-[1.675rem] font-semibold text-black uppercase ">
             NOITHAT
-            <span className="px-2 py-1 mr-1 font-bold text-white rounded-md bg-primary">
+            <span className="px-2 py-1 mx-1 font-bold text-white rounded-md bg-primary">
               NVN
             </span>
             .COM
@@ -61,6 +63,7 @@ const Navbar = () => {
                 <RiShoppingBagLine
                   size={23}
                   className="cursor-pointer hover:text-gray-800"
+                  onClick={() => navigate("/cart")}
                 />
               </Badge>
               <p className="relative text-sm text-gray-700">

@@ -10,7 +10,7 @@ const ProductHeader = () => {
   const { nameCategory } = useContext(myContext);
 
   return (
-    <div className="h-[320px] w-full -py-6 relative">
+    <div className="h-[320px] w-full relative  ">
       <img
         src={banner}
         alt=""

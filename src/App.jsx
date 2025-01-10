@@ -13,7 +13,6 @@ import { Toaster } from "react-hot-toast";
 import { ProtectedRouteForUser } from "./protectedRoute/ProtectedRouteForUser";
 import { ProtectedRouteForAdmin } from "./protectedRoute/ProtectedRouteForAdmin";
 import ScrollTop from "./components/scrollTop/ScrollTop";
-import ProductPage from "./pages/productInfo/ProductPage";
 import AddProductPage from "./pages/admin/AddProductPage";
 import UpdateProductPage from "./pages/admin/UpdateProductPage";
 import ProductDetail from "./components/admin/ProductDetail";

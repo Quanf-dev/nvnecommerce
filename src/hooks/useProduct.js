@@ -7,6 +7,7 @@ const useProduct = () => {
     old_price: 0.0, // Giá sản phẩm
     new_price: 0.0, // Giá sản phẩm
     rating: 1,
+    quantity: 1,
     images: {
       color_black: [], // Hình ảnh màu 1
       color_gray: [], // Hình ảnh màu 2

@@ -53,14 +53,14 @@ const NavItem = ({ offsetActiveProduct }) => {
         {offsetActive ? (
           <Typography className="flex items-center text-[1.675rem] font-semibold text-black uppercase">
             NOITHAT
-            <span className="px-2 py-1 mr-1 font-bold text-white rounded-md bg-primary">
+            <span className="px-2 py-1 mx-1 font-bold text-white rounded-md bg-primary">
               NVN
             </span>
             .COM
           </Typography>
         ) : (
           <p className="flex items-center h-full gap-2 px-3 text-sm font-semibold text-white uppercase bg-primary text-nowrap">
-            <RiMenuLine size={23} />
+            <RiMenuLine size={24} />
             Danh mục sản phẩm
             <RiArrowDownSLine className="ml-6" size={23} />
           </p>

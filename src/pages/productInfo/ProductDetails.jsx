@@ -19,6 +19,7 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
     new_price,
     old_price,
     rating,
+    quantity,
     keywords,
     product_information: {
       warranty,
@@ -32,8 +33,15 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
     },
     product_category,
   } = product;
+  const { cartItems, incrementCart, decrementCart, deleteCart } = useCart();
 
-  console.log("a", arrayColor);
+  const handleAmountChange = (newAmount) => {
+    if (newAmount > quantity) {
+      incrementCart(id);
+    } else if (newAmount < quantity) {
+      decrementCart(id);
+    }
+  };
 
   return (
     <div className="w-full px-4 md:w-1/2">
@@ -88,7 +96,7 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
       <ColorSelection arrayColor={arrayColor} setArrayColor={setArrayColor} />
 
       <div className="flex items-center h-10 mb-6 space-x-4">
-        <AmountSelector />
+        <AmountSelector amount={quantity} onAmountChange={handleAmountChange} />
         <button className="flex items-center h-full gap-2 px-6 text-white rounded-md bg-primary">
           Thêm vào giỏ hàng{" "}
         </button>

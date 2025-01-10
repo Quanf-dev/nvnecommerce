@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const AmountSelector = () => {
-  const [amount, setAmount] = useState(0);
+const AmountSelector = ({ amount, onAmountChange }) => {
+  const [internalAmount, setInternalAmount] = useState(amount);
+
+  useEffect(() => {
+    setInternalAmount(amount);
+  }, [amount]);
 
   const increaseAmount = () => {
-    setAmount(amount + 1);
+    setInternalAmount(internalAmount + 1);
+    onAmountChange(internalAmount + 1); // Trigger on change
   };
 
   const decreaseAmount = () => {
-    setAmount(Math.max(0, amount - 1));
+    if (internalAmount > 0) {
+      setInternalAmount(internalAmount - 1);
+      onAmountChange(internalAmount - 1); // Trigger on change
+    }
   };
 
   return (
-    <div className="w-[110px] max-w-sm relative ">
+    <div className="w-[110px] max-w-sm relative">
       <div className="relative">
         <button
           onClick={decreaseAmount}
@@ -31,8 +39,12 @@ const AmountSelector = () => {
         <input
           id="amountInput"
           type="number"
-          value={amount}
-          onChange={(e) => setAmount(parseInt(e.target.value))}
+          value={internalAmount}
+          onChange={(e) => {
+            const newAmount = parseInt(e.target.value);
+            setInternalAmount(newAmount);
+            onAmountChange(newAmount); // Trigger on change
+          }}
           className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-3 pr-20 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
         />
         <button
