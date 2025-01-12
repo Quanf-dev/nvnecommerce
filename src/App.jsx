@@ -18,6 +18,7 @@ import UpdateProductPage from "./pages/admin/UpdateProductPage";
 import ProductDetail from "./components/admin/ProductDetail";
 import OrderDetail from "./components/admin/OrderDetail";
 import UserDetail from "./components/admin/UserDetail";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
               </ProtectedRouteForUser>
             }
           />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route
             path="/admin-dashboard"
             element={

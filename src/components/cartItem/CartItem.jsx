@@ -16,7 +16,7 @@ const CartItem = ({ item, incrementCart, decrementCart, deleteCart }) => {
     <tr className="border-b">
       <td className="flex items-center px-4 py-3">
         <AdvancedImage
-          cldImg={getCloudinaryImage(images.images_desc[1], 200)}
+          cldImg={getCloudinaryImage(images?.images_desc[0], 200)}
           alt={name}
           className="object-contain w-24 h-24 rounded-md"
         />
@@ -38,7 +38,7 @@ const CartItem = ({ item, incrementCart, decrementCart, deleteCart }) => {
         className="px-4 py-3 text-sm text-red-500 cursor-pointer"
         onClick={() => deleteCart(item)}
       >
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center mx-3 space-x-2">
           <Trash size={14} />
           <span className="text-xs font-medium">Xóa</span>
         </div>

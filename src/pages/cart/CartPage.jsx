@@ -19,6 +19,7 @@ const CartPage = () => {
     (total, item) => total + item.new_price * item.quantity,
     0
   );
+  console.log(cartTotal);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -29,7 +30,7 @@ const CartPage = () => {
       <Navbar />
       <CartCheckoutTrack />
       <LayoutHome>
-        <div className="container px-4 mx-auto max-w-7xl lg:px-0">
+        <div className="container px-4 mx-auto mb-36 max-w-7xl lg:px-0">
           <div className="max-w-2xl py-8 mx-auto lg:max-w-7xl">
             <form className="mt-4 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
               <section
@@ -40,16 +41,16 @@ const CartPage = () => {
                   <table className="min-w-full table-auto">
                     <thead>
                       <tr className="border-b">
-                        <th className="relative px-4 py-2 text-xl font-semibold text-left text-black ">
+                        <th className="relative py-2 text-xl font-semibold text-left text-black ">
                           Sản phẩm
                         </th>
-                        <th className="px-4 py-2 text-xl font-semibold text-left text-black">
+                        <th className="py-2 text-xl font-semibold text-center text-black p">
                           Số lượng
                         </th>
-                        <th className="px-10 py-2 text-xl font-semibold text-left text-black">
+                        <th className="py-2 text-xl font-semibold text-center text-black ">
                           Đơn Giá
                         </th>
-                        <th className="px-4 py-2 text-xl font-semibold text-left text-black">
+                        <th className="py-2 text-xl font-semibold text-center text-black ">
                           Thao tác
                         </th>
                       </tr>

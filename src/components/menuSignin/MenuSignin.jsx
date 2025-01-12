@@ -12,7 +12,7 @@ const MenuSignin = () => {
           </h2>
           <Link
             to="/signup"
-            className="flex items-center text-primary hover:text-primary-light"
+            className="flex items-center text-primary hover:text-primary-light focus:outline-none"
           >
             Bạn chưa có tài khoản?
           </Link>
@@ -25,7 +25,7 @@ const MenuSignin = () => {
           <div className="mb-4">
             <Input color="gray" label="Mật khẩu" type="password" />
           </div>
-          <Button className="w-full px-4 py-2 text-white rounded-md rounded-full hover:shadow-none bg-primary hover:bg-primary-light">
+          <Button className="w-full px-4 py-2 text-white rounded-md hover:shadow-none bg-primary hover:bg-primary-light">
             Đăng nhập
           </Button>
           <div className="flex items-center justify-between mt-4">

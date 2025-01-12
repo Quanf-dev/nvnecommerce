@@ -31,7 +31,7 @@ const BuyNowModalDialog = () => {
         onClick={() => setOpen(true)}
         className="w-full px-4 py-3 text-center text-gray-100 bg-pink-600 border border-transparent dark:border-gray-700 hover:border-pink-500 hover:text-pink-700 hover:bg-pink-100 rounded-xl"
       >
-        Buy Now
+        Tiến hành thanh toán
       </Button>
       <Dialog open={open} handler={handleOpen} className=" bg-pink-50">
         <DialogBody className="">
