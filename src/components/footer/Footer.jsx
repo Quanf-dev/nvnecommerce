@@ -37,7 +37,7 @@ const Footer = () => {
             <div className="text-primary ">
               <div className="flex gap-2">
                 <RiMapPinLine size={20} />
-                <p className="text-[#727272]">
+                <p className="text-black">
                   CS1:{" "}
                   <span className="font-bold">
                     Số 41 Gò Dư, Liên Chiểu, Đà Nẵng
@@ -46,7 +46,7 @@ const Footer = () => {
               </div>
               <div className="flex gap-2 mt-5">
                 <RiMapPinLine size={20} />
-                <p className="text-[#727272]">
+                <p className="text-black">
                   CS1:{" "}
                   <span className="font-bold">
                     Số 194 Lý Nhân Tông, Hương Xuân, Huế
@@ -59,30 +59,28 @@ const Footer = () => {
             <Typography variant="h6">HỖ TRỢ KHÁCH HÀNG</Typography>
             <div className="flex gap-1 text-primary ">
               <RiSmartphoneLine size={22} />
-              <p className="text-[#727272]">
+              <p className="text-black">
                 Hotline: <span className="font-bold">036 428 9846</span>
               </p>
             </div>
             <div className="flex gap-1 cursor-pointer text-primary ">
               <RiMailLine size={22} />
-              <p className="text-[#727272]">
+              <p className="text-black">
                 Email:{" "}
                 <span className="font-bold">nhannguyen2211ht@gmail.com</span>
               </p>
             </div>
             <div className="flex gap-1 cursor-pointer text-primary ">
               <RiRoadMapLine size={22} />
-              <p className="text-[#727272] font-bold">Xem Bản đồ Cơ Sở Huế</p>
+              <p className="font-bold text-black">Xem Bản đồ Cơ Sở Huế</p>
             </div>
             <div className="flex gap-1 cursor-pointer text-primary">
               <RiRoadMapLine size={22} />
-              <p className="text-[#727272] font-bold ">
-                Xem Bản đồ Cơ Sở Đà Nẵng
-              </p>
+              <p className="font-bold text-black ">Xem Bản đồ Cơ Sở Đà Nẵng</p>
             </div>
             <div className="flex gap-1 cursor-pointer text-primary ">
               <RiFacebookBoxFill size={22} />
-              <p className="text-[#727272] font-bold">Facebook</p>
+              <p className="font-bold text-black">Facebook</p>
             </div>
           </div>
           <div className="ml-10 w-2/7">

@@ -21,10 +21,10 @@ const CheckoutPage = () => {
   const [orderNotes, setOrderNotes] = useState(
     "Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."
   );
-  const [paymentMethod, setPaymentMethod] = useState("bank-transfer");
+  const [paymentMethod, setPaymentMethod] = useState("");
 
   const handleVoucherChange = (e) => setVoucher(e.target.value);
-  const handlePaymentMethodChange = (e) => setPaymentMethod(e.target.id);
+  const handlePaymentMethodChange = (value) => setPaymentMethod(value);
   const applyVoucher = () => alert(`Áp dụng mã: ${voucher}`);
 
   return (
@@ -33,8 +33,8 @@ const CheckoutPage = () => {
       <CartCheckoutTrack />
       <LayoutHome>
         <VoucherSection />
-        <div className="flex flex-col p-6 bg-white lg:flex-row">
-          <div className="w-full pr-0 lg:w-2/3 lg:pr-8">
+        <div className="flex flex-col bg-white lg:flex-row">
+          <div className="w-full pr-0 lg:w-2/4 lg:pr-8">
             <h2 className="mb-4 text-xl font-bold">THÔNG TIN THANH TOÁN</h2>
             <PaymentDetails
               name={name}
@@ -57,7 +57,7 @@ const CheckoutPage = () => {
               setOrderNotes={setOrderNotes}
             />
           </div>
-          <div className="w-full mt-8 lg:w-1/3 lg:mt-0">
+          <div className="w-full mt-8 lg:w-2/4 lg:mt-0">
             <h2 className="mb-4 text-xl font-bold">ĐƠN HÀNG CỦA BẠN</h2>
             <OrderSummary
               paymentMethod={paymentMethod}

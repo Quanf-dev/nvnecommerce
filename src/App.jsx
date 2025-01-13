@@ -19,6 +19,7 @@ import ProductDetail from "./components/admin/ProductDetail";
 import OrderDetail from "./components/admin/OrderDetail";
 import UserDetail from "./components/admin/UserDetail";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
+import OrderReceived from "./pages/orderReceived/orderReceived";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
             }
           />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/checkout/order-received" element={<OrderReceived />} />
           <Route
             path="/admin-dashboard"
             element={

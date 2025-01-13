@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import myContext from "../../context/myContext";
 import useUserSignup from "../../hooks/useUserSignup";
 import { auth, fireDB } from "../../firebase/FirebaseConfig";
-import { Loader } from "lucide-react";
-import { Toaster } from "react-hot-toast";
+import Loader from "../../components/loader/Loader";
 
 const Signup = () => {
   const userSignupFunction = useUserSignup(auth, fireDB);

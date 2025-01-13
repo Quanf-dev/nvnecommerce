@@ -1,4 +1,5 @@
 import React from "react";
+import Address from "../address/Address";
 
 const PaymentDetails = ({
   name,
@@ -23,7 +24,7 @@ const PaymentDetails = ({
   return (
     <form>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div>
+        <div className="col-span-2">
           <label
             htmlFor="name"
             className="block text-sm font-medium text-black"
@@ -68,80 +69,7 @@ const PaymentDetails = ({
             onChange={(e) => setPhone(e.target.value)}
           />
         </div>
-        <div>
-          <label
-            htmlFor="address"
-            className="block text-sm font-medium text-black"
-          >
-            Địa chỉ <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="address"
-            className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="city"
-            className="block text-sm font-medium text-black"
-          >
-            Tỉnh/Thành phố <span className="text-red-500">*</span>
-          </label>
-          <select
-            id="city"
-            className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          >
-            <option>Tp. Hồ Chí Minh</option>
-          </select>
-        </div>
-        <div>
-          <label
-            htmlFor="district"
-            className="block text-sm font-medium text-black"
-          >
-            Quận huyện <span className="text-red-500">*</span>
-          </label>
-          <select
-            id="district"
-            className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm"
-            value={district}
-            onChange={(e) => setDistrict(e.target.value)}
-          >
-            <option>Huyện Cần Giờ</option>
-          </select>
-        </div>
-        <div>
-          <label
-            htmlFor="ward"
-            className="block text-sm font-medium text-black"
-          >
-            Xã/Phường/Thị trấn (tùy chọn)
-          </label>
-          <input
-            type="text"
-            id="ward"
-            className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm"
-            value={ward}
-            onChange={(e) => setWard(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="mt-4">
-        <input
-          type="checkbox"
-          id="different-address"
-          className="mr-2"
-          checked={differentAddress}
-          onChange={() => setDifferentAddress(!differentAddress)}
-        />
-        <label htmlFor="different-address" className="text-sm text-black">
-          Giao hàng tới địa chỉ khác?
-        </label>
+        <Address />
       </div>
       <div className="mt-4">
         <label
@@ -152,7 +80,7 @@ const PaymentDetails = ({
         </label>
         <textarea
           id="order-notes"
-          className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm"
+          className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm resize-none"
           rows="4"
           value={orderNotes}
           onChange={(e) => setOrderNotes(e.target.value)}

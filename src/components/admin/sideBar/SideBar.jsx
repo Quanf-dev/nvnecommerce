@@ -19,7 +19,6 @@ import {
   RiChat3Fill,
   RiLogoutBoxRLine,
 } from "@remixicon/react";
-import { ChevronDownIcon } from "lucide-react";
 import logo from "@assets/logo/logoFurniture.png";
 import { useNavigate } from "react-router-dom";
 

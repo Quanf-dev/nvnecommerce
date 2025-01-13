@@ -1,7 +1,7 @@
-import { Trash } from "lucide-react";
 import { AdvancedImage } from "@cloudinary/react";
 import { getCloudinaryImage } from "../../utils/cloudinaryHelper";
 import AmountSelector from "../amountSelector/AmountSelector";
+import { RiDeleteBin2Line } from "@remixicon/react";
 
 const CartItem = ({ item, incrementCart, decrementCart, deleteCart }) => {
   const { id, name, new_price, images, product_category, quantity } = item;
@@ -39,7 +39,7 @@ const CartItem = ({ item, incrementCart, decrementCart, deleteCart }) => {
         onClick={() => deleteCart(item)}
       >
         <div className="flex items-center mx-3 space-x-2">
-          <Trash size={14} />
+          <RiDeleteBin2Line size={14} />
           <span className="text-xs font-medium">Xóa</span>
         </div>
       </td>
