@@ -20,6 +20,7 @@ import OrderDetail from "./components/admin/OrderDetail";
 import UserDetail from "./components/admin/UserDetail";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import OrderReceived from "./pages/orderReceived/orderReceived";
+import UserDashboardPage2 from "./pages/user/UserDashboardPage2";
 
 const App = () => {
   return (
@@ -40,6 +41,14 @@ const App = () => {
             element={
               <ProtectedRouteForUser>
                 <UserDashboardPage />
+              </ProtectedRouteForUser>
+            }
+          />
+          <Route
+            path="/user-dashboard2"
+            element={
+              <ProtectedRouteForUser>
+                <UserDashboardPage2 />
               </ProtectedRouteForUser>
             }
           />

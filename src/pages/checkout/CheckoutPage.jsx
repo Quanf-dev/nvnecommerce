@@ -7,6 +7,7 @@ import CartCheckoutTrack from "../../components/cartCheckoutTrack/CartCheckoutTr
 import PaymentDetails from "../../components/checkout/PaymentDetails";
 import OrderSummary from "../../components/checkout/OrderSummary";
 import VoucherSection from "../../components/checkout/VoucherSection";
+import Announcement from "../../components/announcement/Announcement ";
 
 const CheckoutPage = () => {
   const [voucher, setVoucher] = useState("");
@@ -29,6 +30,7 @@ const CheckoutPage = () => {
 
   return (
     <>
+      <Announcement />
       <Navbar />
       <CartCheckoutTrack />
       <LayoutHome>

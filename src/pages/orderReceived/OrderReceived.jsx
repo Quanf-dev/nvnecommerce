@@ -3,22 +3,22 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import Track from "../../components/track/Track";
 import CartCheckoutTrack from "../../components/cartCheckoutTrack/CartCheckoutTrack";
+import Announcement from "../../components/announcement/Announcement ";
 
 const OrderReceived = () => {
   return (
     <>
+      <Announcement />
       <Navbar />
       <CartCheckoutTrack />
       <LayoutHome>
         {" "}
-        <div className="bg-white ">
+        <div className="bg-white max-w-[800px] mx-auto ">
           <Header />
           <OrderDetails />
-          <PaymentMethod />
           <CustomerService />
           <BankTransferDetails />
           <OrderItems />
-          <TotalAmount />
           <Addresses />
         </div>
       </LayoutHome>
@@ -31,46 +31,36 @@ const OrderReceived = () => {
 export default OrderReceived;
 
 const Header = () => (
-  <div className="p-4 mt-20 mb-4 border border-green-500 border-dashed">
-    <h1 className="text-lg font-semibold text-center text-green-600">
+  <div className="p-6 mt-20 mb-4 border border-[#7A9C59] border-dashed">
+    <h1 className="text-3xl font-semibold text-center text-[#7A9C59] ">
       Cảm ơn bạn đã đặt hàng tại Noithatnvn.com
     </h1>
   </div>
 );
-
 const OrderDetails = () => (
-  <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
-    <div>
-      <p>
-        <span className="font-semibold">Mã đơn hàng:</span> 417856
-      </p>
-      <p>
-        <span className="font-semibold">Ngày:</span> 13/01/2025
-      </p>
-    </div>
-    <div>
-      <p>
-        <span className="font-semibold">Email:</span> th@gmail.comzxc
-      </p>
-      <p>
-        <span className="font-semibold">Tổng cộng:</span> 50,000 đ
-      </p>
-    </div>
-  </div>
-);
-
-const PaymentMethod = () => (
-  <div className="mb-4">
-    <p>
-      <span className="font-semibold">Phương thức thanh toán:</span> Chuyển
-      khoản ngân hàng
-    </p>
-  </div>
+  <ul className="flex justify-center h-20 gap-6 my-10 text-sm">
+    <li className="flex flex-col items-center gap-3 text-gray-600 ">
+      Mã đơn hàng: <strong className="text-black">417856</strong>
+    </li>
+    <li className="flex flex-col gap-3 items-center border-l-[1px]  pl-6 text-gray-600 ">
+      Ngày: <strong className="text-black">13/01/2025</strong>
+    </li>
+    <li className="flex flex-col gap-3 items-center border-l-[1px] pl-6 text-gray-600 ">
+      Email: <strong className="text-black">th@gmail.comzxc</strong>
+    </li>
+    <li className="flex flex-col gap-3 items-center border-l-[1px]  pl-6 text-gray-600 ">
+      Tổng cộng: <strong className="text-black">50,000 đ</strong>
+    </li>
+    <li className="flex flex-col gap-3 items-center border-l-[1px]  pl-6 text-gray-600 ">
+      Phương thức thanh toán:{" "}
+      <strong className="text-black">Chuyển khoản ngân hàng</strong>
+    </li>
+  </ul>
 );
 
 const CustomerService = () => (
   <div className="mb-4">
-    <p>
+    <p className="text-sm text-gray-600">
       Nếu có vấn đề về ghi thông tin tài khoản và chuyển tiền, vui lòng liên hệ
       Dịch vụ Khách hàng để được hướng dẫn chi tiết qua số điện thoại Hotline:
       0937912255
@@ -79,21 +69,23 @@ const CustomerService = () => (
 );
 
 const BankTransferDetails = () => (
-  <div className="pb-4 mb-4 border-b border-gray-300">
-    <h2 className="mb-2 text-lg font-semibold">
+  <div className="pb-4 mt-10 mb-4 border-b border-gray-300">
+    <h2 className="mb-2 text-2xl font-semibold">
       THÔNG TIN CHUYỂN KHOẢN NGÂN HÀNG
     </h2>
-    <p className="font-semibold">NGUYEN ANH TUAN:</p>
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div>
-        <p>
-          <span className="font-semibold">Ngân hàng:</span> Ngân hàng Ngoại
-          thương Việt nam (Vietcombank)
+    <p className="text-xl font-semibold text-gray-500">NGUYEN VAN NHAN:</p>
+    <div className="grid grid-cols-1 gap-4 mt-8 text-sm md:grid-cols-2">
+      <div className="border-r-[1px] ">
+        <p className="flex flex-col items-center gap-3 text-gray-600 ">
+          Ngân hàng::{" "}
+          <strong className="text-black">
+            Ngân hàng Ngoại thương Việt nam (Vietcombank)
+          </strong>
         </p>
       </div>
       <div>
-        <p>
-          <span className="font-semibold">Số tài khoản:</span> 9939762255
+        <p className="flex flex-col items-center gap-3 text-gray-600 ">
+          Số tài khoản: <strong className="text-black">??????????</strong>
         </p>
       </div>
     </div>
@@ -101,63 +93,63 @@ const BankTransferDetails = () => (
 );
 
 const OrderItems = () => (
-  <div className="pb-4 mb-4 border-b border-gray-300">
-    <h2 className="mb-2 text-lg font-semibold">CHI TIẾT ĐƠN HÀNG</h2>
-    <h3 className="mb-2 font-semibold">SẢN PHẨM</h3>
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div>
-        <p>Tay nắm tủ nội thất bằng inox màu đen DJ029B - 160mm</p>
-        <p>x 2</p>
-        <p>
-          <span className="font-semibold">Kích thước (RxSxC):</span> 160mm
-        </p>
+  <div className="pb-4 mb-4 ">
+    <h2 className="pb-2 mb-4 text-xl font-bold text-gray-800 uppercase ">
+      Chi tiết đơn hàng
+    </h2>
+    <div className="p-6 rounded-lg">
+      <div className="flex justify-between pb-2 mb-4 border-b border-gray-300">
+        <h3 className="text-lg font-medium text-gray-700">Sản phẩm</h3>
+        <h3 className="text-lg font-medium text-gray-700">Tổng</h3>
       </div>
-      <div className="text-right">
-        <p>50,000 đ</p>
-      </div>
-    </div>
-    <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2">
-      <div>
-        <p>
-          <span className="font-semibold">Tổng số phụ:</span>
-        </p>
-      </div>
-      <div className="text-right">
-        <p>50,000 đ</p>
-      </div>
-    </div>
-    <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2">
-      <div>
-        <p>
-          <span className="font-semibold">Giao nhận hàng:</span> Phí vận chuyển
-          sẽ báo sau.
-        </p>
-      </div>
-    </div>
-    <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2">
-      <div>
-        <p>
-          <span className="font-semibold">Phương thức thanh toán:</span> Chuyển
-          khoản ngân hàng
-        </p>
-      </div>
-    </div>
-  </div>
-);
 
-const TotalAmount = () => (
-  <div className="pb-4 mb-4 border-b border-gray-300">
-    <h2 className="mb-2 text-lg font-semibold">TỔNG CỘNG:</h2>
-    <div className="text-right">
-      <p className="text-lg font-semibold">50,000 đ</p>
+      <div className="grid grid-cols-1 gap-6 pb-4 border-b border-gray-300 md:grid-cols-2">
+        <div className="text-sm text-gray-700">
+          <p className="font-medium">
+            Tay nắm tủ nội thất bằng inox màu đen DJ029B - 160mm
+          </p>
+          <p className="text-gray-500">x 2</p>
+          <p className="mt-1">
+            <span className="font-semibold">Kích thước (RxSxC):</span> 160mm
+          </p>
+        </div>
+        <div className="text-sm font-bold text-right text-primary">
+          50,000 đ
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 py-4 text-sm border-b border-gray-300 md:grid-cols-2">
+        <div className="font-semibold text-gray-700 ">Tổng số phụ:</div>
+        <div className="font-bold text-right text-primary">50,000 đ</div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 py-4 border-b border-gray-300 md:grid-cols-2">
+        <div className="font-semibold text-gray-700 ">Giao nhận hàng:</div>
+        <div className="text-sm text-right">Phí vận chuyển sẽ báo sau.</div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 py-4 border-b border-gray-300 md:grid-cols-2">
+        <div className="font-semibold text-gray-700 ">
+          Phương thức thanh toán:{" "}
+        </div>
+        <div className="text-sm text-right">Chuyển khoản ngân hàng</div>
+      </div>
+      <div className="grid grid-cols-1 gap-6 py-4 border-b border-gray-300 md:grid-cols-2">
+        <div className="text-xl font-bold ">Tổng cộng: </div>
+        <div className="text-lg font-bold text-right text-primary">
+          50,000 ₫
+        </div>
+      </div>
     </div>
   </div>
 );
 
 const Addresses = () => (
-  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-    <div>
-      <h3 className="mb-2 font-semibold">ĐỊA CHỈ THANH TOÁN</h3>
+  <div className="grid grid-cols-1 gap-4 mb-20 md:grid-cols-2">
+    <div className="text-gray-600 ">
+      <h3 className="mb-4 text-xl font-semibold text-black">
+        ĐỊA CHỈ THANH TOÁN
+      </h3>
       <p>7856813413</p>
       <p>bnm</p>
       <p>zxc</p>
@@ -165,8 +157,10 @@ const Addresses = () => (
       <p>Tp. Hồ Chí Minh</p>
       <p>th@gmail.comzxc</p>
     </div>
-    <div>
-      <h3 className="mb-2 font-semibold">ĐỊA CHỈ GIAO HÀNG</h3>
+    <div className="text-gray-600 ">
+      <h3 className="mb-4 text-xl font-semibold text-black">
+        ĐỊA CHỈ GIAO HÀNG
+      </h3>
       <p>7856813413</p>
       <p>bnm</p>
       <p>zxc</p>

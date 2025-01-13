@@ -18,6 +18,7 @@ import {
   RiLayoutMasonryFill,
   RiChat3Fill,
   RiLogoutBoxRLine,
+  RiArrowDownSLine,
 } from "@remixicon/react";
 import logo from "@assets/logo/logoFurniture.png";
 import { useNavigate } from "react-router-dom";
@@ -74,7 +75,7 @@ function Sidebar() {
             <Typography className="mr-auto font-normal text-inherit">
               Bảng điều khiển
             </Typography>
-            <ChevronDownIcon
+            <RiArrowDownSLine
               strokeWidth={3}
               className={`ml-auto h-4 w-4 text-gray-500 transition-transform ${
                 open === 2 ? "rotate-180" : ""
