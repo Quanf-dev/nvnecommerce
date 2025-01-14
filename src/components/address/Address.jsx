@@ -1,10 +1,11 @@
 import React, { memo, useEffect, useState } from "react";
+
+import SelectAddress from "./SelectAddress";
 import {
   apiGetPublicDistrict,
   apiGetPublicProvinces,
   apiGetPublicWard,
-} from "../../axios/api.service";
-import SelectAddress from "./SelectAddress";
+} from "../../api/provinceApi";
 
 const Address = () => {
   const [provinces, setProvinces] = useState([]);
@@ -48,6 +49,7 @@ const Address = () => {
     !province ? setReset(true) : setReset(false);
     !province && setWards([]);
   }, [district]);
+
   // useEffect(() => {
   //   setPayload((prev) => ({
   //     ...prev,

@@ -7,6 +7,7 @@ import LayoutHome from "../../layout/LayoutHome";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import Track from "../../components/track/Track";
+import Announcement from "../../components/announcement/Announcement ";
 
 const CartPage = () => {
   const { cartItems, incrementCart, decrementCart, deleteCart } = useCart();
@@ -27,6 +28,7 @@ const CartPage = () => {
 
   return (
     <>
+      <Announcement />
       <Navbar />
       <CartCheckoutTrack />
       <LayoutHome>

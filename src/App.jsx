@@ -3,8 +3,6 @@ import HomePage from "./pages/home/HomePage";
 import NoPage from "./pages/noPage/NoPage";
 import CartPage from "./pages/cart/CartPage";
 import AllProductPage from "./pages/allProduct/AllProductPage";
-import SignupPage from "./pages/registration/SignupPage";
-import LoginPage from "./pages/registration/LoginPage";
 import UserDashboardPage from "./pages/user/UserDashboardPage";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import MyState from "./context/myState";
@@ -21,6 +19,12 @@ import UserDetail from "./components/admin/UserDetail";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import OrderReceived from "./pages/orderReceived/orderReceived";
 import UserDashboardPage2 from "./pages/user/UserDashboardPage2";
+import AuthPage from "./pages/registration/AuthPage";
+import UserDashboardPage3 from "./pages/user/UserDashboardPage3";
+import Orders from "./components/user/orders/Orders";
+import EditAddress from "./components/user/editAddress/EditAddress";
+import EditAccount from "./components/user/editAccount/EditAccount";
+import AccountHome from "./components/user/accoutHome/AccountHome";
 
 const App = () => {
   return (
@@ -31,24 +35,28 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/*" element={<NoPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/allproduct" element={<AllProductPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/san-pham" element={<AllProductPage />} />
           <Route path="/:categoryname" element={<CategoryPage />} />{" "}
-          {/* category Page route  */}
+          {/* category Page route  */}{" "}
           <Route
-            path="/user-dashboard"
+            path="/my-account"
             element={
               <ProtectedRouteForUser>
-                <UserDashboardPage />
+                <UserDashboardPage3 />
               </ProtectedRouteForUser>
             }
-          />
+          >
+            {" "}
+            <Route index element={<AccountHome />} />
+            <Route path="orders" element={<Orders />} />{" "}
+            <Route path="edit-address" element={<EditAddress />} />{" "}
+            <Route path="edit-account" element={<EditAccount />} />{" "}
+          </Route>{" "}
           <Route
-            path="/user-dashboard2"
+            path="/user-dashboard3"
             element={
               <ProtectedRouteForUser>
-                <UserDashboardPage2 />
+                <UserDashboardPage3 />
               </ProtectedRouteForUser>
             }
           />
