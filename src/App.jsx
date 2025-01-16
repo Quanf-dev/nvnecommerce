@@ -18,13 +18,13 @@ import OrderDetail from "./components/admin/OrderDetail";
 import UserDetail from "./components/admin/UserDetail";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import OrderReceived from "./pages/orderReceived/orderReceived";
-import UserDashboardPage2 from "./pages/user/UserDashboardPage2";
 import AuthPage from "./pages/registration/AuthPage";
 import UserDashboardPage3 from "./pages/user/UserDashboardPage3";
-import Orders from "./components/user/orders/Orders";
+import Orders from "./components/user/OrdersView/OrdersView";
 import EditAddress from "./components/user/editAddress/EditAddress";
 import EditAccount from "./components/user/editAccount/EditAccount";
 import AccountHome from "./components/user/accoutHome/AccountHome";
+import OrdersView from "./components/user/OrdersView/OrdersView";
 
 const App = () => {
   return (
@@ -48,7 +48,11 @@ const App = () => {
           >
             {" "}
             <Route index element={<AccountHome />} />
-            <Route path="orders" element={<Orders />} />{" "}
+            <Route path="orders/*">
+              {" "}
+              <Route index element={<OrdersView />} />{" "}
+              <Route path="view-order/:id" element={<OrdersView />} />{" "}
+            </Route>
             <Route path="edit-address" element={<EditAddress />} />{" "}
             <Route path="edit-account" element={<EditAccount />} />{" "}
           </Route>{" "}

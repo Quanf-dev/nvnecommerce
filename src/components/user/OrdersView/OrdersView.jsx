@@ -1,6 +1,6 @@
 import React from "react";
 
-const Orders = () => {
+const OrdersView = () => {
   return (
     <table className="min-w-full bg-white border-b border-gray-200">
       <thead>
@@ -41,4 +41,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default OrdersView;
