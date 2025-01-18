@@ -19,7 +19,7 @@ const Footer = () => {
   return (
     <>
       <LayoutHome>
-        <footer className="flex py-12 bg-white">
+        <footer className="flex py-12 overflow-hidden bg-white">
           <div className="w-3/7">
             <div className="flex items-center h-32 py-3 w-[460px] lg:py-0 gap-3">
               <Link to={"/"}>

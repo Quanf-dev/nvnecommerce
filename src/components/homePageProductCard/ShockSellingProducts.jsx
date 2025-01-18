@@ -8,7 +8,7 @@ const ShockSellingProducts = () => {
   });
 
   return (
-    <div className="mt-16 ">
+    <div className="mt-16 overflow-hidden ">
       <img
         src={title}
         alt="Khuyến mãi sốc"

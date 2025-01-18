@@ -36,7 +36,7 @@ const HeroSection = () => {
   return (
     <div className="flex justify-center w-full ">
       <HeroMenu />
-      <div className="max-w-[1003px] relative pl-10">
+      <div className="max-w-[1003px] relative lg:pl-10 w-full ">
         <Swiper
           navigation={{
             prevEl: prevRef.current,
@@ -45,7 +45,7 @@ const HeroSection = () => {
           spaceBetween={10}
           thumbs={{ swiper: thumbsSwiper }}
           modules={[FreeMode, Navigation, Thumbs]}
-          className="aspect-[16/6.5] "
+          className="w-full overflow-hidden h-72 lg:h-96"
         >
           {[banner1, banner2, banner3].map((item, index) => {
             return (
@@ -87,7 +87,7 @@ const HeroSection = () => {
           onMouseLeave={() => setIsNavigationEnabled(false)}
           className={`transform ease-linear duration-300   ${
             isNavigationEnabled ? "opacity-1 left-10" : "opacity-0 left-6"
-          } absolute z-10 text-white transform border-4 rounded-full top-1/2 -translate-y-1/2 `}
+          } hidden lg:block absolute z-10 text-white transform border-4 rounded-full top-1/2 -translate-y-1/2 `}
           ref={prevRef}
           onClick={() => setActive(active === 0 ? Data.length - 1 : active - 1)}
         >
@@ -99,7 +99,7 @@ const HeroSection = () => {
           onMouseLeave={() => setIsNavigationEnabled(false)}
           className={`transform ease-linear duration-300  ${
             isNavigationEnabled ? "opacity-1 right-2" : "opacity-0 right-6"
-          } absolute z-10 text-white transform border-4 rounded-full top-1/2 -translate-y-1/2  `}
+          } hidden lg:block absolute z-10 text-white transform border-4 rounded-full top-1/2 -translate-y-1/2  `}
           ref={nextRef}
           onClick={() => setActive(active === Data.length - 1 ? 0 : active + 1)}
         >

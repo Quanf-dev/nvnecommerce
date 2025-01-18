@@ -18,10 +18,10 @@ const MeshChairProduct = () => {
     category: ["ghế xoay", "ghế công thái học"],
   });
   return (
-    <div className="py-6 bg-textBackground-light">
+    <div className="py-6 overflow-hidden bg-textBackground-light ">
       <LayoutHome>
         <div className="flex gap-4 ">
-          <div className="w-[285px] bg-white p-2 mb-24 h-fit">
+          <div className="w-[285px] bg-white p-2 mb-24 h-fit overflow-hidden ">
             <Typography
               variant="h5"
               className="py-1 font-medium text-center text-white uppercase bg-primary"

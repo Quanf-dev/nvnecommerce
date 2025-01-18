@@ -18,7 +18,7 @@ const DeskGamingProduct = () => {
   });
 
   return (
-    <div className="mt-16">
+    <div className="mt-16 overflow-hidden">
       <HeadCategory text="BÀN GAMING" />
       <ListSeoProduct list={seoDeskGaming} />
       <div className="grid grid-cols-5 gap-5 mt-4">

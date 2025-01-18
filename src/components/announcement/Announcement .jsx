@@ -30,15 +30,15 @@ const Announcement = () => {
     },
   ];
   return (
-    <div className="h-7 text-white bg-[#092143] text-xs font-semibold">
-      <div className="max-w-[1260px] flex w-full mx-auto justify-between h-full items-center ">
-        <p className="flex-shrink-0 text-center uppercase sm:hidden ">
+    <div className="h-8  text-white bg-[#092143] text-xs font-semibold ">
+      <div className="max-w-[1260px] flex w-full mx-auto justify-center lg:justify-between  h-full items-center  ">
+        <p className="hidden text-center uppercase lg:block ">
           NOITHATNVN - THƯƠNG HIỆU NỘI THẤT VĂN PHÒNG CAO CẤP HÀNG ĐẦU MIỀN
           TRUNG
         </p>
         <div className="flex items-center flex-shrink-0 h-full gap-2 list-none ">
-          <p>HOTLINE: 036 428 9846</p>
-          <p className="border-gray-300 h-full border-x-[1px] cursor-pointer flex items-center">
+          <p className="hidden lg:block ">HOTLINE: 036 428 9846</p>
+          <p className="hidden lg:flex border-gray-300 h-full border-x-[1px] cursor-pointer  items-center">
             <span className="mx-2">Zalo</span>
           </p>
           {iconSocial.map((item, index) => {

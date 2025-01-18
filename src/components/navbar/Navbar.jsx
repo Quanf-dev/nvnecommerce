@@ -8,6 +8,7 @@ import {
   MenuList,
 } from "@material-tailwind/react";
 import {
+  RiMenuLine,
   RiNotification4Line,
   RiShoppingBagLine,
   RiUserLine,
@@ -17,18 +18,26 @@ import { useSelector } from "react-redux";
 import NavItem from "./NavItem";
 import MenuSignin from "../menuSignin/MenuSignin";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import myContext from "../../context/myContext";
 
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart);
   const navigate = useNavigate();
+  const { setOpenMobileMenu } = useContext(myContext);
 
   return (
     <nav className="flex flex-col items-center w-full ">
       {/* main  */}
-      <div className="flex items-center justify-between w-full max-w-[1260px] gap-5 py-6">
-        {/* left  */}
+      <div className="flex items-center justify-between w-full max-w-[1260px] gap-5 py-6 px-3">
+        <RiMenuLine
+          size={23}
+          onClick={() => setOpenMobileMenu(true)}
+          className="cursor-pointer lg:hidden"
+        />
+
         <div className="flex flex-col" onClick={() => navigate("/")}>
-          <Typography className="flex items-center text-[1.675rem] font-semibold text-black uppercase cursor-pointer ">
+          <Typography className="flex items-center text-xl lg:text-[1.675rem]  font-semibold text-black uppercase cursor-pointer ">
             NOITHAT
             <span className="px-2 py-1 mx-1 font-bold text-white rounded-md bg-primary">
               NVN
@@ -44,7 +53,7 @@ const Navbar = () => {
           <div className="flex items-center gap-6">
             <Menu allowHover>
               <MenuHandler>
-                <div className="flex items-center gap-2 cursor-pointer">
+                <div className="items-center hidden gap-2 cursor-pointer lg:flex">
                   <RiUserLine size={23} />
                   <p className="text-sm font-medium text-gray-800 hover:text-gray-800">
                     Đăng nhập
@@ -66,21 +75,13 @@ const Navbar = () => {
                   onClick={() => navigate("/cart")}
                 />
               </Badge>
-              <p className="relative text-sm text-gray-700">
+              <p className="hidden text-sm text-gray-700 lg:block">
                 0{" "}
                 <span className="underline text-xs relative bottom-[3px] right-[1px]">
                   đ
                 </span>
               </p>
             </div>
-          </div>
-          <div className="relative flex items-center justify-center h-10 pl-6 border-l-2 border-solid">
-            <Badge
-              content={1}
-              className="flex items-center justify-center bg-red-600 min-w-4 min-h-4"
-            >
-              <RiNotification4Line size={21} />
-            </Badge>
           </div>
         </div>
       </div>

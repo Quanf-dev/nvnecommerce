@@ -68,7 +68,7 @@ export default function HeroMenu() {
   };
 
   return (
-    <div className="flex flex-col flex-1 border-x-[1px] relative h-[392px]">
+    <div className="hidden lg:flex flex-col flex-1 border-x-[1px] relative h-[392px]">
       {navData.map(({ id, text, subMenu }) => (
         <div
           key={id}

@@ -26,7 +26,7 @@ const SearchBar = ({ offsetActive }) => {
     .slice(0, 8);
 
   return (
-    <div className="relative flex gap-2 text-black w-[500px]">
+    <div className="hidden relative lg:flex gap-2 text-black w-[500px]">
       <Input
         type="search"
         color="gray"

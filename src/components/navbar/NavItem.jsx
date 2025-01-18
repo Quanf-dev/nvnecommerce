@@ -47,7 +47,7 @@ const NavItem = ({ offsetActiveProduct }) => {
         offsetActive || offsetActiveProduct
           ? "fixed top-0 shadow-md"
           : "-top-10"
-      } flex w-full text-black bg-white transform duration-300 ease-linear z-20`}
+      } hidden lg:flex w-full text-black bg-white transform duration-300 ease-linear z-20`}
     >
       <div className="w-full max-w-[1260px] mx-auto flex h-full justify-between items-center">
         {offsetActive ? (

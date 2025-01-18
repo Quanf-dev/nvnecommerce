@@ -3,7 +3,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+body {
+  @apply font-sans;
+}
+html {
+  overflow-x: hidden;
+}
 .radial-gradient::before {
   content: "";
   position: absolute;
@@ -29,10 +34,6 @@
   background-position: -3px 2px, 0 0;
 }
 
-body {
-  @apply font-sans;
-  overflow-x: hidden;
-}
 .hide-scroll-bar {
   -ms-overflow-style: none;
   scrollbar-width: none;
