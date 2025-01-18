@@ -18,10 +18,10 @@ const KneelingChair = () => {
     category: ["ghế xoay", "ghế công thái học"],
   });
   return (
-    <div className="mt-24">
+    <div className="mt-4 md:mt-8 lg:mt-16 ">
       <HeadCategory text="Ghế chân quỳ " />
       <ListSeoProduct list={seoKneeling} />
-      <div className="grid gap-5 mt-4 md:grid-cols-4 xl:grid-cols-5">
+      <div className="grid grid-cols-2 gap-5 mt-4 md:gap-5 md:grid-cols-4 xl:grid-cols-5">
         {filterSwiveChair.map((item, index) => (
           <>
             <ProductCard
@@ -33,7 +33,7 @@ const KneelingChair = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0  "
+              className="border-primary border-[1px] border-r-1  "
             />
             <ProductCard
               key={index}
@@ -44,7 +44,7 @@ const KneelingChair = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0 "
+              className="border-primary border-[1px] border-r-1 "
             />
             <ProductCard
               key={index}
@@ -55,7 +55,7 @@ const KneelingChair = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0 "
+              className="border-primary border-[1px] border-r-1 "
             />
             <ProductCard
               key={index}
@@ -66,7 +66,7 @@ const KneelingChair = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0  "
+              className="border-primary border-[1px] border-r-1 "
             />
             <ProductCard
               key={index}

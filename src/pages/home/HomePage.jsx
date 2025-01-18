@@ -33,12 +33,12 @@ const HomePage = () => {
         <Category />
         <BestSellingProducts />
         <ShockSellingProducts />
+        <DeskProduct />
         <KneelingChair />
         <SwiveChair />
       </LayoutHome>
       <MeshChairProduct />
       <LayoutHome>
-        <DeskProduct />
         <ChairGamingProduct />
         <DeskGamingProduct />
         <Testimonial />

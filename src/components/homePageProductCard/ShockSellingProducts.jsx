@@ -8,13 +8,13 @@ const ShockSellingProducts = () => {
   });
 
   return (
-    <div className="mt-16 overflow-hidden ">
+    <div className="mt-4 md:mt-8 lg:mt-16 ">
       <img
         src={title}
         alt="Khuyến mãi sốc"
         className="relative -translate-x-1/2 left-1/2"
       />
-      <div className="grid grid-cols-5 mt-7">
+      <div className="grid grid-cols-2 gap-2 md:gap-5 md:grid-cols-4 xl:grid-cols-5 mt-7">
         {" "}
         {filterSwiveChair.map((item, index) => (
           <>
@@ -38,7 +38,7 @@ const ShockSellingProducts = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0 "
+              className="border-primary border-[1px] border-r-1 "
             />
             <ProductCard
               key={index}
@@ -49,7 +49,7 @@ const ShockSellingProducts = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0 "
+              className="border-primary border-[1px] border-r-1 "
             />
             <ProductCard
               key={index}
@@ -60,7 +60,7 @@ const ShockSellingProducts = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0  "
+              className="border-primary border-[1px] border-r-1  "
             />
             <ProductCard
               key={index}

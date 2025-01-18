@@ -7,7 +7,7 @@ const ProductDesc = () => {
   const [open, setOpen] = useState("");
 
   return (
-    <div className="w-full mt-10">
+    <div className="w-full px-3 mt-10">
       <div className="py-6 border-t-2 border-[#0000001B]">
         <CollapseDescribe open={open} setOpen={setOpen} />
       </div>

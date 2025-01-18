@@ -15,6 +15,7 @@ const useProduct = () => {
       color_white: [], // Hình ảnh màu 4
       images_desc: [], // hình ảnh chi tiết của sản phẩm ở mô tả (URLs)
     },
+    quantity: 1,
     product_category: "", // Loại sản phẩm
     product_information: {
       warranty: "", // Thông tin bảo hành

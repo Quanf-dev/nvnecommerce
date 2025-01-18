@@ -16,25 +16,23 @@ const ProductDetailCollapse = () => {
   } = product;
   return (
     <div className="flex flex-col gap-4 mt-4 max-w-[1000px]">
-      <Typography variant="h5" classname="pt-10">
-        Giới thiệu {name}
-      </Typography>
+      <h1 classname="pt-10 font-bold ">Giới thiệu {name}</h1>
       <Typography classname="mb-5 text-textDesc">{title}</Typography>
       <AdvancedImage
         cldImg={getCloudinaryImage(images.images_desc[0])}
-        className="w-[800px] aspect-[1/1]"
+        className="w-[800px] aspect-[1/1] object-cover"
       />
       <AdvancedImage
         cldImg={getCloudinaryImage(images.images_desc[1])}
-        className="w-[800px] aspect-[1/1]"
+        className="w-[800px] aspect-[1/1] object-cover"
       />
       <AdvancedImage
         cldImg={getCloudinaryImage(images.images_desc[2])}
-        className="w-[800px] aspect-[1/1]"
+        className="w-[800px] aspect-[1/1] object-cover"
       />
       <AdvancedImage
         cldImg={getCloudinaryImage(images.images_desc[3])}
-        className="w-[800px] aspect-[1/1]"
+        className="w-[800px] aspect-[1/1] object-cover"
       />
       <Typography variant="h5" classname="pt-10">
         Các ưu điểm của Đèn chùm pha lê bằng đồng sang trọng

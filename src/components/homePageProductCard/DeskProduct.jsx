@@ -38,6 +38,23 @@ const DeskProduct = () => {
           prevEl: prevRef.current,
           nextEl: nextRef.current,
         }}
+        breakpoints={{
+          // Màn hình nhỏ
+          375: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+          },
+          // Màn hình trung bình
+          768: {
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+          },
+          // Màn hình lớn
+          1024: {
+            slidesPerView: 5,
+            slidesPerGroup: 5,
+          },
+        }}
         className="relative mt-7"
       >
         {/* {filterDesk.map((item, index) => (

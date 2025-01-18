@@ -28,9 +28,9 @@ const Track = () => {
     },
   ];
   return (
-    <div className="flex justify-center bg-primary ">
+    <div className="flex flex-col justify-center lg:flex-row bg-primary ">
       {dataTrack.map((item, index) => (
-        <li className="flex items-center justify-center w-1/4 gap-5 list-none border-r-[1px] border-primary-light h-28 last:border-none ">
+        <li className="flex items-center justify-center lg:w-1/4 gap-5 list-none border-r-[1px] border-primary-light h-28 last:border-none ">
           <img src={item.urlImage} className="w-[60px] h-[60px] " />
           <div className="flex flex-col gap-2 text-white ">
             <Typography variant="h5">{item.title}</Typography>

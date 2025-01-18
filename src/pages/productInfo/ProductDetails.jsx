@@ -46,7 +46,7 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
 
   return (
     <div className="w-full px-4 md:w-1/2">
-      <h2 className="mb-2 text-3xl font-bold">{name}</h2>
+      <h2 className="mb-2 text-xl font-bold mg:text-2xl lg:text-3xl">{name}</h2>
       <div className="flex gap-2 mb-4">
         <span className="flex items-center text-xl text-gray-500 line-through ">
           {old_price}&nbsp;
@@ -96,17 +96,17 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
 
       <ColorSelection arrayColor={arrayColor} setArrayColor={setArrayColor} />
 
-      <div className="flex items-center h-10 mb-6 space-x-4">
+      <div className="flex items-center h-10 mb-6 space-x-2 lg:space-x-4 ">
         <AmountSelector amount={quantity} onAmountChange={handleAmountChange} />
-        <button className="flex items-center h-full gap-2 px-6 text-white rounded-md bg-primary">
+        <button className="flex items-center h-full gap-2 px-6 text-white rounded-md text-nowrap bg-primary">
           Thêm vào giỏ hàng{" "}
         </button>
         <Link
           to={"https://zalo.me/0364289846"}
-          className="flex items-center h-full gap-2 px-6 text-gray-800 bg-gray-200 rounded-md hover:bg-gray-300 "
+          className="flex items-center h-full gap-2 px-3 text-gray-800 bg-gray-200 rounded-md hover:bg-gray-300 "
         >
           <RiChat3Line />
-          Chat Zalo
+          <span className="hidden sm:inline">Chat Zalo</span>
         </Link>
       </div>
       <div>
@@ -217,7 +217,7 @@ const ColorSelection = ({ arrayColor, setArrayColor }) => {
             <button
               key={colorKey}
               className={`w-8 h-8 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${bgClass} ${
-                active ? "ring-4 ring-blue-500" : ""
+                active ? "ring-4" : ""
               }`}
               onClick={() => handleColorClick(colorKey)}
             >

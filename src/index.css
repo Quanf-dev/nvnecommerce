@@ -3,10 +3,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  max-width: 100%;
   @apply font-sans;
 }
-html {
+html,
+body {
   overflow-x: hidden;
 }
 .radial-gradient::before {
@@ -42,7 +50,7 @@ html {
   display: none;
 }
 .starRatingCustom span svg {
-  @apply w-[18px] h-[18px];
+  @apply w-4 h-4 lg:w-[18px]  lg:h-[18px];
 }
 .liner-container::before,
 .liner-container::after {

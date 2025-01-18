@@ -83,8 +83,8 @@ const Category = () => {
   const [isNavigationEnabled, setIsNavigationEnabled] = useState(false);
   const navigate = useNavigate();
   return (
-    <div className="relative px-3 mt-8 lg:mt-16">
-      <h1 className="  w-full text-[1.3rem] font-medium text-center text-textBackground-dark">
+    <div className="relative mt-8 lg:px-3 lg:mt-16">
+      <h1 className="w-full text-lg lg:text-[1.3rem] font-medium text-center text-textBackground-dark">
         Nội thất NVN Huế - Đà Nẵng | Tổng hợp những mẫu bàn ghế văn phòng tốt
         nhất
       </h1>
@@ -100,8 +100,25 @@ const Category = () => {
         slidesPerView={7}
         modules={[FreeMode, Navigation, Thumbs]}
         className="mt-10 cursor-pointer"
-        slidesPerGroup={7}
+        slidesPerGroup={1}
         scrollbar={true}
+        breakpoints={{
+          // Màn hình nhỏ
+          375: {
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+          },
+          // Màn hình trung bình
+          768: {
+            slidesPerView: 5,
+            slidesPerGroup: 5,
+          },
+          // Màn hình lớn
+          1024: {
+            slidesPerView: 7,
+            slidesPerGroup: 7,
+          },
+        }}
       >
         {category.map((item, index) => {
           return (
@@ -121,10 +138,10 @@ const Category = () => {
                   <AdvancedImage cldImg={item.image} />
                 </div>
               </div>
-              <p className="text-sm text-center uppercase text-[0.9rem] w-full">
+              <p className="text-xs text-center uppercase lg:text-[0.9rem] w-full line-clamp-2">
                 {item.name}
               </p>{" "}
-              <p className="text-[0.75rem] text-[#333]">
+              <p className="text-[0.75rem] text-[#333] hidden lg:block">
                 {item.quantity} sản phẩm
               </p>
             </SwiperSlide>

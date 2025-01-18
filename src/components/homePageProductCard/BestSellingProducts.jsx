@@ -9,16 +9,16 @@ const BestSellingProducts = () => {
     category: ["ghế xoay", "ghế công thái học"],
   });
   return (
-    <div className="relative w-full px-4 py-4 mt-14 bg-textBackground-light">
-      <h2 className="w-full text-[1.3rem] font-medium  text-textbgcolor-dark border-b-2 border-primary pb-2">
+    <div className="relative w-full lg:p-4 mt-14 lg:bg-textBackground-light">
+      <h2 className="w-full text-lg  lg:text-[1.3rem] font-medium border-b-2 border-primary pb-2">
         SẢN PHẨM BÁN CHẠY
       </h2>
       <img
         src={mblike}
         alt="GIá cực ưu đãi"
-        className="absolute z-10 -right-[5px] -top-[6px]"
+        className="w-24 absolute z-10 -right-[5px] -top-[6px]"
       />
-      <div className="grid gap-5 md:grid-cols-4 xl:grid-cols-5 mt-7">
+      <div className="grid grid-cols-2  md:gap-5 md:grid-cols-4 xl:grid-cols-5 mt-7">
         {" "}
         {filterSwiveChair.map((item, index) => (
           <>

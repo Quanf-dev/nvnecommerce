@@ -3,8 +3,8 @@ import checklist from "@assets/checklist.png";
 const Testimonial = () => {
   return (
     <section className="bg-white">
-      <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8 lg:py-16">
-        <h2 className="flex items-center gap-5 text-3xl font-bold tracking-tight text-center text-gray-900 liner-container">
+      <div className="max-w-screen-xl px-4 py-5 mx-auto sm:px-6 lg:px-8 lg:py-16">
+        <h2 className="flex items-center gap-5 text-xl font-bold tracking-tight text-center text-gray-900 liner-container">
           Đánh giá đáng tin cậy từ khách hàng
         </h2>
 

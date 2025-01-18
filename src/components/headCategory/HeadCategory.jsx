@@ -3,7 +3,7 @@ import React from "react";
 
 const HeadCategory = ({ text, showMore }) => {
   return (
-    <h2 className="w-full text-[1.3rem] font-medium  text-textbgcolor-dark border-b-2 border-textBackground-light pb-2 relative">
+    <h2 className="w-full mt-2 lg:mt-0 text-lg lg:text-[1.3rem] font-medium  text-textbgcolor-dark border-b-2 border-textBackground-light pb-2 relative">
       <span className="pb-[11px] border-b-2 border-primary uppercase font-medium text-textBackground">
         {text}
       </span>

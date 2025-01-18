@@ -14,20 +14,18 @@ const useCart = () => {
 
   const addCart = (item) => {
     dispatch(addToCart(item));
-    toast.success("Add to cart");
+    toast.success("Thêm vào giỏ hàng thành công");
   };
 
   const deleteCart = (item) => {
     dispatch(deleteFromCart(item));
-    toast.success("Delete cart");
+    toast.success("Xóa khỏi giỏ hàng thành công");
   };
   const incrementCart = (id) => {
     dispatch(incrementQuantity(id));
-    toast.success("Increased item quantity");
   };
   const decrementCart = (id) => {
     dispatch(decrementQuantity(id));
-    toast.success("Decreased item quantity");
   };
 
   useEffect(() => {

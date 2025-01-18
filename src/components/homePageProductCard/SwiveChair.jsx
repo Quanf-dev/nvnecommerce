@@ -16,7 +16,7 @@ const SwiveChair = () => {
   });
 
   return (
-    <div className="mt-24">
+    <div className="mt-4 md:mt-8 lg:mt-16 ">
       <HeadCategory text="Ghế Xoay" />
       <ListSeoProduct list={seoKneeling} />
       <div className="grid gap-5 md:grid-cols-4 xl:grid-cols-5 mt-7">

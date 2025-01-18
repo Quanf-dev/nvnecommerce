@@ -19,7 +19,7 @@ const ChairGamingProduct = () => {
     <div className="mt-6">
       <HeadCategory text="GHẾ GAMING" />
       <ListSeoProduct list={seoChairGaming} />
-      <div className="grid gap-5 mt-4 md:grid-cols-4 xl:grid-cols-5">
+      <div className="grid grid-cols-2 gap-5 mt-4 md:gap-5 md:grid-cols-4 xl:grid-cols-5 ">
         {filterSwiveChair.map((item, index) => (
           <>
             <ProductCard
@@ -31,7 +31,7 @@ const ChairGamingProduct = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0  "
+              className="border-gray-500 border-[1px] "
             />
             <ProductCard
               key={index}
@@ -42,7 +42,7 @@ const ChairGamingProduct = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0 "
+              className="border-gray-500 border-[1px]"
             />
             <ProductCard
               key={index}
@@ -53,7 +53,7 @@ const ChairGamingProduct = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0 "
+              className="border-gray-500 border-[1px]"
             />
             <ProductCard
               key={index}
@@ -64,7 +64,7 @@ const ChairGamingProduct = () => {
               old_price={item.old_price}
               rating={item.rating}
               image_id={item.images.color_black[0]}
-              className="border-primary border-[1px] border-r-0  "
+              className="border-gray-500 border-[1px] "
             />
             <ProductCard
               key={index}

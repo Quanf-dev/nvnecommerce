@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 import myContext from "../../context/myContext";
 import getSingleProductService from "../../services/getSingleProductService";
 import Loader from "../../components/loader/Loader";
+import { Drawer } from "@material-tailwind/react";
+import HeroMenuMobileView from "../../components/heroMenu/HeroMenuMobileView";
 
 const ProductPage = () => {
   const { loading, product, setProduct } = useContext(myContext); // Sử dụng context để lấy loading, product, setProduct
@@ -21,7 +23,12 @@ const ProductPage = () => {
     if (product.images) {
       const newArrayColor = Object.fromEntries(
         Object.entries(product.images || {})
-          .filter(([key, value]) => Array.isArray(value) && value.length === 4) // Lọc những phần tử có mảng dài 4
+          .filter(
+            ([key, value]) =>
+              key !== "images_desc" &&
+              Array.isArray(value) &&
+              value.length === 4
+          ) // Loại bỏ images_desc và chỉ lọc những phần tử có mảng dài 4
           .map(([key, value]) => [key, { images: value, active: false }]) // Tạo đối tượng mới với cấu trúc { images: value, active: false }
       );
       setArrayColor(newArrayColor); // Cập nhật state arrayColor
@@ -41,10 +48,10 @@ const ProductPage = () => {
       }
     }
   }, [url]); // Chỉ chạy khi url thay đổi
-
+  const { openMobileMenu, setOpenMobileMenu } = useContext(myContext);
   return (
     <Layout>
-      <div className="container mx-auto mt-4">
+      <div className="container px-3 mx-auto mt-4">
         <Breadcrumb /> {/* Hiển thị breadcrumb */}
         {loading ? ( // Kiểm tra trạng thái loading
           <div className="flex items-center justify-center h-screen py-10">
@@ -63,6 +70,9 @@ const ProductPage = () => {
           </Suspense>
         )}
       </div>
+      <Drawer open={openMobileMenu} onClose={() => setOpenMobileMenu(false)}>
+        <HeroMenuMobileView />
+      </Drawer>
     </Layout>
   );
 };

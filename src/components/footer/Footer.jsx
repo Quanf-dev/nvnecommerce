@@ -13,27 +13,17 @@ import {
 } from "@remixicon/react";
 import { AdvancedImage } from "@cloudinary/react";
 
-const imageBanking = getCloudinaryImage("banking-768x393_if51cw", 275);
+const imageBanking = getCloudinaryImage("bannerthanhtoan_crmyll", 275);
 
 const Footer = () => {
   return (
     <>
       <LayoutHome>
-        <footer className="flex py-12 overflow-hidden bg-white">
-          <div className="w-3/7">
-            <div className="flex items-center h-32 py-3 w-[460px] lg:py-0 gap-3">
-              <Link to={"/"}>
-                <img src={logo} className="bg-cover w-36 " />
-              </Link>
-              <div className="flex flex-col">
-                <Typography
-                  variant="h4"
-                  className="flex flex-col items-center uppercase text-primary"
-                >
-                  NHAN Furniture
-                </Typography>
-              </div>
-            </div>
+        <footer className="flex flex-col gap-10 py-5 overflow-hidden bg-white lg:flex-row">
+          <div className="flex flex-col gap-5 w-4/7">
+            <Typography variant="h6" className="uppercase">
+              Trụ sở noithatnvn.com
+            </Typography>
             <div className="text-primary ">
               <div className="flex gap-2">
                 <RiMapPinLine size={20} />
@@ -83,7 +73,7 @@ const Footer = () => {
               <p className="font-bold text-black">Facebook</p>
             </div>
           </div>
-          <div className="ml-10 w-2/7">
+          <div className=" w-2/7">
             {" "}
             <Typography variant="h6" className="mb-4">
               PHƯƠNG THỨC THANH TOÁN
@@ -92,9 +82,9 @@ const Footer = () => {
           </div>
         </footer>
       </LayoutHome>
-      <div className="bg-[#1f1f1f] text-[#FFFFFF80] py-[7.5px] text-[0.7em] ">
+      <div className="bg-[#1f1f1f] text-center  text-[#FFFFFF80] py-[7.5px] text-[0.7em] ">
         <div className="max-w-[1260px] mx-auto ">
-          © Copyright 2018 - Nội Thất NVN Huế - Đà Nẵng
+          © Copyright {new Date().getFullYear()} - Nội Thất NVN Huế - Đà Nẵng
         </div>
       </div>
     </>
