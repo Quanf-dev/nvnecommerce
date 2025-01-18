@@ -14,12 +14,14 @@ const MeshChairProduct = () => {
     "Ghế lưới giá rẻ",
   ];
   const filterMeshChair = filterProduct({ category: "ghế lưới" });
-
+  const filterSwiveChair = filterProduct({
+    category: ["ghế xoay", "ghế công thái học"],
+  });
   return (
-    <div className=" bg-textBackground-light">
+    <div className="py-6 bg-textBackground-light">
       <LayoutHome>
         <div className="flex gap-4 ">
-          <div className="w-[285px] bg-white p-2 mb-24">
+          <div className="w-[285px] bg-white p-2 mb-24 h-fit">
             <Typography
               variant="h5"
               className="py-1 font-medium text-center text-white uppercase bg-primary"
@@ -64,8 +66,8 @@ const MeshChairProduct = () => {
           <div className="flex-1">
             <HeadCategory text="GHẾ LƯỚI NỔI BẬT" />
             <ListSeoProduct list={seoMeshChair} />
-            <div className="grid grid-cols-4 gap-4 mt-4">
-              {filterMeshChair.map((item, index) => (
+            <div className="grid grid-cols-4 gap-4 mt-4 ">
+              {/* {filterMeshChair.map((item, index) => (
                 <ProductCard
                   key={index}
                   id={item.id}
@@ -76,6 +78,65 @@ const MeshChairProduct = () => {
                   rating={item.rating}
                   image_id={item.images.images_desc[1]}
                 />
+              ))} */}
+              {filterSwiveChair.map((item, index) => (
+                <>
+                  <ProductCard
+                    key={index}
+                    id={item.id}
+                    item={item}
+                    name={item.name}
+                    new_price={item.new_price}
+                    old_price={item.old_price}
+                    rating={item.rating}
+                    image_id={item.images.color_black[0]}
+                    className="border-primary border-[1px] border-r-0  "
+                  />
+                  <ProductCard
+                    key={index}
+                    id={item.id}
+                    item={item}
+                    name={item.name}
+                    new_price={item.new_price}
+                    old_price={item.old_price}
+                    rating={item.rating}
+                    image_id={item.images.color_black[0]}
+                    className="border-primary border-[1px] border-r-0 "
+                  />
+                  <ProductCard
+                    key={index}
+                    id={item.id}
+                    item={item}
+                    name={item.name}
+                    new_price={item.new_price}
+                    old_price={item.old_price}
+                    rating={item.rating}
+                    image_id={item.images.color_black[0]}
+                    className="border-primary border-[1px] border-r-0 "
+                  />
+                  <ProductCard
+                    key={index}
+                    id={item.id}
+                    item={item}
+                    name={item.name}
+                    new_price={item.new_price}
+                    old_price={item.old_price}
+                    rating={item.rating}
+                    image_id={item.images.color_black[0]}
+                    className="border-primary border-[1px] border-r-0  "
+                  />
+                  <ProductCard
+                    key={index}
+                    id={item.id}
+                    item={item}
+                    name={item.name}
+                    new_price={item.new_price}
+                    old_price={item.old_price}
+                    rating={item.rating}
+                    image_id={item.images.color_black[0]}
+                    className="border-primary border-[1px]  "
+                  />
+                </>
               ))}
             </div>
           </div>

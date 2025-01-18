@@ -27,8 +27,8 @@ const Navbar = () => {
       {/* main  */}
       <div className="flex items-center justify-between w-full max-w-[1260px] gap-5 py-6">
         {/* left  */}
-        <div className="flex flex-col">
-          <Typography className="flex items-center text-[1.675rem] font-semibold text-black uppercase ">
+        <div className="flex flex-col" onClick={() => navigate("/")}>
+          <Typography className="flex items-center text-[1.675rem] font-semibold text-black uppercase cursor-pointer ">
             NOITHAT
             <span className="px-2 py-1 mx-1 font-bold text-white rounded-md bg-primary">
               NVN

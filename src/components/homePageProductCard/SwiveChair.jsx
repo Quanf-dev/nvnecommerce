@@ -29,7 +29,7 @@ const SwiveChair = () => {
             new_price={item.new_price}
             old_price={item.old_price}
             rating={item.rating}
-            image_id={item.images.images_desc[0]}
+            image_id={item.images.color_black[0]}
           />
         ))}
       </div>

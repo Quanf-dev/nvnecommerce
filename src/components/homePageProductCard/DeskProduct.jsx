@@ -22,7 +22,9 @@ const DeskProduct = () => {
     "Bàn làm việc cho sinh viên",
   ];
   const filterDesk = filterProduct({ category: "bàn học sinh" });
-
+  const filterSwiveChair = filterProduct({
+    category: ["ghế xoay", "ghế công thái học"],
+  });
   return (
     <div className="mt-4">
       <HeadCategory text="BÀN LÀM VIỆC" />
@@ -38,7 +40,157 @@ const DeskProduct = () => {
         }}
         className="relative mt-7"
       >
-        {filterDesk.map((item, index) => (
+        {/* {filterDesk.map((item, index) => (
+          <SwiperSlide
+            onMouseEnter={() => setIsNavigationEnabled(true)}
+            onMouseLeave={() => setIsNavigationEnabled(false)}
+          >
+            <ProductCard
+              key={index}
+              name={item.name}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              rating={item.rating}
+              image_id={item.images.images_desc[1]}
+            />
+          </SwiperSlide>
+        ))} */}
+        {filterSwiveChair.map((item, index) => (
+          <SwiperSlide
+            onMouseEnter={() => setIsNavigationEnabled(true)}
+            onMouseLeave={() => setIsNavigationEnabled(false)}
+          >
+            <ProductCard
+              key={index}
+              name={item.name}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              rating={item.rating}
+              image_id={item.images.images_desc[1]}
+            />
+          </SwiperSlide>
+        ))}
+        {filterSwiveChair.map((item, index) => (
+          <SwiperSlide
+            onMouseEnter={() => setIsNavigationEnabled(true)}
+            onMouseLeave={() => setIsNavigationEnabled(false)}
+          >
+            <ProductCard
+              key={index}
+              name={item.name}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              rating={item.rating}
+              image_id={item.images.images_desc[1]}
+            />
+          </SwiperSlide>
+        ))}
+        {filterSwiveChair.map((item, index) => (
+          <SwiperSlide
+            onMouseEnter={() => setIsNavigationEnabled(true)}
+            onMouseLeave={() => setIsNavigationEnabled(false)}
+          >
+            <ProductCard
+              key={index}
+              name={item.name}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              rating={item.rating}
+              image_id={item.images.images_desc[1]}
+            />
+          </SwiperSlide>
+        ))}
+        {filterSwiveChair.map((item, index) => (
+          <SwiperSlide
+            onMouseEnter={() => setIsNavigationEnabled(true)}
+            onMouseLeave={() => setIsNavigationEnabled(false)}
+          >
+            <ProductCard
+              key={index}
+              name={item.name}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              rating={item.rating}
+              image_id={item.images.images_desc[1]}
+            />
+          </SwiperSlide>
+        ))}
+        {filterSwiveChair.map((item, index) => (
+          <SwiperSlide
+            onMouseEnter={() => setIsNavigationEnabled(true)}
+            onMouseLeave={() => setIsNavigationEnabled(false)}
+          >
+            <ProductCard
+              key={index}
+              name={item.name}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              rating={item.rating}
+              image_id={item.images.images_desc[1]}
+            />
+          </SwiperSlide>
+        ))}
+        {filterSwiveChair.map((item, index) => (
+          <SwiperSlide
+            onMouseEnter={() => setIsNavigationEnabled(true)}
+            onMouseLeave={() => setIsNavigationEnabled(false)}
+          >
+            <ProductCard
+              key={index}
+              name={item.name}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              rating={item.rating}
+              image_id={item.images.images_desc[1]}
+            />
+          </SwiperSlide>
+        ))}
+        {filterSwiveChair.map((item, index) => (
+          <SwiperSlide
+            onMouseEnter={() => setIsNavigationEnabled(true)}
+            onMouseLeave={() => setIsNavigationEnabled(false)}
+          >
+            <ProductCard
+              key={index}
+              name={item.name}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              rating={item.rating}
+              image_id={item.images.images_desc[1]}
+            />
+          </SwiperSlide>
+        ))}
+        {filterSwiveChair.map((item, index) => (
+          <SwiperSlide
+            onMouseEnter={() => setIsNavigationEnabled(true)}
+            onMouseLeave={() => setIsNavigationEnabled(false)}
+          >
+            <ProductCard
+              key={index}
+              name={item.name}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              rating={item.rating}
+              image_id={item.images.images_desc[1]}
+            />
+          </SwiperSlide>
+        ))}
+        {filterSwiveChair.map((item, index) => (
+          <SwiperSlide
+            onMouseEnter={() => setIsNavigationEnabled(true)}
+            onMouseLeave={() => setIsNavigationEnabled(false)}
+          >
+            <ProductCard
+              key={index}
+              name={item.name}
+              new_price={item.new_price}
+              old_price={item.old_price}
+              rating={item.rating}
+              image_id={item.images.images_desc[1]}
+            />
+          </SwiperSlide>
+        ))}
+        {filterSwiveChair.map((item, index) => (
           <SwiperSlide
             onMouseEnter={() => setIsNavigationEnabled(true)}
             onMouseLeave={() => setIsNavigationEnabled(false)}

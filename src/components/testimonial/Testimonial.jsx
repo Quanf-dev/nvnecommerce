@@ -14,7 +14,7 @@ const Testimonial = () => {
               <div className="flex gap-4">
                 <img
                   alt=""
-                  src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                  src="https://www.material-tailwind.com/img/avatar1.jpg"
                   className="object-cover rounded-full size-14"
                 />
                 <p className="mt-0.5 text-lg font-medium text-gray-900 flex relative ">
@@ -36,7 +36,7 @@ const Testimonial = () => {
               <div className="flex gap-4">
                 <img
                   alt=""
-                  src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                  src="https://www.material-tailwind.com/img/avatar2.jpg"
                   className="object-cover rounded-full size-14"
                 />
                 <p className="mt-0.5 text-lg font-medium text-gray-900 flex relative ">
@@ -59,7 +59,7 @@ const Testimonial = () => {
               <div className="flex gap-4">
                 <img
                   alt=""
-                  src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                  src="https://www.material-tailwind.com/img/avatar3.jpg"
                   className="object-cover rounded-full size-14"
                 />
                 <p className="mt-0.5 text-lg font-medium text-gray-900 flex relative ">
@@ -82,7 +82,7 @@ const Testimonial = () => {
               <div className="flex gap-4">
                 <img
                   alt=""
-                  src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                  src="https://www.material-tailwind.com/img/avatar4.jpg"
                   className="object-cover rounded-full size-14"
                 />
                 <p className="mt-0.5 text-lg font-medium text-gray-900 flex relative ">
@@ -104,7 +104,7 @@ const Testimonial = () => {
               <div className="flex gap-4">
                 <img
                   alt=""
-                  src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                  src="https://www.material-tailwind.com/img/avatar5.jpg"
                   className="object-cover rounded-full size-14"
                 />
                 <p className="mt-0.5 text-lg font-medium text-gray-900 flex relative ">
@@ -126,7 +126,7 @@ const Testimonial = () => {
               <div className="flex gap-4">
                 <img
                   alt=""
-                  src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                  src="https://www.material-tailwind.com/img/avatar2.jpg"
                   className="object-cover rounded-full size-14"
                 />
                 <p className="mt-0.5 text-lg font-medium text-gray-900 flex relative ">
@@ -149,7 +149,7 @@ const Testimonial = () => {
               <div className="flex gap-4">
                 <img
                   alt=""
-                  src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                  src="https://www.material-tailwind.com/img/avatar2.jpg"
                   className="object-cover rounded-full size-14"
                 />
                 <p className="mt-0.5 text-lg font-medium text-gray-900 flex ">
@@ -172,7 +172,7 @@ const Testimonial = () => {
               <div className="flex gap-4">
                 <img
                   alt=""
-                  src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                  src="https://www.material-tailwind.com/img/avatar2.jpg"
                   className="object-cover rounded-full size-14"
                 />
                 <p className="mt-0.5 text-lg font-medium text-gray-900 flex relative ">
@@ -194,7 +194,7 @@ const Testimonial = () => {
               <div className="flex gap-4">
                 <img
                   alt=""
-                  src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                  src="https://www.material-tailwind.com/img/avatar2.jpg"
                   className="object-cover rounded-full size-14"
                 />
                 <p className="mt-0.5 text-lg font-medium text-gray-900 flex relative ">

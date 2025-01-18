@@ -1,4 +1,11 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useMatch,
+  useMatches,
+  useLocation,
+} from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import NoPage from "./pages/noPage/NoPage";
 import CartPage from "./pages/cart/CartPage";
@@ -25,6 +32,7 @@ import EditAddress from "./components/user/editAddress/EditAddress";
 import EditAccount from "./components/user/editAccount/EditAccount";
 import AccountHome from "./components/user/accoutHome/AccountHome";
 import OrdersView from "./components/user/OrdersView/OrdersView";
+import ProductPage from "./pages/productInfo/ProductPage";
 
 const App = () => {
   return (
@@ -35,8 +43,9 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/*" element={<NoPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/san-pham" element={<AllProductPage />} />
-          <Route path="/:categoryname" element={<CategoryPage />} />{" "}
+          <Route path="/product" element={<AllProductPage />} />
+          <Route path="/:url" element={<ProductPage />} />
+          <Route path="/category/:categoryname" element={<CategoryPage />} />
           {/* category Page route  */}{" "}
           <Route
             path="/my-account"
@@ -56,14 +65,6 @@ const App = () => {
             <Route path="edit-address" element={<EditAddress />} />{" "}
             <Route path="edit-account" element={<EditAccount />} />{" "}
           </Route>{" "}
-          <Route
-            path="/user-dashboard3"
-            element={
-              <ProtectedRouteForUser>
-                <UserDashboardPage3 />
-              </ProtectedRouteForUser>
-            }
-          />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/checkout/order-received" element={<OrderReceived />} />
           <Route

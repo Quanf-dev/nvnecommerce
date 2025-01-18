@@ -32,7 +32,7 @@ const Announcement = () => {
   return (
     <div className="h-7 text-white bg-[#092143] text-xs font-semibold">
       <div className="max-w-[1260px] flex w-full mx-auto justify-between h-full items-center ">
-        <p className="flex-shrink-0 text-center uppercase ">
+        <p className="flex-shrink-0 text-center uppercase sm:hidden ">
           NOITHATNVN - THƯƠNG HIỆU NỘI THẤT VĂN PHÒNG CAO CẤP HÀNG ĐẦU MIỀN
           TRUNG
         </p>

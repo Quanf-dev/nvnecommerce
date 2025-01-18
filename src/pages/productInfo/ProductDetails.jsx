@@ -11,6 +11,7 @@ import {
 } from "@remixicon/react";
 import { Link } from "react-router-dom";
 import myContext from "../../context/myContext";
+import useCart from "../../hooks/useCart";
 
 const ProductDetails = ({ arrayColor, setArrayColor }) => {
   const { product, setProduct } = useContext(myContext);
