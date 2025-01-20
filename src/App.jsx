@@ -41,10 +41,9 @@ const App = () => {
         <ScrollTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/*" element={<NoPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/product" element={<AllProductPage />} />
-          <Route path="/:url" element={<ProductPage />} />
+          <Route path="/:url" element={<CheckUrl />} />
           <Route path="/category/:categoryname" element={<CategoryPage />} />
           {/* category Page route  */}{" "}
           <Route
@@ -102,6 +101,18 @@ const App = () => {
       </Router>
     </MyState>
   );
+};
+
+const CheckUrl = () => {
+  const location = useLocation();
+  const path = location.pathname;
+
+  // Kiểm tra nếu URL có chứa ".i"
+  if (path.includes("-i.")) {
+    return <ProductPage />;
+  }
+
+  return <NoPage />;
 };
 
 export default App;

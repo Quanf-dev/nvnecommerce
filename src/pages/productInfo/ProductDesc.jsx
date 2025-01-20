@@ -95,10 +95,12 @@ const CollapseDelivery = ({ open, setOpen }) => {
       </p>
       <Collapse
         open={open === "CollapseDelivery" ? true : false}
-        className="flex gap-4 "
+        className="flex flex-col gap-4 lg:flex-row"
       >
         <div className="flex-1">
-          <Typography variant="h4">GIAO HÀNG MIỄN PHÍ</Typography>
+          <Typography className="text-lg font-bold sm:text-3xl md:text-4xl lg:text-5xl">
+            GIAO HÀNG MIỄN PHÍ
+          </Typography>
           <Typography className="mt-4 text-textDesc text-[0.95rem]">
             FlexHouse hỗ trợ giao hàng miễn phí cho các đơn hàng ở khu vực
             Tp.HCM với giá trị đơn hàng trên 1 triệu VND. Đối với khu vực Quận
@@ -112,7 +114,9 @@ const CollapseDelivery = ({ open, setOpen }) => {
           </Typography>
         </div>
         <div className="flex-1">
-          <Typography variant="h4">GIAO HÀNG MIỄN PHÍ</Typography>
+          <Typography className="text-lg font-bold sm:text-3xl md:text-4xl lg:text-5xl">
+            QUY TRÌNH GIAO HÀNG
+          </Typography>
           <ul className="mt-4 text-textDesc text-[0.95rem] flex flex-col gap-2">
             <Typography className="flex">
               <span>

@@ -2,7 +2,15 @@ import { useNavigate } from "react-router";
 import { useContext, useEffect } from "react";
 import myContext from "../context/myContext";
 import useCart from "../hooks/useCart";
-import { Option, Select } from "@material-tailwind/react";
+import {
+  Button,
+  ListItem,
+  Option,
+  Popover,
+  PopoverContent,
+  PopoverHandler,
+  Select,
+} from "@material-tailwind/react";
 import ProductHeader from "../components/productHeader/ProductHeader";
 import CategoryFilter from "../components/categoryFilter/CategoryFilter";
 import LayoutHome from "./LayoutHome";
@@ -11,6 +19,7 @@ import Navbar from "../components/navbar/Navbar";
 import Announcement from "../components/announcement/Announcement ";
 import Footer from "../components/footer/Footer";
 import Track from "../components/track/Track";
+import { RiArrowUpDownLine } from "@remixicon/react";
 
 const LayoutProduct = ({ children }) => {
   const navigate = useNavigate();
@@ -31,16 +40,16 @@ const LayoutProduct = ({ children }) => {
       <LayoutHome>
         <section className="flex py-10 text-gray-600 body-font ">
           {/* left */}
-          <div>
+          <div className="hidden">
             <CategoryFilter />
           </div>
           {/* Right */}
-          <div className="relative flex-1 ml-10 bottom-2">
+          <div className="relative flex-1 lg:ml-10 bottom-2">
             <div className="flex items-center justify-between">
               <div>
                 <Breadcrumb />
               </div>
-              <div className="w-56 customSelect ">
+              <div className="hidden w-56 customSelect lg:block ">
                 <Select
                   label="Sắp xếp theo"
                   className="text-black border-t-0 rounded-none border-primary border-x-0"
@@ -60,56 +69,32 @@ const LayoutProduct = ({ children }) => {
                   </Option>
                 </Select>
               </div>
-            </div>
-            <div className="mt-4">{children}</div>
-            {/* <div className="container px-5 py-5 mx-auto lg:px-0">
-                <div className="flex flex-wrap -m-4">
-                  {getAllProduct.map((item, index) => {
-                    const { id, title, price, productImageUrl } = item;
-                    return (
-                      <div key={index} className="w-full p-4 md:w-1/4">
-                        <div className="h-full overflow-hidden border border-gray-300 shadow-md cursor-pointer rounded-xl">
-                          <img
-                            onClick={() => navigate(`/productinfo/${id}`)}
-                            className="w-full lg:h-80 h-96"
-                            src={productImageUrl}
-                            alt="blog"
-                          />
-                          <div className="p-6">
-                            <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400 title-font">
-                              E-bharat
-                            </h2>
-                            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">
-                              {title.substring(0, 25)}
-                            </h1>
-                            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">
-                              ₹{price}
-                            </h1>
 
-                            <div className="flex justify-center ">
-                              {cartItems.some((p) => p.id === item.id) ? (
-                                <button
-                                  onClick={() => deleteCart(item)}
-                                  className=" bg-red-700 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold"
-                                >
-                                  Delete To Cart
-                                </button>
-                              ) : (
-                                <button
-                                  onClick={() => addCart(item)}
-                                  className=" bg-pink-500 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold"
-                                >
-                                  Add To Cart
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div> */}
+              {/* Popover mobile  */}
+              <Popover placement="bottom-end">
+                <PopoverHandler>
+                  <RiArrowUpDownLine />
+                </PopoverHandler>
+                <PopoverContent>
+                  <ListItem className="cursor-pointer" value="sortedByPopular">
+                    Thứ tự theo mức độ phổ biến
+                  </ListItem>
+                  <ListItem className="cursor-pointer" value="sortedByRating">
+                    Thứ tự theo điểm đánh giá
+                  </ListItem>
+                  <ListItem className="cursor-pointer" value="sortedByNew">
+                    Mới nhất
+                  </ListItem>
+                  <ListItem className="cursor-pointer" value="sortedIncrement">
+                    Thứ tự theo giá: thấp đến cao
+                  </ListItem>
+                  <ListItem className="cursor-pointer" value="sortedDecrement">
+                    Thứ tự theo giá: cao xuống thấp
+                  </ListItem>
+                </PopoverContent>
+              </Popover>
+            </div>
+            <div className="mt-4 ">{children}</div>
           </div>
         </section>
       </LayoutHome>

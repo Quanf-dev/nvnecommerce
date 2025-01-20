@@ -4,10 +4,8 @@ import { getCloudinaryImage } from "../../utils/cloudinaryHelper";
 import { AdvancedImage } from "@cloudinary/react";
 import myContext from "../../context/myContext";
 
-const image = getCloudinaryImage("Ghe-Van-Phong-chu-a-450x450_rebdys", 750);
-
 const ProductDetailCollapse = () => {
-  const { product, setProduct } = useContext(myContext);
+  const { product } = useContext(myContext);
 
   const {
     name,

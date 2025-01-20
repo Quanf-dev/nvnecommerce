@@ -25,7 +25,7 @@ const CategoryPage = () => {
         </div>
       ) : (
         <section className="text-gray-600 body-font">
-          <div className="container px-5 py-5 mx-auto">
+          <div className="container mx-auto lg:px-5 lg:py-5">
             <div className="grid grid-cols-4 gap-10">
               {filterProduct.length > 0 ? (
                 filterProduct.map((item, index) => (
