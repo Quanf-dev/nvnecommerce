@@ -9,9 +9,11 @@ import {
   RiTelegram2Fill,
   RiTwitterFill,
 } from "@remixicon/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import myContext from "../../context/myContext";
 import useCart from "../../hooks/useCart";
+import toast from "react-hot-toast";
+import useBuyNowNavigate from "../../hooks/useBuyNowNavigate";
 
 const ProductDetails = ({ arrayColor, setArrayColor }) => {
   const { product, setProduct } = useContext(myContext);
@@ -33,14 +35,26 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
       additional_info,
     },
     product_category,
+    id,
   } = product;
-  const { cartItems, incrementCart, decrementCart, deleteCart } = useCart();
+  const { cartItems, incrementCart, decrementCart, deleteCart, addCart } =
+    useCart();
 
   const handleAmountChange = (newAmount) => {
     if (newAmount > quantity) {
       incrementCart(id);
     } else if (newAmount < quantity) {
       decrementCart(id);
+    }
+  };
+  const navigate = useNavigate();
+  const { goToCheckout } = useBuyNowNavigate();
+
+  const handleCheckout = () => {
+    if (product.colorPick !== undefined) {
+      goToCheckout("buynow");
+    } else {
+      toast.error("Vui lòng chọn màu");
     }
   };
 
@@ -98,9 +112,22 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
 
       <div className="flex items-center h-10 mb-6 space-x-2 lg:space-x-4 ">
         <AmountSelector amount={quantity} onAmountChange={handleAmountChange} />
-        <button className="flex items-center h-full gap-2 px-6 text-white rounded-md text-nowrap bg-primary">
-          Thêm vào giỏ hàng{" "}
-        </button>
+        {cartItems.some((p) => p.id === id) ? (
+          <button
+            onClick={() => deleteCart(product)}
+            className="flex items-center h-full gap-2 px-6 text-white rounded-md text-nowrap bg-primary"
+          >
+            Xóa khỏi giỏ hàng
+          </button>
+        ) : (
+          <button
+            onClick={() => addCart(product)}
+            className="flex items-center h-full gap-2 px-6 text-white rounded-md text-nowrap bg-primary"
+          >
+            Thêm vào giỏ hàng
+          </button>
+        )}
+
         <Link
           to={"https://zalo.me/0364289846"}
           className="flex items-center h-full gap-2 px-3 text-gray-800 bg-gray-200 rounded-md hover:bg-gray-300 "
@@ -110,7 +137,10 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
         </Link>
       </div>
       <div>
-        <button className="w-full gap-2 px-6 py-1 text-center text-white rounded-md bg-primary">
+        <button
+          onClick={handleCheckout}
+          className="w-full gap-2 px-6 py-1 text-center text-white rounded-md bg-primary"
+        >
           <span className="font-bold ">MUA NGAY</span> <br />
           <span className="text-[0.9rem] relative bottom-[2px]">
             Gọi điện xác nhận và giao hàng tận nơi
@@ -152,6 +182,7 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
 };
 
 const ColorSelection = ({ arrayColor, setArrayColor }) => {
+  const { setProduct } = useContext(myContext);
   const { setThumbnails } = useContext(myContext);
   useEffect(() => {
     const activeColor = Object.entries(arrayColor).find(
@@ -194,6 +225,10 @@ const ColorSelection = ({ arrayColor, setArrayColor }) => {
         ])
       )
     );
+    setProduct((prev) => ({
+      ...prev,
+      colorPick: colorKey,
+    }));
   };
 
   return (

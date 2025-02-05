@@ -1,26 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Address from "../address/Address";
+import myContext from "../../context/myContext";
 
-const PaymentDetails = ({
-  name,
-  setName,
-  email,
-  setEmail,
-  phone,
-  setPhone,
-  address,
-  setAddress,
-  city,
-  setCity,
-  district,
-  setDistrict,
-  ward,
-  setWard,
-  differentAddress,
-  setDifferentAddress,
-  orderNotes,
-  setOrderNotes,
-}) => {
+const PaymentDetails = () => {
+  // Lấy formUserData từ context
+  const { formUserData, setFormUserData } = useContext(myContext);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormUserData({ [name]: value });
+  };
+
   return (
     <form>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -34,9 +24,10 @@ const PaymentDetails = ({
           <input
             type="text"
             id="name"
+            name="name" // Thêm name để xác định trường
             className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={formUserData.name}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -49,9 +40,10 @@ const PaymentDetails = ({
           <input
             type="email"
             id="email"
+            name="email"
             className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formUserData.email}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -64,9 +56,10 @@ const PaymentDetails = ({
           <input
             type="text"
             id="phone"
+            name="phone"
             className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={formUserData.phone}
+            onChange={handleChange}
           />
         </div>
         <Address />
@@ -80,10 +73,11 @@ const PaymentDetails = ({
         </label>
         <textarea
           id="order-notes"
+          name="orderNotes"
           className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm resize-none"
           rows="4"
-          value={orderNotes}
-          onChange={(e) => setOrderNotes(e.target.value)}
+          value={formUserData.orderNotes}
+          onChange={handleChange}
         />
       </div>
     </form>

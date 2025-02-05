@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MyContext from "./myContext";
 import getAllProductService from "../services/getAllProductService";
 import useProduct from "../hooks/useProduct";
+import UseUserData from "../hooks/UseUserData";
 
 function MyState({ children }) {
   // Sử dụng useState để khai báo các state loading và getAllProduct và getAllOrder
@@ -24,6 +25,7 @@ function MyState({ children }) {
   }, []);
 
   const [product, setProduct] = useProduct();
+  const [formUserData, setFormUserData] = UseUserData();
 
   // Trạng thái cho ảnh thu nhỏ
   const [thumbnails, setThumbnails] = useState([
@@ -49,6 +51,8 @@ function MyState({ children }) {
         setProduct,
         thumbnails,
         setThumbnails,
+        formUserData,
+        setFormUserData,
       }}
     >
       {children} {/* Hiển thị các thành phần con */}

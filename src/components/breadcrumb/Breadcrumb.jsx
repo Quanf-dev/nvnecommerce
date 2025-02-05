@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import myContext from "../../context/myContext";
 import { Breadcrumbs } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Breadcrumb = () => {
   const { nameCategory } = useContext(myContext);
+  const { product } = useContext(myContext);
+  const navigate = useNavigate();
+
+  console.log(product.category);
 
   return (
     <>
@@ -12,7 +16,18 @@ const Breadcrumb = () => {
         <Link to={"/"} className="opacity-60 ">
           Trang chủ
         </Link>
-        <p className="font-bold">{nameCategory}</p>
+        <p
+          onClick={() =>
+            navigate(
+              `/category/${
+                nameCategory === "" ? product.product_category : nameCategory
+              }`
+            )
+          }
+          className="font-bold"
+        >
+          {nameCategory === "" ? product.product_category : nameCategory}{" "}
+        </p>
       </Breadcrumbs>
     </>
   );

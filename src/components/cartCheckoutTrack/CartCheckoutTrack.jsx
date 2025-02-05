@@ -3,7 +3,7 @@ import { RiArrowRightLine } from "@remixicon/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const CartCheckout = () => {
+const CartCheckoutTrack = () => {
   const location = window.location.pathname;
   const navigate = useNavigate();
   return (
@@ -45,4 +45,4 @@ const CartCheckout = () => {
   );
 };
 
-export default CartCheckout;
+export default CartCheckoutTrack;

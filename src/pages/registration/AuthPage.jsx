@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Loader from "../../components/loader/Loader";
 import useUserLogin from "../../hooks/useUserLogin";
 import { auth, fireDB } from "../../firebase/FirebaseConfig";
@@ -14,7 +14,10 @@ import Announcement from "../../components/announcement/Announcement ";
 import useUserSignup from "../../hooks/useUserSignup";
 
 const AuthPage = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [searchParams] = useSearchParams();
+  const action = searchParams.get("action") || "";
+
+  const [isLogin, setIsLogin] = useState(false);
   const [fade, setFade] = useState(false);
   const handleSwitch = () => {
     setFade(true);
@@ -27,7 +30,11 @@ const AuthPage = () => {
     setFade(true);
     setTimeout(() => setFade(false), 100);
   }, [isLogin]);
-
+  useEffect(() => {
+    if (action === "register") {
+      setIsLogin(true);
+    }
+  }, [action]);
   return (
     <>
       <Announcement />

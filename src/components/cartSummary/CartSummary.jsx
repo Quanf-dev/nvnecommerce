@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Button, Input } from "@material-tailwind/react";
 import formatCurrencyVND from "../../utils/formatCurrencyVND";
+import { useNavigate } from "react-router-dom";
 
 const CartSummary = ({ cartItemTotal, cartTotal }) => {
   const [voucher, setVoucher] = useState("");
-
+  const navigate = useNavigate();
   const handleVoucherChange = (e) => setVoucher(e.target.value);
 
   const applyVoucher = () => alert(`Áp dụng mã: ${voucher}`);
@@ -52,7 +53,10 @@ const CartSummary = ({ cartItemTotal, cartTotal }) => {
         </div>
       </dl>
       <div className="mt-6 space-y-4">
-        <Button className="w-full shadow-none bg-primary hover:bg-primary-light hover:shadow-none">
+        <Button
+          onClick={() => navigate("/checkout")}
+          className="w-full shadow-none bg-primary hover:bg-primary-light hover:shadow-none"
+        >
           Tiến hành thanh toán
         </Button>
       </div>

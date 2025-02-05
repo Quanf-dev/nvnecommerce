@@ -55,7 +55,10 @@ const Navbar = () => {
               <MenuHandler>
                 <div className="items-center hidden gap-2 cursor-pointer lg:flex">
                   <RiUserLine size={23} />
-                  <p className="text-sm font-medium text-gray-800 hover:text-gray-800">
+                  <p
+                    onClick={() => navigate("/my-account")}
+                    className="text-sm font-medium text-gray-800 hover:text-gray-800"
+                  >
                     Đăng nhập
                   </p>
                 </div>

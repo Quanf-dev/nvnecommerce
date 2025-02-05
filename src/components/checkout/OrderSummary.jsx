@@ -1,19 +1,43 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CollapsePolicy from "./CollapsePolicy";
 import { Collapse } from "@material-tailwind/react";
 import PropTypes from "prop-types";
+import useCart from "../../hooks/useCart";
+import myContext from "../../context/myContext";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import toast from "react-hot-toast";
+import UseUserData from "../../hooks/UseUserData"; // Giả sử bạn đã tạo hook này
 
-const OrderSummary = ({ paymentMethod, handlePaymentMethodChange }) => {
+const OrderSummary = () => {
+  const [searchParams] = useSearchParams();
+  const action = searchParams.get("action");
   const [openPolicy, setOpenPolicy] = useState(false);
+  const [paymentChoose, setPaymentChoose] = useState(null);
   const [openSection, setOpenSection] = useState({
     "bank-transfer": false,
     "cash-on-delivery": false,
     "online-payment": false,
   });
 
+  const { cartItems } = useCart();
+  const { product } = useContext(myContext);
+  const navigate = useNavigate();
+  const [formUserData, setFormUserData] = UseUserData();
+
+  // Cập nhật paymentChoose khi openSection thay đổi
+  useEffect(() => {
+    const activeMethod = getActiveSection(openSection);
+    if (activeMethod) {
+      setPaymentChoose(activeMethod);
+      setFormUserData({
+        ...formUserData,
+        paymentMethod: activeMethod, // Cập nhật paymentMethod trong formUserData
+      });
+    }
+  }, [openSection]);
+
   const handlePaymentChange = (event) => {
     const method = event.target.value;
-    handlePaymentMethodChange(method);
     setOpenSection({
       "bank-transfer": method === "bank-transfer",
       "cash-on-delivery": method === "cash-on-delivery",
@@ -21,31 +45,65 @@ const OrderSummary = ({ paymentMethod, handlePaymentMethodChange }) => {
     });
   };
 
+  const getActiveSection = (sections) => {
+    for (const section in sections) {
+      if (sections[section] === true) {
+        return section;
+      }
+    }
+    return null;
+  };
+
+  const handleOrder = () => {
+    if (paymentChoose) {
+      navigate("order-received");
+    } else {
+      // Nếu chưa chọn phương thức thanh toán, thông báo lỗi
+      toast.error("Vui lòng chọn phương thức thanh toán");
+    }
+  };
+
   return (
     <div className="relative p-6 mb-20 bg-gray-100 radial-gradient">
-      <div className="pb-4 mt-2 mb-4 border-b border-gray-200">
+      <div className="flex flex-col gap-2 p-5 pb-4 mt-2 mb-4 bg-white border-b border-gray-200">
         <div className="flex justify-between text-sm font-medium text-black">
           <span>SẢN PHẨM</span>
           <span>TẠM TÍNH</span>
         </div>
-        <div className="flex justify-between mt-2 text-sm text-black">
-          <span>Tay nắm tủ nội thất bằng inox màu đen DJ029B - 160mm x 2</span>
+        {action !== "buynow" ? (
+          cartItems.map((item) => (
+            <div
+              key={item.id}
+              className="flex justify-between py-2 mt-2 text-sm text-black border-t-2"
+            >
+              <span>
+                {item.name} x {item.quantity}
+              </span>
+              <span>{item.new_price} đ</span>
+            </div>
+          ))
+        ) : (
+          <div className="flex justify-between py-2 mt-2 text-sm text-black border-t-2">
+            <span>
+              {product.name} x {product.quantity}
+            </span>
+            <span>{product.new_price} đ</span>
+          </div>
+        )}
+        <div className="pb-4 mb-4 border-b border-gray-200">
+          <div className="flex justify-between py-2 text-sm text-black border-t-2">
+            <span className="font-medium">Tạm tính</span>
+            <span>50,000 đ</span>
+          </div>
+          <div className="flex justify-between py-2 mt-2 text-sm text-black border-t-2">
+            <span className="font-medium">Giao hàng</span>
+            <span>Phí vận chuyển sẽ báo sau.</span>
+          </div>
+        </div>
+        <div className="flex justify-between mb-4 text-sm font-medium text-black">
+          <span>Tổng</span>
           <span>50,000 đ</span>
         </div>
-      </div>
-      <div className="pb-4 mb-4 border-b border-gray-200">
-        <div className="flex justify-between text-sm text-black">
-          <span>Tạm tính</span>
-          <span>50,000 đ</span>
-        </div>
-        <div className="flex justify-between mt-2 text-sm text-black">
-          <span>Giao hàng</span>
-          <span>Phí vận chuyển sẽ báo sau.</span>
-        </div>
-      </div>
-      <div className="flex justify-between mb-4 text-sm font-medium text-black">
-        <span>Tổng</span>
-        <span>50,000 đ</span>
       </div>
 
       {["bank-transfer", "cash-on-delivery", "online-payment"].map((method) => (
@@ -56,7 +114,6 @@ const OrderSummary = ({ paymentMethod, handlePaymentMethodChange }) => {
             name="payment-method"
             className="mr-2"
             value={method}
-            checked={paymentMethod === method}
             onChange={handlePaymentChange}
           />
           <label htmlFor={method} className="text-sm text-black">
@@ -107,16 +164,14 @@ const OrderSummary = ({ paymentMethod, handlePaymentMethodChange }) => {
         </label>
       </div>
 
-      <button className="w-full py-2 font-medium text-white rounded-lg bg-primary">
+      <button
+        onClick={handleOrder}
+        className="w-full py-2 font-medium text-white rounded-lg bg-primary"
+      >
         ĐẶT HÀNG
       </button>
     </div>
   );
-};
-
-OrderSummary.propTypes = {
-  paymentMethod: PropTypes.string.isRequired,
-  handlePaymentMethodChange: PropTypes.func.isRequired,
 };
 
 export default OrderSummary;

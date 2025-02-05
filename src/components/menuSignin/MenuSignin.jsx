@@ -1,8 +1,11 @@
 import React from "react";
 import { Button, Input } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import useAuthNavigate from "../../hooks/useAuthNavigate";
 
 const MenuSignin = () => {
+  const { goToMyAccount } = useAuthNavigate();
+
   return (
     <div className="flex flex-col items-center justify-center w-[21.875rem]">
       <div className="w-full max-w-sm p-6 ">
@@ -10,12 +13,12 @@ const MenuSignin = () => {
           <h2 className="text-xl font-semibold text-center text-gray-700 text-nowrap">
             Đăng nhập
           </h2>
-          <Link
-            to="/signup"
-            className="flex items-center text-primary hover:text-primary-light focus:outline-none"
+          <p
+            onClick={() => goToMyAccount("register")}
+            className="flex items-center cursor-pointer text-primary hover:text-primary-light focus:outline-none"
           >
             Bạn chưa có tài khoản?
-          </Link>
+          </p>
         </div>
         <div className="w-full h-0 mt-2 border-t-2"></div>
         <form className="mt-4">

@@ -16,7 +16,7 @@ const addProductService = () => {
   const addProductFunction = async (product) => {
     // Kiểm tra các trường nhập liệu, nếu có trường nào rỗng thì hiển thị thông báo lỗi
     if (isProductValid(product)) {
-      return toast.error("All fields are required");
+      return toast.error("Điền đầy đủ thông tin");
     }
 
     setLoading(true); // Đặt trạng thái loading thành true trước khi bắt đầu thêm sản phẩm
@@ -25,7 +25,7 @@ const addProductService = () => {
       const productRef = collection(fireDB, "products");
       // Thêm tài liệu mới vào collection "products" với dữ liệu từ product
       await addDoc(productRef, product);
-      toast.success("Add product successfully"); // Hiển thị thông báo thành công
+      toast.success("Thêm sản phẩm thành công"); // Hiển thị thông báo thành công
       navigate("/admin-dashboard"); // Điều hướng người dùng về trang admin-dashboard
       clearLocalStorageColorValue();
       setLoading(false); // Đặt trạng thái loading thành false sau khi hoàn thành

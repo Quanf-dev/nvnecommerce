@@ -52,7 +52,7 @@ const ProductCard = ({
           {cartItems.some((p) => p.id === id) ? (
             <Tooltip content="Xóa khỏi giỏ hàng">
               <Button
-                onClick={() => deleteCart(item)}
+                onClick={() => deleteCart(p)}
                 variant="text"
                 className="px-0 py-0 text-inherit hover:bg-white active:bg-white"
               >

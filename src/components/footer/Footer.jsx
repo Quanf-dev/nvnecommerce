@@ -19,7 +19,7 @@ const Footer = () => {
   return (
     <>
       <LayoutHome>
-        <footer className="flex flex-col gap-10 py-5 overflow-hidden bg-white lg:flex-row">
+        <footer className="flex flex-col py-5 overflow-hidden bg-white gap-36 lg:flex-row">
           <div className="flex flex-col gap-5 w-4/7">
             <Typography variant="h6" className="uppercase">
               Trụ sở noithatnvn.com
@@ -82,9 +82,10 @@ const Footer = () => {
           </div>
         </footer>
       </LayoutHome>
-      <div className="bg-[#1f1f1f] text-center  text-[#FFFFFF80] py-[7.5px] text-[0.7em] ">
+      <div className=" text-center  text-black py-5 text-[0.7em] border-t-2">
         <div className="max-w-[1260px] mx-auto ">
-          © Copyright {new Date().getFullYear()} - Nội Thất NVN Huế - Đà Nẵng
+          <span className="font-bold uppercase">Nội Thất NVN Huế-Đà Nẵng </span>{" "}
+          THƯƠNG HIỆU NỘI THẤT VĂN PHÒNG CAO CẤP HÀNG ĐẦU MIỀN TRUNG
         </div>
       </div>
     </>

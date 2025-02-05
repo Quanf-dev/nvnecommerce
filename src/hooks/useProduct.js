@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 const useProduct = () => {
   const [product, setProduct] = useState({
+    id: "",
     name: "", // Tên sản phẩm
     old_price: 0.0, // Giá sản phẩm
     new_price: 0.0, // Giá sản phẩm

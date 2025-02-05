@@ -10,7 +10,7 @@ const deleteProductOrderService = () => {
     setLoading(true);
     try {
       await deleteDoc(doc(fireDB, "order", id));
-      toast.success("Product Deleted successfully");
+      toast.success("Xóa Sản phẩm Order thành công");
       setLoading(false);
     } catch (error) {
       console.log(error);

@@ -18,7 +18,9 @@ const getSingleProductService = () => {
 
       // Cập nhật state setProduct với thông tin sản phẩm nhận được
       setProduct((prevState) => ({
-        ...prevState, // Giữ lại các giá trị cũ
+        // Giữ lại các giá trị cũ
+        ...prevState,
+        id: id,
         ...product, // Cập nhật với dữ liệu mới
       }));
       setLoading(false); // Đặt trạng thái loading thành false sau khi hoàn thành
