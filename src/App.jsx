@@ -24,7 +24,6 @@ import ProductDetail from "./components/admin/ProductDetail";
 import OrderDetail from "./components/admin/OrderDetail";
 import UserDetail from "./components/admin/UserDetail";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
-import OrderReceived from "./pages/orderReceived/orderReceived";
 import AuthPage from "./pages/registration/AuthPage";
 import UserDashboardPage3 from "./pages/user/UserDashboardPage3";
 import Orders from "./components/user/OrdersView/OrdersView";
@@ -33,6 +32,7 @@ import EditAccount from "./components/user/editAccount/EditAccount";
 import AccountHome from "./components/user/accoutHome/AccountHome";
 import OrdersView from "./components/user/OrdersView/OrdersView";
 import ProductPage from "./pages/productInfo/ProductPage";
+import OrderReceived from "./pages/orderReceived/OrderReceived";
 
 const App = () => {
   return (
