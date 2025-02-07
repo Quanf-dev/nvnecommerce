@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 
 import SelectAddress from "./SelectAddress";
 import {
@@ -6,12 +6,14 @@ import {
   apiGetPublicProvinces,
   apiGetPublicWard,
 } from "../../api/provinceApi";
+import myContext from "../../context/myContext";
 
 const Address = () => {
+  const { formUserData, setFormUserData } = useContext(myContext);
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
-  const [ward, setWard] = useState("");
   const [wards, setWards] = useState([]);
+  const [ward, setWard] = useState("");
   const [province, setProvince] = useState("");
   const [district, setDistrict] = useState("");
   const [reset, setReset] = useState(false);
@@ -49,6 +51,21 @@ const Address = () => {
     !province ? setReset(true) : setReset(false);
     !province && setWards([]);
   }, [district]);
+  useEffect(() => {
+    const selectedProvince = provinces.find(
+      (item) => item.province_id === province
+    );
+    const selectedDistrict = districts.find(
+      (item) => item.district_id === district
+    );
+    const selectedWard = wards.find((item) => item.ward_id === ward) || "";
+    setFormUserData((prev) => ({
+      ...prev,
+      province: selectedProvince?.province_name || "", // Lưu tên tỉnh
+      district: selectedDistrict?.district_name || "", // Lưu tên quận
+      ward: selectedWard?.ward_name || "", // Lưu tên phường
+    }));
+  }, [province, district, ward]);
 
   // useEffect(() => {
   //   setPayload((prev) => ({
@@ -113,6 +130,9 @@ const Address = () => {
           </label>
           <input
             type="text"
+            onChange={(e) =>
+              setFormUserData({ ...formUserData, address: e.target.value })
+            }
             id="address"
             className="w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm "
           />

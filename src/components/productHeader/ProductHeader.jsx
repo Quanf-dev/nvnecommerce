@@ -23,7 +23,7 @@ const ProductHeader = () => {
             className="w-5 h-5 cursor-pointer md:w-10 md:h-10 hover:text-gray-200"
           />
         </span>
-        {nameCategory}
+        {nameCategory ? nameCategory : "Sản phẩm"}
       </h2>
     </div>
   );

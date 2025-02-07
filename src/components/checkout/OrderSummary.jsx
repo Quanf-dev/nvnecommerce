@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import CollapsePolicy from "./CollapsePolicy";
 import { Collapse } from "@material-tailwind/react";
-import PropTypes from "prop-types";
 import useCart from "../../hooks/useCart";
 import myContext from "../../context/myContext";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import UseUserData from "../../hooks/UseUserData"; // Giả sử bạn đã tạo hook này
+import validateForm from "../../utils/validateForm";
+import addProductOrderService from "../../services/addProductOrderService";
+import formatCurrencyVND from "../../utils/formatCurrencyVND";
 
 const OrderSummary = () => {
   const [searchParams] = useSearchParams();
@@ -18,11 +19,12 @@ const OrderSummary = () => {
     "cash-on-delivery": false,
     "online-payment": false,
   });
-
+  const addProductOrderFunction = addProductOrderService();
+  const { formUserData, setFormUserData } = useContext(myContext);
   const { cartItems } = useCart();
   const { product } = useContext(myContext);
   const navigate = useNavigate();
-  const [formUserData, setFormUserData] = UseUserData();
+  const [isChecked, setIsChecked] = useState(false);
 
   // Cập nhật paymentChoose khi openSection thay đổi
   useEffect(() => {
@@ -53,15 +55,32 @@ const OrderSummary = () => {
     }
     return null;
   };
+  useEffect(() => {
+    setFormUserData((prev) => ({
+      ...prev,
+      action: action,
+    }));
+  }, [action]);
 
   const handleOrder = () => {
-    if (paymentChoose) {
-      navigate("order-received");
-    } else {
-      // Nếu chưa chọn phương thức thanh toán, thông báo lỗi
-      toast.error("Vui lòng chọn phương thức thanh toán");
+    if (!validateForm(formUserData)) {
+      return;
     }
+    if (!isChecked) {
+      toast.error("Bạn cần đồng ý với điều khoản và điều kiện!");
+      return;
+    }
+    console.log(action);
+
+    addProductOrderFunction();
+    navigate("order-received");
   };
+  const itemsToCalculate = action === "buynow" ? [product] : cartItems;
+
+  const cartTotal = itemsToCalculate.reduce(
+    (total, item) => total + item.new_price * item.quantity,
+    0
+  );
 
   return (
     <div className="relative p-6 mb-20 bg-gray-100 radial-gradient">
@@ -93,7 +112,7 @@ const OrderSummary = () => {
         <div className="pb-4 mb-4 border-b border-gray-200">
           <div className="flex justify-between py-2 text-sm text-black border-t-2">
             <span className="font-medium">Tạm tính</span>
-            <span>50,000 đ</span>
+            <span>{formatCurrencyVND(cartTotal)}</span>
           </div>
           <div className="flex justify-between py-2 mt-2 text-sm text-black border-t-2">
             <span className="font-medium">Giao hàng</span>
@@ -102,7 +121,7 @@ const OrderSummary = () => {
         </div>
         <div className="flex justify-between mb-4 text-sm font-medium text-black">
           <span>Tổng</span>
-          <span>50,000 đ</span>
+          <span> {formatCurrencyVND(cartTotal)}</span>
         </div>
       </div>
 
@@ -151,7 +170,12 @@ const OrderSummary = () => {
       </div>
 
       <div className="mb-4">
-        <input type="checkbox" id="terms" className="mr-2" />
+        <input
+          type="checkbox"
+          id="terms"
+          className="mr-2"
+          onChange={(e) => setIsChecked(e.target.checked)}
+        />
         <label htmlFor="terms" className="text-sm text-black">
           Tôi đã đọc và đồng ý với
           <span

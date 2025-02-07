@@ -40,7 +40,7 @@ const LayoutProduct = ({ children }) => {
       <LayoutHome>
         <section className="flex py-10 text-gray-600 body-font ">
           {/* left */}
-          <div className="hidden">
+          <div className="hidden lg:block">
             <CategoryFilter />
           </div>
           {/* Right */}

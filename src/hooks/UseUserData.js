@@ -2,11 +2,11 @@ import { useState } from "react";
 
 const UseUserData = () => {
   const [formUserData, setFormUserData] = useState({
+    action: "",
     name: "",
     email: "",
     phone: "",
     address: "",
-    city: "",
     district: "",
     ward: "",
     orderNotes: "",

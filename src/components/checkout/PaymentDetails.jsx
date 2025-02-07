@@ -8,8 +8,12 @@ const PaymentDetails = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormUserData({ [name]: value });
+    setFormUserData((prev) => ({
+      ...prev,
+      [name]: value, // Cập nhật trường thay đổi
+    }));
   };
+  console.log(formUserData);
 
   return (
     <form>
@@ -54,9 +58,10 @@ const PaymentDetails = () => {
             Số điện thoại <span className="text-red-500">*</span>
           </label>
           <input
-            type="text"
+            type="number"
             id="phone"
             name="phone"
+            minLength={11}
             className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm"
             value={formUserData.phone}
             onChange={handleChange}

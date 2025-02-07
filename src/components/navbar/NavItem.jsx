@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   RiArrowDownSLine,
   RiMenuLine,
@@ -18,6 +18,7 @@ import MenuSignin from "../menuSignin/MenuSignin";
 import myContext from "../../context/myContext";
 
 const NavItem = ({ offsetActiveProduct }) => {
+  const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart);
   const [offsetActive, setOffsetActive] = useState(false);
   const { setOpenMobileMenu } = useContext(myContext);
@@ -123,7 +124,19 @@ const NavItem = ({ offsetActiveProduct }) => {
           {offsetActive ? (
             <>
               {" "}
-              <RiUserLine size={23} />
+              <Menu allowHover>
+                <MenuHandler>
+                  <div className="hidden gap-2 cursor-pointer lg:flex">
+                    <RiUserLine
+                      size={23}
+                      onClick={() => navigate("/my-account")}
+                    />
+                  </div>
+                </MenuHandler>
+                <MenuList>
+                  <MenuSignin />
+                </MenuList>
+              </Menu>
               <Badge
                 content={cartItems.length}
                 className="bg-primary min-w-1 min-h-1"
