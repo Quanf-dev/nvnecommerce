@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import useCart from "../../hooks/useCart";
+import myContext from "../../context/myContext";
 
-const AmountSelector = ({ amount, onAmountChange }) => {
+const AmountSelector = ({ amount, id }) => {
   const [internalAmount, setInternalAmount] = useState(amount);
-
-  useEffect(() => {
-    setInternalAmount(amount);
-  }, [amount]);
+  const { incrementCart, decrementCart } = useCart();
+  const { product, setProduct } = useContext(myContext);
 
   const increaseAmount = () => {
+    incrementCart(id);
     setInternalAmount(internalAmount + 1);
-    onAmountChange(internalAmount + 1); // Trigger on change
+    setProduct((prev) => ({ ...prev, quantity: internalAmount + 1 }));
   };
 
   const decreaseAmount = () => {
-    if (internalAmount > 0) {
+    if (internalAmount > 1) {
+      decrementCart(id);
       setInternalAmount(internalAmount - 1);
-      onAmountChange(internalAmount - 1); // Trigger on change
+      setProduct((prev) => ({ ...prev, quantity: internalAmount - 1 }));
     }
   };
 
@@ -40,11 +42,6 @@ const AmountSelector = ({ amount, onAmountChange }) => {
           id="amountInput"
           type="number"
           value={internalAmount}
-          onChange={(e) => {
-            const newAmount = parseInt(e.target.value);
-            setInternalAmount(newAmount);
-            onAmountChange(newAmount); // Trigger on change
-          }}
           className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-3 mr-20 lg:pr-20 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
         />
         <button

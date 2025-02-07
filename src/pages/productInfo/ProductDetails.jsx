@@ -40,14 +40,6 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
   const { cartItems, incrementCart, decrementCart, deleteCart, addCart } =
     useCart();
 
-  const handleAmountChange = (newAmount) => {
-    if (newAmount > quantity) {
-      incrementCart(id);
-    } else if (newAmount < quantity) {
-      decrementCart(id);
-    }
-  };
-  const navigate = useNavigate();
   const { goToCheckout } = useBuyNowNavigate();
 
   const handleCheckout = () => {
@@ -111,7 +103,7 @@ const ProductDetails = ({ arrayColor, setArrayColor }) => {
       <ColorSelection arrayColor={arrayColor} setArrayColor={setArrayColor} />
 
       <div className="flex items-center h-10 mb-6 space-x-2 lg:space-x-4 ">
-        <AmountSelector amount={quantity} onAmountChange={handleAmountChange} />
+        <AmountSelector amount={quantity} id={id} />
         {cartItems.some((p) => p.id === id) ? (
           <button
             onClick={() => deleteCart(product)}
